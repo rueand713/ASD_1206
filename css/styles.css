@@ -1,0 +1,170 @@
+/*	Rueben Anderson
+	11/13/2011
+	MIU 1111
+	Project 4
+*/
+
+
+h2 {
+	color: #6FA0B7;
+}
+
+	/* General anchor links */
+a {
+	color: #316CBF;
+	text-decoration: none;
+}
+
+p#inputHints {
+	margin-top: 1px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	font-size: 12px;
+	font-style: italic;
+	color: #7F7F7F;
+}
+
+	/* Centers the CTA */
+img#branding {
+	margin-top: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+	/* All UL & LI elements */
+ul, li {
+	list-style-type: none;
+}
+
+	/* UL elements on get data page */
+div#routines > ul li > ul{
+	border-color: #4d89cd;
+	border-width: 1px;
+	border-style: none none solid none;
+	margin-bottom: 20px;
+}
+
+div#routines > ul {
+	padding: 0px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+	
+	/* List items on get data page */
+div#routines ul li ul > li {
+	margin-top: 10px;
+	margin-left: -10px;
+}
+
+	/* Get data images */
+div#routines ul li > img {
+	margin-left: auto;
+	margin-right: 25px;
+	display: block;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #3eafe3;
+	
+}
+
+	/* Form navigation elements on the addItem page */
+nav#addItem {
+	text-align: right;
+	padding-right: 10px;
+}
+
+	/* Max&Min Buttons */ 
+div#routines ul a > img {
+	position: relative;
+	top: 4px;
+	left: -2px;
+}
+
+	/* "Routine" accordions on get data page */
+div#routines ul > a {
+	margin-bottom: 10px;
+}
+
+/*a#clearLists {
+	margin-right: 10px;
+}*/
+
+
+.ui-body-d {
+	background-color: #FFF;
+	background: url("../images/project4_bg.jpg") repeat-x fixed 0 0 #FFF;
+	-webkit-background-size: length_y;
+	-moz-background-size: length_y;
+	background-attachment: fixed;
+}
+
+	/* Search field above CTA */
+input#searchField {
+	height: 20px;
+	width: 230px;
+	border-radius: 5px 0px 0px 5px;
+	border-color: #3eafe3;
+	margin: 0px 0px 0px 0px;
+}
+	/* Search field's "Go" button */
+a#doSearch img#goButton {
+	position: relative;
+	left: 240px;
+	top: -35px;
+	padding-top: 0px;
+	padding-left: 0px;
+}
+	/* Span element containing the search field and go button */
+span#searchGroup {
+	margin-left: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+div > h2 {
+	margin-bottom: 5px;
+}
+
+.js_errors {
+	color: #990000;	
+	font-size: 13px;
+	font-style: italic;
+	display: none;
+}
+
+#compBrand {
+	height: 25px;
+	width: auto;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	margin-top: -10px;
+}
+
+.ui-btn-inner {
+	background-color: #95D7F7;
+	border-color: #85C0DD;
+}
+
+div.ui-btn-up-b, div.ui-btn-up-d {
+	border: 0px none transparent;
+}
+
+.ui-btn-up-a {
+	border: 1px solid #79C4E8;
+}
+
+.ui-header, .ui-footer {
+	background: #79C4E8;
+}
+
+.ui-icon {
+	background-color: #79C4E8;
+}
+
+.ui-input-text {
+	background: #FFF;
+}

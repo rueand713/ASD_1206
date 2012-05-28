@@ -1,0 +1,300 @@
+<!DOCTYPE html> 
+<!--	Rueben Anderson
+	11/13/2011
+	MIU 1111
+	Project 4
+-->
+<html> 
+
+<head>
+	
+	<meta charset="utf-8">
+	
+	<title>My Fitness | Get Fit!</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on">
+	
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+	
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+</head> 
+
+	
+
+<body> 
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="home" data-add-back-btn="true" data-theme="d">
+
+	<!--<div data-role="header" data-position="fixed" data-theme="b">
+		<h1>My Fitness</h1>
+	</div>--><!-- /header -->
+
+	<div data-role="content">
+		<span id="searchGroup">
+			<img id="compBrand" src="images/myFitBrand.png" />
+			<input id="searchField" type="text" value= "" placeholder="Search for an exercise"/>
+				<a id="doSearch" href="#myRoutine">
+					<img id="goButton" src="images/go_button.png" alt="Go Button"/>
+				</a>
+		</span>
+		<a id="ctaLink" href="#myRoutine"><img id="branding" src="images/cta-iphone.png" data-role="button"/></a>
+			<div data-role="collapsible-set">
+				<h2>Browse by Category</h2>
+				<div data-role="collapsible" data-collapsed="true" data-theme="a">
+					<h3>Aerobics</h3>
+					<p><a id="aeroRunning" href="#myRoutine">Running</a></p>
+					<p><a id="aeroKickboxing" href="#myRoutine">Kickboxing</a></p>
+					<p><a id="aeroSwimming" href="#myRoutine">Swimming</a></p>
+					<p><a id="aeroBicycling" href="#myRoutine">Bicycling</a></p>
+					<p><a id="aeroRowing" href="#myRoutine">Rowing</a></p>
+					<p><a id="aeroJump" href="#myRoutine">Jump Rope</a></p>
+				</div>
+				<div data-role="collapsible" data-collapsed="true" data-theme="a">
+					<h3>Anaerobics</h3>
+					<p><a id="anaeroSquats" href="#myRoutine">Squats</a></p>
+					<p><a id="anaeroLeg" href="#myRoutine">Leg Extensions</a></p>
+					<p><a id="anaeroDumbbell" href="#myRoutine">Dumbell Curls</a></p>
+					<p><a id="anaeroBench" href="#myRoutine">Bench Press</a></p>
+					<p><a id="anaeroTricep" href="#myRoutine">Tricep Extensions</a></p>
+					<p><a id="anaeroBent" href="#myRoutine">Bent Over Rows</a></p>
+				</div>
+				<div data-role="collapsible" data-collapsed="true" data-theme="a">
+					<h3>Calisthenics</h3>
+					<p><a id="calisthJumping" href="#myRoutine">Jumping Jacks</a></p>
+					<p><a id="calisthLunges" href="#myRoutine">Lunges</a></p>
+					<p><a id="calisthDips" href="#myRoutine">Dips</a></p>
+					<p><a id="calisthCrunches" href="#myRoutine">Crunches</a></p>
+					<p><a id="calisthPull" href="#myRoutine">Pull Ups</a></p>
+					<p><a id="calisthPush" href="#myRoutine">Push Ups</a></p>
+				</div>
+				<div data-role="collapsible" data-collapsed="true" data-theme="a">
+					<h3>Flexibility</h3>
+					<p><a id="flexHip" href="#myRoutine">Hip Flexor Stretch</a></p>
+					<p><a id="flexPiriformis" href="#myRoutine">Piriformis Stretch</a></p>
+					<p><a id="flexHamstring" href="#myRoutine">Hamstring Stretch</a></p>
+					<p><a id="flexQuad" href="#myRoutine">Quad Stretch</a></p>
+					<p><a id="flexBack" href="#myRoutine">Back Stretch</a></p>
+					<p><a id="flexShoulder" href="#myRoutine">Shoulder Stretch</a></p>
+				</div>
+				<div data-role="collapsible" data-collapsed="true" data-theme="a">
+					<h3>Maternity</h3>
+					<p><a id="maternWalking" href="#myRoutine">Walking</a></p>
+					<p><a id="maternSide" href="#myRoutine">Side Lunges</a></p>
+					<p><a id="maternStep" href="#myRoutine">Step Ups</a></p>
+					<p><a id="maternLite" href="#myRoutine">Lite Swimming</a></p>
+					<p><a id="maternLying" href="#myRoutine">Lying Abduction</a></p>
+					<p><a id="maternWall" href="#myRoutine">Wall Squats</a></p>
+				</div>
+			</div> <!-- close collapsible set div -->
+			
+			<div data-role="fieldcontain">
+				<!--<a id="appLink" href="http://rueand713.github.com/MiU-1111-Project4/miu-project4/Bad%20App/ref.html">To Bad App</a>-->
+			</div>
+		</div><!-- /content -->
+
+	<!--<div data-role="footer" data-position="fixed" data-theme="b">
+		<h4></h4>
+	</div>-->
+</div><!-- /page one -->
+
+
+<!-- Start of second page: #two -->
+<div data-role="page" id="myRoutine" data-add-back-btn="true" data-theme="d">
+
+	<div data-role="header" data-position="fixed" data-theme="b">
+		<h3></h3>
+	</div><!-- /header -->
+
+	<div data-role="content"">	
+		<img id="compBrand" src="images/myFitBrand.png" />
+		<nav id="addItem">
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a id="clearLists" href="#"><button type="submit">Clear</button></a></div>
+				<div class="ui-block-b">
+					<a id="showData" href="#"><button type="submit">Routines</button></a>
+					<a id="addNew" href="#home" style="display:none;"><button type="submit">New</button></a>
+				</div>
+			</div><!-- /grid-a -->
+		</nav>
+		<form id="routineForm" action="#" method="post">
+			<fieldset>
+				<ul id="errors">
+				</ul>
+				<div id="titledSection" data-role="fieldcontain">
+					<p id="errorText" class="js_errors">* This is a required field.</p>
+					<h2>Routine Title</h2>
+					<!-- Allows the user to input a name for the routine -->
+					<input type="text" id="routineName" placeholder="Name this Routine"/>
+					<p id="inputHints">Ex: Tricep Showdown! or Weekly Run</p>
+				</div>
+				<div id="titledSection" data-role="fieldcontain">
+					<p id="errorSelect" class="js_errors">* This is a required field.</p>
+					<h2>Routine Location</h2>
+					<select type="text" id="routineLoc">
+						<option value="--Please Select A Location--">--Please Select A Location--</option>
+						<optgroup label="Gyms">
+							<option value="Bally's">Bally's</option>
+							<option value="24 Hour Fitness">24 Hour Fitness</option>
+							<option value="L.A Fitness">L.A Fitness</option>
+							<option value="YMCA Center">YMCA Center</option>
+							<option value="World Gym">World Gym</option>
+							<option value="Gold's Gym">Gold's Gym</option>
+							<option value="Other Gym">Other Gym</option>
+						</optgroup>
+						<optgroup label="Other">
+							<option value="Home">Home</option>
+							<option value="Recreation Area">Recreation Area</option>
+							<option value="Wellness Center">Wellness Center</option>
+							<option value="Other Area">Other Area</option>
+						</optgroup>
+					</select>
+				</div>
+				<div id="titledSection" data-role="fieldcontain">
+					<p id="errorRadio" class="js_errors">* This is a required field.</p>
+					<h2>Select a type of exercise</h2>	
+					<div id="workout2" data-role="collapsible-set">
+						<div id="aero" data-role="collapsible" data-collapsed="true" data-theme="a">
+							<h3>Aerobics</h3>
+							<p><input type="Radio" name="exType" value="Running" id="running" /><label for="running">Running</label></p>
+							<p><input type="Radio" name="exType" value="Kickboxing" id="kickboxing" /><label for="kickboxing">Kickboxing</label></p>
+							<p><input type="Radio" name="exType" value="Swimming" id="swimming" /><label for="swimming">Swimming</label></p>
+							<p><input type="Radio" name="exType" value="Bicycling" id="bicycling" /><label for="bicycling">Bicycling</label></p>
+							<p><input type="Radio" name="exType" value="Rowing" id="rowing" /><label for="rowing">Rowing</label></p>
+							<p><input type="Radio" name="exType" value="Jump Rope" id="jumpRope" /><label for="jumpRope">Jump Rope</label></p>
+						</div>
+						<div id="anaero" data-role="collapsible" data-collapsed="true" data-theme="a">
+							<h3>Anaerobics</h3>
+							<p><input type="Radio" name="exType" value="Squats" id="squats" /><label for="squats">Squats</label></p>
+							<p><input type="Radio" name="exType" value="Leg Extension" id="legExtension" /><label for="legExtension">Leg Extensions</label></p>
+							<p><input type="Radio" name="exType" value="Dumbbell Curls" id="dumbbellCurls" /><label for="dumbbellCurls">Dumbell Curls</label></p>
+							<p><input type="Radio" name="exType" value="Bench Press" id="benchPress" /><label for="benchPress">Bench Press</label></p>
+							<p><input type="Radio" name="exType" value="Tricep Extension" id="tricepExtension" /><label for="tricepExtension">Tricep Extensions</label></p>
+							<p><input type="Radio" name="exType" value="Bent Over Rows" id="bentOverRows" /><label for="bentOverRows">Bent Over Rows</label></p>
+						</div>
+						<div id="calisth" data-role="collapsible" data-collapsed="true" data-theme="a">
+							<h3>Calisthenics</h3>
+							<p><input type="Radio" name="exType" value="Jumping Jacks" id="jumpingJacks" /><label for="jumpingJacks">Jumping Jacks</label></p>
+							<p><input type="Radio" name="exType" value="Lunges" id="lunges" /><label for="lunges">Lunges</label></p>
+							<p><input type="Radio" name="exType" value="Dips" id="dips" /><label for="dips">Dips</label></p>
+							<p><input type="Radio" name="exType" value="Crunches" id="crunches" /><label for="crunches">Crunches</label></p>
+							<p><input type="Radio" name="exType" value="Pull Ups" id="pullUps" /><label for="pullUps">Pull Ups</label></p>
+							<p><input type="Radio" name="exType" value="Push Ups" id="pushUps" /><label for="pushUps">Push Ups</label></p>
+						</div>
+						<div id="flex" data-role="collapsible" data-collapsed="true" data-theme="a">
+							<h3>Flexibility</h3>
+							<p><input type="Radio" name="exType" value="Hip Flexor Stretch" id="hipFlexorStretch" /><label for="hipFlexorStretch">Hip Flexor Stretch</label></p>
+							<p><input type="Radio" name="exType" value="Piriformis Stretch" id="piriformisStretch" /><label for="piriformisStretch">Piriformis Stretch</label></p>
+							<p><input type="Radio" name="exType" value="Hamstring Stretch" id="hamstringStretch" /><label for="hamstringStretch">Hamstring Stretch</label></p>
+							<p><input type="Radio" name="exType" value="Quad Stretch" id="quadStretch" /><label for="quadStretch">Quad Stretch</label></p>
+							<p><input type="Radio" name="exType" value="Back Stretch" id="backStretch" /><label for="backStretch">Back Stretch</label></p>
+							<p><input type="Radio" name="exType" value="Shoulder Stretch" id="shoulderStretch" /><label for="shoulderStretch">Shoulder Stretch</label></p>
+						</div>
+						<div id="matern" data-role="collapsible" data-collapsed="true" data-theme="a">
+							<h3>Maternity</h3>
+							<p><input type="Radio" name="exType" value="Walking" id="walking" /><label for="walking">Walking</label></p>
+							<p><input type="Radio" name="exType" value="Side Lunges" id="sideLunges" /><label for="sideLunges">Side Lunges</label></p>
+							<p><input type="Radio" name="exType" value="Step Ups" id="stepUps" /><label for="stepUps">Step Ups</label></p>
+							<p><input type="Radio" name="exType" value="Lite Swimming" id="liteSwimming" /><label for="liteSwimming">Lite Swimming</label></p>
+							<p><input type="Radio" name="exType" value="Lying Abduction" id="lyingAbduction" /><label for="lyingAbduction">Lying Abduction</label></p>
+							<p><input type="Radio" name="exType" value="Wall Squats" id="wallSquats" /><label for="wallSquats">Wall Squats</label></p>
+						</div>
+					</div><!-- close collapsible set-->
+				</div>
+				<!-- The user will select which days for this routine -->
+			
+				<div id="rtFreq"  data-role="fieldcontain">
+					<p id="errorCheckbox" class="js_errors">* This is a required field.</p>
+					<h2>Routine Frequency</h2>
+					<span>Select the day(s) for this exercise:</span>
+					<ul id="routineDays" style="list-style: none">
+						<li><input type="Checkbox" value="Sunday" id="sunday" /><label for="sunday">Sun</label></li>
+						<li><input type="Checkbox" value="Monday" id="monday" /><label for="monday">Mon</label></li>
+						<li><input type="Checkbox" value="Tuesday" id="tuesday" /><label for="tuesday">Tue</label></li>
+						<li><input type="Checkbox" value="Wednesday" id="wednesday" /><label for="wednesday">Wed</label></li>
+						<li><input type="Checkbox" value="Thursday" id="thursday" /><label for="thursday">Thu</label></li>
+						<li><input type="Checkbox" value="Friday" id="friday" /><label for="friday">Fri</label></li>
+						<li><input type="Checkbox" value="Saturday" id="saturday" /><label for="saturday">Sat</label></li>
+					</ul>
+				</div>
+			
+						<!-- The user will input a value in the range from 1 to 100 -->
+				
+				<div id="titledSection" data-role="fieldcontain">
+					<p id="errorRange" class="js_errors">* This is a required field.</p>
+					<h2>Exercise Length</h2>
+					<span id="wDescript">Reps/Duration:</span>
+					<br>	<!-- The value of the slider will dynamically be updated within the #rangeVal span tag -->
+					<input type="range" min="1" max="100" value="30" id="workout"/>
+				</div>
+			
+				<!-- This field asks the user for additional details for the routine -->
+			
+				<div id="titledSection" data-role="fieldcontain">
+					<h2>Notes</h2>
+					<textarea id="comments" placeholder="Store exercise notes here."></textarea>
+					<p id="inputHints">Ex: Reps w/ 45lb weights, Duration (min)</p>
+				</div>
+			
+				<!-- The user will enter a starting date for the routine -->
+			
+				<div id="titledSection" data-role="fieldcontain">
+					<p id="errorDate" class="js_errors">* This is a required field.</p>
+					<h2>Routine Date</h2>
+					<input type="date" id="startDate" placeholder="YYYY-MM-DD"/>
+					<p id="inputHints">Choose a date in this format: YYYY-MM-DD</p>
+				</div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<input type="submit" id="submit" value="Save" data-theme="b"/>
+					</div>
+					<div class="ui-block-b">
+						<input type="reset" id="reset" value="Reset" data-theme="b"/>
+					</div>
+				</div><!-- /grid-a -->
+			</fieldset>
+		</form>
+		<div  id="body">
+		</div>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		<h4><a id="homeLink" href="#" style="color:#FFF">HOME</a></h4>
+	</div>
+</div><!-- /page two -->
+
+
+<!-- 
+<div data-role="page" id="list">
+
+	<div data-role="header" data-position="fixed" data-theme="b">
+		<h1>My Routines</h1>
+
+	</div>
+
+	<div data-role="content">	
+		<div id="listHere"></div>
+	</div>
+
+	
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		<h4>Page Footer</h4>
+	</div>
+</div> -->
+
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+	<script src="js/lib/jquery.validate.min.js"></script>
+	<script src="js/json.js"></script>
+	<script src="js/home.js"></script>
+</body>
+</html>
