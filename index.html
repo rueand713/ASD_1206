@@ -21,19 +21,15 @@
 	<meta http-equiv="cleartype" content="on">
 	
 	<!-- StyleSheets under here -->
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" href="css/styles.css" />
 	
 	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 	<script src="js/libs/modernizr.custom.min.js"></script>
 </head> 
-
-	
-
 <body> 
-
 <!-- Start of first page: #one -->
-<div data-role="page" id="home" data-add-back-btn="true" data-theme="d">
+<section data-role="page" id="home" data-add-back-btn="true" data-theme="d">
 
 	<!--<div data-role="header" data-position="fixed" data-theme="b">
 		<h1>My Fitness</h1>
@@ -105,11 +101,11 @@
 	<!--<div data-role="footer" data-position="fixed" data-theme="b">
 		<h4></h4>
 	</div>-->
-</div><!-- /page one -->
+</section><!-- /page one -->
 
 
 <!-- Start of second page: #two -->
-<div data-role="page" id="myRoutine" data-add-back-btn="true" data-theme="d">
+<section data-role="page" id="myRoutine" data-add-back-btn="true" data-theme="d">
 
 	<div data-role="header" data-position="fixed" data-theme="b">
 		<h3></h3>
@@ -126,7 +122,7 @@
 				</div>
 			</div><!-- /grid-a -->
 		</nav>
-		<form id="routineForm" action="#" method="post">
+		<form id="routineForm" action="" method="post">
 			<fieldset>
 				<ul id="errors">
 				</ul>
@@ -134,14 +130,14 @@
 					<p id="errorText" class="js_errors">* This is a required field.</p>
 					<h2>Routine Title</h2>
 					<!-- Allows the user to input a name for the routine -->
-					<input type="text" id="routineName" placeholder="Name this Routine"/>
+					<input type="text" id="routineName" name="routineName" placeholder="Name this Routine" class="required"/>
 					<p id="inputHints">Ex: Tricep Showdown! or Weekly Run</p>
 				</div>
 				<div id="titledSection" data-role="fieldcontain">
 					<p id="errorSelect" class="js_errors">* This is a required field.</p>
 					<h2>Routine Location</h2>
-					<select type="text" id="routineLoc">
-						<option value="--Please Select A Location--">--Please Select A Location--</option>
+					<select type="text" id="routineLoc" name="routineLoc" class="required">
+						<option value="">--Please Select A Location--</option>
 						<optgroup label="Gyms">
 							<option value="Bally's">Bally's</option>
 							<option value="24 Hour Fitness">24 Hour Fitness</option>
@@ -165,8 +161,8 @@
 					<div id="workout2" data-role="collapsible-set">
 						<div id="aero" data-role="collapsible" data-collapsed="true" data-theme="a">
 							<h3>Aerobics</h3>
-							<p><input type="Radio" name="exType" value="Running" id="running" /><label for="running">Running</label></p>
-							<p><input type="Radio" name="exType" value="Kickboxing" id="kickboxing" /><label for="kickboxing">Kickboxing</label></p>
+							<p><input type="Radio" name="exType" value="Running" id="running" class="required"/><label for="running">Running</label></p>
+							<p><input type="Radio" name="exType" value="Kickboxing" id="kickboxing"/><label for="kickboxing">Kickboxing</label></p>
 							<p><input type="Radio" name="exType" value="Swimming" id="swimming" /><label for="swimming">Swimming</label></p>
 							<p><input type="Radio" name="exType" value="Bicycling" id="bicycling" /><label for="bicycling">Bicycling</label></p>
 							<p><input type="Radio" name="exType" value="Rowing" id="rowing" /><label for="rowing">Rowing</label></p>
@@ -174,7 +170,7 @@
 						</div>
 						<div id="anaero" data-role="collapsible" data-collapsed="true" data-theme="a">
 							<h3>Anaerobics</h3>
-							<p><input type="Radio" name="exType" value="Squats" id="squats" /><label for="squats">Squats</label></p>
+							<p><input type="Radio" name="exType" value="Squats" id="squats" class="required"/><label for="squats">Squats</label></p>
 							<p><input type="Radio" name="exType" value="Leg Extension" id="legExtension" /><label for="legExtension">Leg Extensions</label></p>
 							<p><input type="Radio" name="exType" value="Dumbbell Curls" id="dumbbellCurls" /><label for="dumbbellCurls">Dumbell Curls</label></p>
 							<p><input type="Radio" name="exType" value="Bench Press" id="benchPress" /><label for="benchPress">Bench Press</label></p>
@@ -183,7 +179,7 @@
 						</div>
 						<div id="calisth" data-role="collapsible" data-collapsed="true" data-theme="a">
 							<h3>Calisthenics</h3>
-							<p><input type="Radio" name="exType" value="Jumping Jacks" id="jumpingJacks" /><label for="jumpingJacks">Jumping Jacks</label></p>
+							<p><input type="Radio" name="exType" value="Jumping Jacks" id="jumpingJacks" class="required"/><label for="jumpingJacks">Jumping Jacks</label></p>
 							<p><input type="Radio" name="exType" value="Lunges" id="lunges" /><label for="lunges">Lunges</label></p>
 							<p><input type="Radio" name="exType" value="Dips" id="dips" /><label for="dips">Dips</label></p>
 							<p><input type="Radio" name="exType" value="Crunches" id="crunches" /><label for="crunches">Crunches</label></p>
@@ -192,7 +188,7 @@
 						</div>
 						<div id="flex" data-role="collapsible" data-collapsed="true" data-theme="a">
 							<h3>Flexibility</h3>
-							<p><input type="Radio" name="exType" value="Hip Flexor Stretch" id="hipFlexorStretch" /><label for="hipFlexorStretch">Hip Flexor Stretch</label></p>
+							<p><input type="Radio" name="exType" value="Hip Flexor Stretch" id="hipFlexorStretch" class="required"/><label for="hipFlexorStretch">Hip Flexor Stretch</label></p>
 							<p><input type="Radio" name="exType" value="Piriformis Stretch" id="piriformisStretch" /><label for="piriformisStretch">Piriformis Stretch</label></p>
 							<p><input type="Radio" name="exType" value="Hamstring Stretch" id="hamstringStretch" /><label for="hamstringStretch">Hamstring Stretch</label></p>
 							<p><input type="Radio" name="exType" value="Quad Stretch" id="quadStretch" /><label for="quadStretch">Quad Stretch</label></p>
@@ -201,7 +197,7 @@
 						</div>
 						<div id="matern" data-role="collapsible" data-collapsed="true" data-theme="a">
 							<h3>Maternity</h3>
-							<p><input type="Radio" name="exType" value="Walking" id="walking" /><label for="walking">Walking</label></p>
+							<p><input type="Radio" name="exType" value="Walking" id="walking" class="required"/><label for="walking">Walking</label></p>
 							<p><input type="Radio" name="exType" value="Side Lunges" id="sideLunges" /><label for="sideLunges">Side Lunges</label></p>
 							<p><input type="Radio" name="exType" value="Step Ups" id="stepUps" /><label for="stepUps">Step Ups</label></p>
 							<p><input type="Radio" name="exType" value="Lite Swimming" id="liteSwimming" /><label for="liteSwimming">Lite Swimming</label></p>
@@ -217,13 +213,13 @@
 					<h2>Routine Frequency</h2>
 					<span>Select the day(s) for this exercise:</span>
 					<ul id="routineDays" style="list-style: none">
-						<li><input type="Checkbox" value="Sunday" id="sunday" /><label for="sunday">Sun</label></li>
-						<li><input type="Checkbox" value="Monday" id="monday" /><label for="monday">Mon</label></li>
-						<li><input type="Checkbox" value="Tuesday" id="tuesday" /><label for="tuesday">Tue</label></li>
-						<li><input type="Checkbox" value="Wednesday" id="wednesday" /><label for="wednesday">Wed</label></li>
-						<li><input type="Checkbox" value="Thursday" id="thursday" /><label for="thursday">Thu</label></li>
-						<li><input type="Checkbox" value="Friday" id="friday" /><label for="friday">Fri</label></li>
-						<li><input type="Checkbox" value="Saturday" id="saturday" /><label for="saturday">Sat</label></li>
+						<li><input type="Checkbox" value="Sunday" id="sunday" name="frequency" class="required"/><label for="sunday">Sun</label></li>
+						<li><input type="Checkbox" value="Monday" id="monday" name="frequency"/><label for="monday">Mon</label></li>
+						<li><input type="Checkbox" value="Tuesday" id="tuesday" name="frequency"/><label for="tuesday">Tue</label></li>
+						<li><input type="Checkbox" value="Wednesday" id="wednesday" name="frequency"/><label for="wednesday">Wed</label></li>
+						<li><input type="Checkbox" value="Thursday" id="thursday" name="frequency"/><label for="thursday">Thu</label></li>
+						<li><input type="Checkbox" value="Friday" id="friday" name="frequency"/><label for="friday">Fri</label></li>
+						<li><input type="Checkbox" value="Saturday" id="saturday" name="frequency"/><label for="saturday">Sat</label></li>
 					</ul>
 				</div>
 			
@@ -232,16 +228,16 @@
 				<div id="titledSection" data-role="fieldcontain">
 					<p id="errorRange" class="js_errors">* This is a required field.</p>
 					<h2>Exercise Length</h2>
-					<span id="wDescript">Reps/Duration:</span>
+					<label for="range"><span id="wDescript">Reps/Duration:</span></label>
 					<br>	<!-- The value of the slider will dynamically be updated within the #rangeVal span tag -->
-					<input type="range" min="1" max="100" value="30" id="workout"/>
+					<input type="range" min="1" max="100" value="30" id="workout" name="workout" class="required number"/>
 				</div>
 			
 				<!-- This field asks the user for additional details for the routine -->
 			
 				<div id="titledSection" data-role="fieldcontain">
 					<h2>Notes</h2>
-					<textarea id="comments" placeholder="Store exercise notes here."></textarea>
+					<textarea id="comments" name="comments" placeholder="Store exercise notes here."></textarea>
 					<p id="inputHints">Ex: Reps w/ 45lb weights, Duration (min)</p>
 				</div>
 			
@@ -250,7 +246,7 @@
 				<div id="titledSection" data-role="fieldcontain">
 					<p id="errorDate" class="js_errors">* This is a required field.</p>
 					<h2>Routine Date</h2>
-					<input type="date" id="startDate" placeholder="YYYY-MM-DD"/>
+					<input type="text" id="startDate" name="startDate" placeholder="YYYY-MM-DD" class="required"/>
 					<p id="inputHints">Choose a date in this format: YYYY-MM-DD</p>
 				</div>
 				<div class="ui-grid-a">
@@ -270,7 +266,7 @@
 	<div data-role="footer" data-position="fixed" data-theme="b">
 		<h4><a id="homeLink" href="#" style="color:#FFF">HOME</a></h4>
 	</div>
-</div><!-- /page two -->
+</section><!-- /page two -->
 
 
 <!-- 
@@ -292,8 +288,8 @@
 </div> -->
 
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-	<script src="js/lib/jquery.validate.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script src="js/libs/jquery.validate.min.js"></script>
 	<script src="js/json.js"></script>
 	<script src="js/home.js"></script>
 </body>

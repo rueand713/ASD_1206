@@ -168,3 +168,9 @@ div.ui-btn-up-b, div.ui-btn-up-d {
 .ui-input-text {
 	background: #FFF;
 }
+
+.error {
+	color: #990000;
+	margin-left: 5px;
+}
+

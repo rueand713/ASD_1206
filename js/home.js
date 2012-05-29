@@ -777,7 +777,7 @@ function getCheckBoxValue() {
 	
 	};
 	
-	function validate(e) {
+	/*function validate(e) {
 		// Define the elements we want to check
 		var	getRoutine = getId("routineName"),
 			getLocation = getId("routineLoc"),
@@ -919,6 +919,15 @@ function getCheckBoxValue() {
 				};
 		
 		return false;	
+	};*/
+	
+	function validate() {
+		myForm.validate({
+			invalidHandler: function(form, validator) {},
+			submitHandler: function() {
+				storeData(this.key);
+			}
+		});	
 	};
 
 	function redirect() {
@@ -1074,8 +1083,8 @@ function getCheckBoxValue() {
 		addLink = getId("addNew"),
 		doSearch = getId("goButton"),
 		ctaLink = getId("ctaLink"),
-		resetInfo = getId("reset");
-
+		resetInfo = getId("reset"),
+		myForm = $('#routineForm');
 		
 		
 	showLink.addEventListener("click", getData);
