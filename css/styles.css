@@ -35,7 +35,11 @@ img#branding {
 
 	/* All UL & LI elements */
 ul, li {
-	list-style-type: none;
+	list-style: none;
+}
+
+ul#topUl > a {
+	display: block;
 }
 
 	/* UL elements on get data page */
