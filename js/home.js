@@ -7,13 +7,6 @@
 // Wait until the document is ready
 $(document).ready(function() {
 
-	// The getElementById Function
-	function getId(x) {
-		var elementId = document.getElementById(x);
-		
-		return elementId;
-	};
-
 
 function getCheckBoxValue() {
 		// Checks for checkboxes with a checked state
@@ -26,7 +19,7 @@ function getCheckBoxValue() {
 			"Step Ups", "Lite Swimming", "Lying Abduction", "Wall Squats"];
 	
 		for (var l=0; l<daysArray.length; l++) {
-			if (getId(daysArray[l]).checked) {
+			if ($("#" + daysArray[l]).checked) {
 				day[l] = "×";		// ascii value for multiplication symbol
 			}
 				else {
@@ -47,7 +40,7 @@ function getCheckBoxValue() {
 			var firstLetter = noSpace.charAt(0);
 				noSpace = firstLetter.toLowerCase() + noSpace.substring(1,noSpace.length);
 			
-			if (getId(noSpace).checked) {
+			if ($("#" + noSpace).checked) {
 				exerciseType = exerciseArr[j];		// stores the id of the radio box that is checked
 			};										// using the newly formed strings but stores the unedited version of the strings
 		};											// this is for aesthetic purposes when retrieving the data.
@@ -58,31 +51,31 @@ function getCheckBoxValue() {
 		// Adds a checked value to the checked attribute for true
 		
 			if (item.sun[1] == "×") {
-				getId("sunday").checked = "checked";
+				$("#sunday").checked = "checked";
 			}
 			
 			if (item.mon[1] == "×") {
-				getId("monday").checked = "checked";
+				$("#monday").checked = "checked";
 			}
 			
 			if (item.tue[1] == "×") {
-				getId("tuesday").checked = "checked";
+				$("#tuesday").checked = "checked";
 			}
 			
 			if (item.wed[1] == "×") {
-				getId("wednesday").checked = "checked";
+				$("#wednesday").checked = "checked";
 			}
 			
 			if (item.thu[1] == "×") {
-				getId("thursday").checked = "checked";
+				$("#thursday").checked = "checked";
 			}
 			
 			if (item.fri[1] == "×") {
-				getId("friday").checked = "checked";
+				$("#friday").checked = "checked";
 			}
 			
 			if (item.sat[1] == "×") {
-				getId("saturday").checked = "checked";
+				$("#saturday").checked = "checked";
 			}
 			
 			for (var k=0, noSpace=""; k < item.routineType[1].length; k++) {
@@ -94,7 +87,7 @@ function getCheckBoxValue() {
 			// uncapitalize first letter of the string
 			var firstLetter = noSpace.charAt(0);
 				noSpace = firstLetter.toLowerCase() + noSpace.substring(1,noSpace.length);
-				getId(noSpace).checked = "checked";
+				$("#" + noSpace).checked = "checked";
 	};
 
 	function storeData(key) {
@@ -115,8 +108,8 @@ function getCheckBoxValue() {
 	// Object properties contain arrays with the form lable and input value.
 		getCheckBoxValue();
 		var item = {
-			name: ["Routine:", getId("routineName").value],
-			location: ["Location:", getId("routineLoc").value],
+			name: ["Routine:", $("#routineName").value],
+			location: ["Location:", $("#routineLoc").value],
 			routineType: ["Workout:", exerciseType],
 			sun: ["Sun:", day[0]],
 			mon: ["Mon:", day[1]],
@@ -125,14 +118,14 @@ function getCheckBoxValue() {
 			thu: ["Thu:", day[4]],
 			fri: ["Fri:", day[5]],
 			sat: ["Sat:", day[6]],
-			reDu: ["Reps/Duration:", getId("workout").value],
-			notes: ["Comments:", getId("comments").value],
-			date: ["Start:", getId("startDate").value]
+			reDu: ["Reps/Duration:", $("#workout").value],
+			notes: ["Comments:", $("#comments").value],
+			date: ["Start:", $("#startDate").value]
 		};
 	
 		localStorage.setItem(id, JSON.stringify(item));
 		isOld = false;
-		getId("startDate").setAttribute("disabled", "");
+		$("#startDate").attr("disabled", "");
 		if (isNew === true) {
 			alert("Routine Added!");
 		}
@@ -148,18 +141,18 @@ function getCheckBoxValue() {
 
 	function resetData() {
 		// Set defaults for the form
-		getId("sunday").checked = "";
-		getId("monday").checked = "";
-		getId("tuesday").checked = "";
-		getId("wednesday").checked = "";
-		getId("thursday").checked = "";
-		getId("friday").checked = "";
-		getId("saturday").checked = "";
-		getId("routineName").value = "";
-		getId("workout").value = 30;
-		getId("comments").value = "";
-		getId("routineLoc").value = "--Please Select A Location--";
-		getId("startDate").value = "";
+		$("#sunday").checked = "";
+		$("#monday").checked = "";
+		$("#tuesday").checked = "";
+		$("#wednesday").checked = "";
+		$("#thursday").checked = "";
+		$("#friday").checked = "";
+		$("#saturday").checked = "";
+		$("#routineName").value = "";
+		$("#workout").value = 30;
+		$("#comments").value = "";
+		$("#routineLoc").value = "";
+		$("#startDate").value = "";
 		
 		var radios = document.forms[0].exType;
 		
@@ -168,13 +161,13 @@ function getCheckBoxValue() {
 		};
 		
 		// Reset the jQuery data fields for the list
-		getId("aero").setAttribute("data-collapsed", "true");
-		getId("anaero").setAttribute("data-collapsed", "true");
-		getId("calisth").setAttribute("data-collapsed", "true");
-		getId("flex").setAttribute("data-collapsed", "true");
-		getId("matern").setAttribute("data-collapsed", "true");
+		$("#aero").attr("data-collapsed", "true");
+		$("#anaero").attr("data-collapsed", "true");
+		$("#calisth").attr("data-collapsed", "true");
+		$("#flex").attr("data-collapsed", "true");
+		$("#matern").attr("data-collapsed", "true");
 		
-		resetErrMsg();		
+		//resetErrMsg();		
 	};
 	
 
@@ -201,18 +194,18 @@ function getCheckBoxValue() {
 		toggleControls("off");
 		
 		// Set defaults for the form
-		getId("sunday").checked = "";
-		getId("monday").checked = "checked";
-		getId("tuesday").checked = "";
-		getId("wednesday").checked = "checked";
-		getId("thursday").checked = "";
-		getId("friday").checked = "checked";
-		getId("saturday").checked = "";
-		getId("routineName").value = "";
-		getId("workout").value = 30;
-		getId("comments").value = "";
-		getId("routineLoc").value = "--Please Select A Location--";
-		getId("startDate").value = yrCheck + "-" + moCheck + "-" + dayCheck;
+		$("#sunday").checked = "";
+		$("#monday").checked = "checked";
+		$("#tuesday").checked = "";
+		$("#wednesday").checked = "checked";
+		$("#thursday").checked = "";
+		$("#friday").checked = "checked";
+		$("#saturday").checked = "";
+		$("#routineName").value = "";
+		$("#workout").value = 30;
+		$("#comments").value = "";
+		$("#routineLoc").value = "";
+		$("#startDate").value = yrCheck + "-" + moCheck + "-" + dayCheck;
 		
 		var radios = document.forms[0].exType;
 		
@@ -221,30 +214,30 @@ function getCheckBoxValue() {
 		};
 		
 		// Reset the jQuery data fields for the list
-		getId("aero").setAttribute("data-collapsed", "true");
-		getId("anaero").setAttribute("data-collapsed", "true");
-		getId("calisth").setAttribute("data-collapsed", "true");
-		getId("flex").setAttribute("data-collapsed", "true");
-		getId("matern").setAttribute("data-collapsed", "true");
+		$("#aero").attr("data-collapsed", "true");
+		$("#anaero").attr("data-collapsed", "true");
+		$("#calisth").attr("data-collapsed", "true");
+		$("#flex").attr("data-collapsed", "true");
+		$("#matern").attr("data-collapsed", "true");
 		
-		resetErrMsg();
+		//resetErrMsg();
 	};
 
 	function toggleControls(m) {
 		switch(m) {
 			case "on":
-				getId("routineForm").style.display = "none";
-				getId("clearLists").style.display = "inline";
-				getId("showData").style.display = "none";
-				getId("addNew").style.display = "inline";
-				getId("body").style.display = "block";
+				$("#routineForm").hide();
+				$("#clearLists").show();
+				$("#showData").hide();
+				$("#addNew").show();
+				$("#body").show();
 				break;
 			case "off":
-				getId("routineForm").style.display = "block";
-				getId("clearLists").style.display = "inline";
-				getId("showData").style.display = "inline";
-				getId("addNew").style.display = "none";
-				getId("body").style.display = "none";
+				$("#routineForm").show();
+				$("#clearLists").show();
+				$("#showData").show();
+				$("#addNew").hide();
+				$("#body").hide();
 				break;
 			default:
 				return false;
@@ -327,18 +320,18 @@ function getCheckBoxValue() {
 	};
 
 	function checkForDubs() {
-		var tags = document.getElementsByTagName("div");
+		var tags = $("div");
 		
 		if (tags != null) {
 			for (var i=0, divCount=[]; i<tags.length; i++) {
-				var idAttr = tags[i].getAttribute("id");
+				var idAttr = $(tags[i]).attr("id");
 				
 				if (idAttr === "routines") {
 					divCount.push(tags[i]);
 				};
 			
 				if (divCount.length >1) {
-					var bod = getId("body");
+					var bod = $("#body");
 					
 					if (bod != null) {
 						bod.removeChild(divCount[1]);
@@ -446,47 +439,54 @@ function getCheckBoxValue() {
 			
 			storCnt = 0;
 			toggleControls("on");
-			getId("startDate").setAttribute("disabled", "");
+			$("#startDate").attr("disabled", "");
 					
 			if (localStorage.length === 0) {
 				autoFillData();
 				alert("There is no data in Local Storage! Default data has been added.");
 			};
+			
+			// Reset the data div
+			$("#body").html("");
+			
 			//Write data from local storage to browser
-		var makeDiv = document.createElement("div"),
+		/*var makeDiv = document.createElement("div"),
 			makeList = document.createElement("ul"),
 			makeAnc = document.createElement("a");
 			
-			makeDiv.setAttribute("id", "routines");
+			makeDiv.attr("id", "routines");
 			makeDiv.appendChild(makeList);
-			getId("body").appendChild(makeDiv);
-			getId("routines").style.display = "block";
-			makeAnc.setAttribute("id", "tOrder");
-			makeAnc.setAttribute("href", "#");
+			$("#body").appendChild(makeDiv);
+			$("#routines").show();
+			makeAnc.attr("id", "tOrder");
+			makeAnc.attr("href", "#");*/
+			
+			$("#body").append("<div id='routines'></div>");		//makeDiv given id appended to body div
+			$("<ul id='topUl'></ul>").appendTo("#routines");	//makeList appended to makeDiv
+			$("#routines").show();	// set to display
+			$("<a href='#' id='tOrder'></a>").appendTo("#topUl");	// makeAnc appended to makeList
 			
 		if (orderType == "new") {
-			makeAnc.innerHTML = "[Ordered by Newest]";
-			makeAnc.setAttribute("focused", "false");
+			$("#tOrder").html("[Ordered by Newest]").attr("focused", "false");
 			}
 				else {
-					makeAnc.innerHTML = "[Ordered by Oldest]";
-					makeAnc.setAttribute("focused", "true");
+					$("#tOrder").html("[Ordered by Oldest]").attr("focused", "true");
 				};
 				
-			makeList.appendChild(makeAnc);
-		//	getId("tOrder").addEventListener("click", changeOrder);
+			//makeList.appendChild(makeAnc);
+		//	$("#tOrder").bind("click", changeOrder);
 			
 		var newsStream = getNewsStream();
 
 			// Populates list with the object
 		for (var k=0; k<localStorage.length; k++) {
-			var makeLi = document.createElement("li"),
+			/*var makeLi = document.createElement("li"),
 				linksLi = document.createElement("li"),
 				makeTitle = document.createElement("a"),
 				makeSubList = document.createElement("ul"),
-				makeImg = document.createElement("img");
+				makeImg = document.createElement("img");*/
 			
-			for (var f=0; f < newsStream.length; f++) {
+			for (var f=0, z=0; f < newsStream.length; f++) {
 				var key = localStorage.key(f),
 					value = localStorage.getItem(key),
 					newObj = JSON.parse(value),
@@ -494,35 +494,70 @@ function getCheckBoxValue() {
 					searchAt = readyJSON(newObj);
 				if (search === true && searchAt === true || search === false) {		
 					if (objDate == newsStream[k]) {
-						makeTitle.setAttribute("href", "#");
-						makeTitle.setAttribute("id", "titleControl" + storCnt);
-						makeTitle.setAttribute("focused", "false");
-						makeLi.setAttribute("id", "title" + storCnt);
-						makeImg.setAttribute("id","routineImg"+storCnt);
-						makeImg.setAttribute("src","images/maximize.png");
+						
+						//makeTitle created, given attributes and appended to makeList
+						$("<a href='#' focused='false' id='titleControl" + storCnt + "'></a>").appendTo("#topUl");
+						
+						// makeTitle innerHtml set
+						$("#titleControl" + storCnt).html(newObj.name[1]);
+						
+						// makeImg created, given attributes and prepended to makeTitle
+						$("<img src='images/maximize.png' id='routineImg" + storCnt + "' />").prependTo("#titleControl" + storCnt);
+						
+						// makeLi appended to makeList, given an id
+						$("<li id='title" + storCnt + "'></li>").appendTo("#topUl");
+						
+						// makeSubList appended to makeLi, given id
+						$("<ul id='subUl" + storCnt + "'></ul>").appendTo("#title" + storCnt);
+
+						
+						/*makeTitle.attr("href", "#");
+						makeTitle.attr("id", "titleControl" + storCnt);
+						makeTitle.attr("focused", "false");
+						makeLi.attr("id", "title" + storCnt);
+						makeImg.attr("id","routineImg"+storCnt);
+						makeImg.attr("src","images/maximize.png");
 						makeTitle.appendChild(makeImg);
 						makeTitle.appendChild(document.createTextNode(newObj.name[1]));
 						makeList.appendChild(makeTitle);
-						makeList.appendChild(makeLi);
-						getId("title"+storCnt).style.display = "none";
-						makeLi.appendChild(makeSubList);
-						getImage(newObj.routineType[1], makeSubList);
-						getId("titleControl"+storCnt).style.display = "block";
-						storCnt++;
+						makeList.appendChild(makeLi);*/
+						
+						$("#title"+storCnt).hide();
+						
+						//makeLi.appendChild(makeSubList);
+						getImage(newObj.routineType[1], storCnt);
+						$("#titleControl"+storCnt).show();
+						
+						z = 0;
 						// Populates the list object's items
 						for (var n in newObj) {
-								var makeSubLi = document.createElement("li"),
+							var optSubText = newObj[n][0] + " " + newObj[n][1];
+
+						
+							// makeSubLi given an id and appended to makeSubList
+							$("<li id='item" + z + "" + storCnt + "'></li>").appendTo("#subUl" + storCnt);
+							
+							// makeSubLi given innerHTML
+							$("#item" + z + "" + storCnt).html(optSubText);
+							
+							
+								/*var makeSubLi = document.createElement("li"),
 									optSubText = newObj[n][0] + " " + newObj[n][1];
 									
 									makeSubList.appendChild(makeSubLi);
 									makeSubLi.innerHTML = optSubText;
-									makeSubList.appendChild(linksLi);
+									makeSubList.appendChild(linksLi);*/
+							z++
 						};
+						
+						// linksLi created and appended to makeSubList
+						$("<li id='links" + k + "'></li>").appendTo("#subUl" + storCnt);
+						storCnt++;
 					};
 				};
 			};
 				// Creates the edit and delete links for each routine in local storage.
-				makeRoutineLinks(localStorage.key(k), linksLi); 
+				makeRoutineLinks(localStorage.key(k), k); 
 		};
 		checkForDubs();
 		setListAttributes();
@@ -537,7 +572,7 @@ function getCheckBoxValue() {
 
 
 	// Get the appropriate image for the exercise category
-	function getImage(imgName, makeSubList) {
+	function getImage(imgName, index) {
 			for (var k=0, noSpace=""; k < imgName.length; k++) {
 			// Eliminates the white spaces (if any) in the string
 				if (!(imgName.charAt(k)==" ")) {
@@ -550,7 +585,7 @@ function getCheckBoxValue() {
 			
 			// Get image file names by returning the substring from index 0 to the first space
 			imgName = noSpace;
-			imgName = getId(imgName).value;
+			//imgName = $("#" + imgName).val;
 		
 		var endMark = imgName.indexOf(" ");
 		
@@ -561,12 +596,12 @@ function getCheckBoxValue() {
 				imgName = imgName.substring(0, endMark);
 			};
 		
-		var imageLi = document.createElement("li"),
+		/*var imageLi = document.createElement("li"),
 			newImg = document.createElement("img"),
-			setSrc = newImg.setAttribute("src", "images/" + imgName + ".png");
+			setSrc = newImg.attr("src", "images/" + imgName + ".png");*/
 			
-			makeSubList.appendChild(imageLi);
-			imageLi.appendChild(newImg);
+			$("<li id='img" + index + "'></li>").appendTo("#subUl" + index);
+			$("<img src='images/" + imgName + ".png' />").appendTo("#img" + index);
 		
 	};
 
@@ -583,10 +618,10 @@ function getCheckBoxValue() {
 
 	/* Make Routine Links
 	   Create the edit and delete links for reach stored item when displayed. */
-	function makeRoutineLinks(key, linksLi) {
+	function makeRoutineLinks(key, index) {
 		
 			// Define edit delete link variables
-		var editLink = document.createElement("a"),
+		/*var editLink = document.createElement("a"),
 			editText = "Edit Routine",
 			deleteLink = document.createElement("a"),
 			deleteText = "Delete Routine";
@@ -594,20 +629,25 @@ function getCheckBoxValue() {
 			// Add edit single routine link
 			editLink.href = "#";
 			editLink.key = key;
-			editLink.addEventListener("click", editRoutine);
 			editLink.innerHTML = editText;
-			linksLi.appendChild(editLink);
+			linksLi.appendChild(editLink);*/
+			
+			$("<a href='#' key='" + key + "' id='edit" + index + "'>Edit Routine</a>").appendTo("#links" + index);
+			$("<br/>").appendTo("#links" + index);
+			$("<a href='#' key='" + key + "' id='del" + index + "'>Delete Routine</a>").appendTo("#links" + index);
+			$("#edit" + index).bind("click", editRoutine);
+			$("#del" + index).bind("click", deleteRoutine);
 			
 			// Add line break
-		var breakTag = document.createElement("br");
+		/*var breakTag = document.createElement("br");
 			linksLi.appendChild(breakTag);	
 			
 			// Add delete single routine link
 			deleteLink.href = "#";
 			deleteLink.key = key;
-			deleteLink.addEventListener("click", deleteRoutine);
+			deleteLink.bind("click", deleteRoutine);
 			deleteLink.innerHTML = deleteText;
-			linksLi.appendChild(deleteLink);
+			linksLi.appendChild(deleteLink);*/
 			
 	};
 
@@ -615,8 +655,8 @@ function getCheckBoxValue() {
 	function setListAttributes() {
 		for (var n = 0, newEvent=""; n < storCnt; n++) {
 			newEvent = "titleControl" + n;
-			if (getId(newEvent) != null) {
-				getId(newEvent).addEventListener("click", toggleList);	
+			if ($("#" + newEvent) != null) {
+				$("#" + newEvent).bind("click", toggleList);	
 			};
 		};
 	};
@@ -624,7 +664,7 @@ function getCheckBoxValue() {
 
 	function changeOrder() {
 		/*	//Determine which option has been toggled on
-			var	newId = getId("tOrder").getAttribute("focused");
+			var	newId = $("tOrder").attr("focused");
 			
 			if (newId === "false") {
 					orderType = "old";
@@ -634,8 +674,8 @@ function getCheckBoxValue() {
 					};
 			*/
 			//Clear old get data gathered
-		var bod = document.getElementsByTagName("body"),
-			part = getId("routines");
+		var bod = $("body"),
+			part = $("#routines");
 			bod.removeChild(part);
 			
 			getData();
@@ -648,45 +688,45 @@ function getCheckBoxValue() {
 				idClick = this.id,
 				storage = storCnt;
 			if (idClick != null && storage >0) {
-					newId = getId(idClick).getAttribute("focused"),
+					newId = $("#" + idClick).attr("focused"),
 					titler = idClick.replace(re,""),
 					imgHandler = idClick.replace(re1,"routineImg");
 				
 					//Change the display for each control anchor to none
 					//Change the images all to maximize
 				for (var x = 0; x < storage; x++) {
-					getId("title"+x).style.display = "none";
-					getId("routineImg"+x).setAttribute("src", "images/maximize.png");
+					$("#title"+x).hide();
+					$("#routineImg"+x).attr("src", "images/maximize.png");
 				};
 				
 				// Determine what options to apply by determining which type of click
 				// has been initiated. This is determined by the focused attribute.
 				if (newId === "false") {
-					getId(titler).style.display = "block";
+					$("#" + titler).show();
 					
 					// Set all focus attributes to false (not clicked)
 					for (var z = 0; z < storage; z++) {
-						var controller2 = getId("titleControl" + z);
-						controller2.setAttribute("focused", "false");
+						var controller2 = $("#titleControl" + z);
+						controller2.attr("focused", "false");
 					};
 					
 					// Set the focused attribute of the id passed in to true (clicked)
 					// Set the image to minimized
-					getId(idClick).setAttribute("focused", "true");
-					getId(imgHandler).setAttribute("src", "images/minimize.png");
+					$("#" + idClick).attr("focused", "true");
+					$("#" + imgHandler).attr("src", "images/minimize.png");
 				} 
 				else {
 					// Set the focused attribute of the id passed in to false (unclicked)
-					getId(titler).style.display = "none";
-					getId(idClick).setAttribute("focused", "false");
-					getId(imgHandler).setAttribute("src", "images/maximize.png");
+					$("#" + titler).hide();
+					$("#" + idClick).attr("focused", "false");
+					$("#" + imgHandler).attr("src", "images/maximize.png");
 				};
 			};
 		} // end first if condition 
 			else {
 				for (var l = 0; l < storCnt; l++) {
-					getId("title"+l).style.display = "none";
-					getId("routineImg"+l).setAttribute("src", "images/maximize.png");
+					$("#title"+l).hide();
+					$("#routineImg"+l).attr("src", "images/maximize.png");
 				};
 			};
 	};
@@ -707,13 +747,13 @@ function getCheckBoxValue() {
 	function editRoutine() {
 		// Reset error messages just incase the user inputs invalid info and then chooses 
 		// to edit another routine. Which would not reset them because they reset in the validator function.
-		resetErrMsg();
+		//resetErrMsg();
 		
 		// The routine is being edited so a true value is assigned to the isOld variable to 
 		// prevent the validator from forcing a new updated start date and to prevent backdating the field is disabled.
 		if (this.key) {
 			isOld = true;
-			getId("startDate").setAttribute("disabled", "disabled");
+			$("#startDate").attr("disabled", "disabled");
 		};
 		
 		// Grab the data from the Local Storage item
@@ -724,11 +764,11 @@ function getCheckBoxValue() {
 			toggleControls("off");
 	
 			// Populate the form fields with current lcoalStorage values.
-			getId("routineName").value = item.name[1];
-			getId("routineLoc").value = item.location[1];
-			getId("workout").value = item.reDu[1];
-			getId("comments").value = item.notes[1];
-			getId("startDate").value = item.date[1];
+			$("#routineName").value = item.name[1];
+			$("#routineLoc").value = item.location[1];
+			$("#workout").value = item.reDu[1];
+			$("#comments").value = item.notes[1];
+			$("#startDate").value = item.date[1];
 			
 			// Function that populates the checkbox fields.
 			setCheckBoxValue(item);
@@ -736,12 +776,12 @@ function getCheckBoxValue() {
 			// Remove the initial listener from the input button
 			save.removeEventListener("click", storeData);
 			// Change submit button value to edit button
-			getId("submit").value = "Edit Routine";
+			$("#submit").value = "Edit Routine";
 			
-		var	editSubmit = getId("submit");
+		var	editSubmit = $("#submit");
 			// Save the key value in this function as a property of the edit submit event
 			// So the value may be reused when the edited data is saved.
-			editSubmit.addEventListener("click", validate);
+			editSubmit.bind("click", validate);
 			editSubmit.key = this.key;
 			
 			fromEdit = true;
@@ -751,12 +791,12 @@ function getCheckBoxValue() {
 	};
 
 	
-	function resetErrMsg() {
-		var	getRoutine = getId("routineName"),
-			getLocation = getId("routineLoc"),
-			getWorkout = getId("workout"),
-			getStartDate = getId("startDate"),
-			getFrequency = getId("rtFreq");
+	/*function resetErrMsg() {
+		var	getRoutine = $("#routineName"),
+			getLocation = $("#routineLoc"),
+			getWorkout = $("#workout"),
+			getStartDate = $("#startDate"),
+			getFrequency = $("#rtFreq");
 			
 		//Reset top level error messages
 			errMsg.innerHTML = "";
@@ -766,31 +806,31 @@ function getCheckBoxValue() {
 			getWorkout.style.border = "1px solid black";
 			getStartDate.style.border = "1px solid black";
 		//	getFrequency.style.border = "none";
-		//	getId("workout2").style.border = "none";
+		//	$("workout2").style.border = "none";
 		// Reset local error messages
-			getId("errorText").style.display = "none";
-			getId("errorSelect").style.display = "none";
-			getId("errorRange").style.display = "none";
-			getId("errorCheckbox").style.display = "none";
-			getId("errorRadio").style.display = "none";
-			getId("errorDate").style.display = "none";
+			$("#errorText").hide();
+			$("#errorSelect").hide();
+			$("#errorRange").hide();
+			$("#errorCheckbox").hide();
+			$("#errorRadio").hide();
+			$("#errorDate").hide();
 	
-	};
+	};*/
 	
 	/*function validate(e) {
 		// Define the elements we want to check
-		var	getRoutine = getId("routineName"),
-			getLocation = getId("routineLoc"),
-			getWorkout = getId("workout"),
-			getStartDate = getId("startDate"),
+		var	getRoutine = $("routineName"),
+			getLocation = $("routineLoc"),
+			getWorkout = $("workout"),
+			getStartDate = $("startDate"),
 			dayValidator = [
-				[getId("sunday")],
-				[getId("monday")],
-				[getId("tuesday")],
-				[getId("wednesday")],
-				[getId("thursday")],
-				[getId("friday")],
-				[getId("saturday")]
+				[$("sunday")],
+				[$("monday")],
+				[$("tuesday")],
+				[$("wednesday")],
+				[$("thursday")],
+				[$("friday")],
+				[$("saturday")]
 			],
 			validateRadio = document.forms[0].exType;
 			
@@ -807,7 +847,7 @@ function getCheckBoxValue() {
 				err = "Please input a name for this routine.";
 			
 				getRoutine.style.border = "2px solid #990000";
-				getId("errorText").style.display = "block";
+				$("errorText").show();
 				messageArr.push(err);
 			};
 			
@@ -816,7 +856,7 @@ function getCheckBoxValue() {
 				err = "Please choose an exercise location."
 				
 			//	getLocation.style.border = "2px solid #990000";
-				getId("errorSelect").style.display = "block";
+				$("errorSelect").show();
 				messageArr.push(err);
 			};
 		
@@ -825,7 +865,7 @@ function getCheckBoxValue() {
 				err = "Please choose a value greater than 0.";
 				
 				getWorkout.style.border = "2px solid #990000";
-				getId("errorRange").style.display = "block";
+				$("errorRange").show();
 				messageArr.push(err);
 			};
 			
@@ -843,8 +883,8 @@ function getCheckBoxValue() {
 			if (err === "") {
 				err = "Please choose atleast 1 day for this routine.";
 				
-			//	getId("rtFreq").style.border = "1px solid #990000";
-				getId("errorCheckbox").style.display = "block";
+			//	$("rtFreq").style.border = "1px solid #990000";
+				$("errorCheckbox").show();
 				messageArr.push(err);
 			};
 			
@@ -861,8 +901,8 @@ function getCheckBoxValue() {
 			if (err === "") {
 				err = "Please choose an exercise for this routine.";
 				
-			//	getId("workout2").style.border = "1px solid #990000";
-				getId("errorRadio").style.display = "block";
+			//	$("workout2").style.border = "1px solid #990000";
+				$("errorRadio").show();
 				messageArr.push(err);
 			};
 			
@@ -873,7 +913,7 @@ function getCheckBoxValue() {
 				err = "Please enter a date in valid format.";
 				
 				getStartDate.style.border = "2px solid #990000";
-				getId("errorDate").style.display = "block";
+				$("errorDate").show();
 				messageArr.push(err);
 			}
 				else {	
@@ -892,7 +932,7 @@ function getCheckBoxValue() {
 							err = "Please enter the current date or a future date.";
 						
 							getStartDate.style.border = "2px solid #990000";
-							getId("errorDate").style.display = "block";
+							$("errorDate").show();
 							messageArr.push(err);
 						};
 					};
@@ -931,8 +971,8 @@ function getCheckBoxValue() {
 	};
 
 	function redirect() {
-		var addie = getId("body"),
-			subbie = getId("routineForm");
+		var addie = $("#body"),
+			subbie = $("#routineForm");
 		
 		subbie.style.display = "block";
 		addie.style.display = "none";
@@ -998,8 +1038,8 @@ function getCheckBoxValue() {
 				// If the id of the clicked link equals the id of the new concatenation then
 				// check the radio button that corresponds to that given id
 				if (thisId == newConcat) {
-					getId(noSpace).checked = "checked";
-					getId(newPrefix).setAttribute("data-collapsed", "false");
+					$("#" + noSpace).checked = "checked";
+					$("#" + newPrefix).attr("data-collapsed", "false");
 				};
 				w++;
 			};
@@ -1022,7 +1062,7 @@ function getCheckBoxValue() {
 		
 			for (var y=0; y<container[x][1].length; y++) {
 				var setClick = container[x][0] + container[x][1][y];
-				getId(setClick).addEventListener("click", setInlayVars);
+				$("#" + setClick).bind("click", setInlayVars);
 			};
 		};
 	};
@@ -1030,7 +1070,7 @@ function getCheckBoxValue() {
 	
 	function getSearch() {
 		search = true;
-		searchVal = getId("searchField").value;
+		searchVal = $("#searchField").value;
 		
 	// Clears out the old local storage to alleviate errors
 	// this only exists while polyfilling is implemented in the code.
@@ -1066,7 +1106,7 @@ function getCheckBoxValue() {
 	var exerciseList = ["Aerobics", "Anaerobics", "Calisthenics", "Flexibility", "Maternity"],
 		day = [],
 		exerciseType = "",
-		errMsg = getId("errors"),
+		errMsg = $("#errors"),
 		isOld = false,
 		orderType = "new",
 		search = false,
@@ -1077,25 +1117,25 @@ function getCheckBoxValue() {
 					
 					
 	// Set the Link & Submit click events						
-	var save = getId("submit"),
-		showLink = getId("showData"),
-		clearLink = getId("clearLists"),
-		addLink = getId("addNew"),
-		doSearch = getId("goButton"),
-		ctaLink = getId("ctaLink"),
-		resetInfo = getId("reset"),
-		myForm = $('#routineForm');
+	var save = $("#submit"),
+		showLink = $("#showData"),
+		clearLink = $("#clearLists"),
+		addLink = $("#addNew"),
+		doSearch = $("#goButton"),
+		ctaLink = $("#ctaLink"),
+		resetInfo = $("#reset"),
+		myForm = $("#routineForm");
 		
 		
-	showLink.addEventListener("click", getData);
-	clearLink.addEventListener("click", clearData);
-	save.addEventListener("click", validate);
-	resetInfo.addEventListener("click", resetData);
-	addLink.addEventListener("click", redirect);
-	doSearch.addEventListener("click", getSearch);
-	ctaLink.addEventListener("click", restoreDefault);
-	getId("homeLink").addEventListener("click", refreshPage);
-	//getId("appLink").addEventListener("click", toNextApp);
+	showLink.bind("click", getData);
+	clearLink.bind("click", clearData);
+	save.bind("click", validate);
+	resetInfo.bind("click", resetData);
+	addLink.bind("click", redirect);
+	doSearch.bind("click", getSearch);
+	ctaLink.bind("click", restoreDefault);
+	$("#homeLink").bind("click", refreshPage);
+	//$("#appLink").bind("click", toNextApp);
 	
 	// Add Event Listener to List-Inlay home page
 	setInlayLinks();
