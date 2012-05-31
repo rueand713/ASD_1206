@@ -5,7 +5,7 @@
 */
 
 // Wait until the document is ready
-$(document).ready(function() {
+$(document).bind("pageinit", function() {
 
 
 function getCheckBoxValue() {
@@ -191,7 +191,7 @@ function getCheckBoxValue() {
 				moCheck = ((moCheck * 1) + 1);
 			};
 		
-		$("#startDate").val("" + yrCheck + "-" + moCheck + "-" + dayCheck);
+		$("#startDate").val("" + yrCheck + "/" + moCheck + "/" + dayCheck);
 		
 		if (!option || option === true) {
 			search = false;
@@ -667,7 +667,7 @@ function getCheckBoxValue() {
 		if (ask) {
 			localStorage.removeItem(key);
 			alert("Routine has been successfully removed!");
-			window.location.reload();
+			location.reload();
 		}
 			else {
 				alert("The routine was not deleted.");
@@ -762,9 +762,9 @@ function getCheckBoxValue() {
 		
 		$("#routineForm").show();
 		$("#body").hide();
-		$.mobile.changePage($("#home"),"slide");
+		//$.mobile.changePage($("#home"),"slide");
 		restoreDefault();
-		window.location.reload();
+		location.reload();
 	};
 
 
@@ -775,7 +775,7 @@ function getCheckBoxValue() {
 		else {
 			localStorage.clear();
 			alert("All routines have been removed!");
-			window.location.reload();
+			location.reload();
 		};
 	};
 	
@@ -864,14 +864,14 @@ function getCheckBoxValue() {
 				autoFillData();
 		};
 		getData();
-		//window.location.reload();
+		//location.reload();
 	};
 	
 	
 	function refreshPage() {
 		// Goes to the home page and forces a refresh
 		$.mobile.changePage($("#home"),"slide");
-		window.location.reload();
+		location.reload();
 	
 	};
 	
@@ -879,7 +879,7 @@ function getCheckBoxValue() {
 	function toNextApp() {
 		// Goes to the Bad App and forces a refresh
 		//$.mobile.changePage($("http://rueand713.github.com/MiU-1111-Project3/miu-project3/Bad App/ref.html"),"slide");
-		//window.location.reload();
+		//location.reload();
 	
 	};
 

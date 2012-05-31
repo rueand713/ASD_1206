@@ -178,3 +178,8 @@ div.ui-btn-up-b, div.ui-btn-up-d {
 	margin-left: 5px;
 }
 
+li > label.error {
+	position: absolute;
+	left: 90px;
+}
+

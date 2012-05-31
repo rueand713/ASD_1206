@@ -17,7 +17,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 15],
                     "notes": ["Comments:", "Reps / 25lb weights"],
-                    "date": ["Start:", "2011-10-25"]
+                    "date": ["Start:", "2011/10/25"]
             },
             "routine2": {
                     "name": ["Routine:", "Free Run"],
@@ -32,7 +32,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 3],
                     "notes": ["Comments:", "Duration (miles)"],
-                    "date": ["Start:", "2011-10-15"]
+                    "date": ["Start:", "2011/10/15"]
             },
             "routine3": {
                     "name": ["Routine:", "Flexor"],
@@ -47,7 +47,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 30],
                     "notes": ["Comments:", "Duration (sec)"],
-                    "date": ["Start:", "2011-09-25"]
+                    "date": ["Start:", "2011/09/25"]
             },
             "routine4": {
                     "name": ["Routine:", "Double Dip"],
@@ -62,7 +62,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 20],
                     "notes": ["Comments:", "Reps"],
-                    "date": ["Start:", "2011-09-15"]
+                    "date": ["Start:", "2011/09/15"]
             },
             "routine5": {
                     "name": ["Routine:", "Warm Ups"],
@@ -77,7 +77,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 35],
                     "notes": ["Comments:", "Duration (min)"],
-                    "date": ["Start:", "2011-08-25"]
+                    "date": ["Start:", "2011/08/25"]
             },
             "routine6": {
                     "name": ["Routine:", "Lower Back"],
@@ -92,7 +92,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 15],
                     "notes": ["Comments:", "Duration (sec)"],
-                    "date": ["Start:", "2011-08-15"]
+                    "date": ["Start:", "2011/08/15"]
             },
             "routine7": {
                     "name": ["Routine:", "Abdominals"],
@@ -107,7 +107,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 50],
                     "notes": ["Comments:", "Reps"],
-                    "date": ["Start:", "2011-07-25"]
+                    "date": ["Start:", "2011/07/25"]
             },
             "routine8": {
                     "name": ["Routine:", "Bench"],
@@ -122,7 +122,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 20],
                     "notes": ["Comments:", "Reps / 110lbs"],
-                    "date": ["Start:", "2011-07-15"]
+                    "date": ["Start:", "2011/07/15"]
             },
             "routine9": {
                     "name": ["Routine:", "Spar"],
@@ -137,7 +137,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 90],
                     "notes": ["Comments:", "Duration (min)"],
-                    "date": ["Start:", "2011-06-25"]
+                    "date": ["Start:", "2011/06/25"]
             },
             "routine10": {
                     "name": ["Routine:", "For heart"],
@@ -152,10 +152,10 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 5],
                     "notes": ["Comments:", "Duration (min)"],
-                    "date": ["Start:", "2011-06-15"]
+                    "date": ["Start:", "2011/06/15"]
             },
             "routine11": {
-                    "name": ["Routine:", "Tricep Targetting"],
+                    "name": ["Routine:", "Tricep Targeting"],
                     "location": ["Location:", "24 Hour Fitness"],
                     "routineType": ["Workout:", "Tricep Extension"],
                     "sun": ["Sun:", "×"],
@@ -167,7 +167,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 10],
                     "notes": ["Comments:", "Reps / 20lbs"],
-                    "date": ["Start:", "2011-10-24"]
+                    "date": ["Start:", "2011/10/24"]
             },
             "routine12": {
                     "name": ["Routine:", "Quick Swim"],
@@ -182,7 +182,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 5],
                     "notes": ["Comments:", "Laps"],
-                    "date": ["Start:", "2011-10-10"]
+                    "date": ["Start:", "2011/10/10"]
             },
             "routine13": {
                     "name": ["Routine:", "Hamstrings"],
@@ -197,7 +197,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 30],
                     "notes": ["Comments:", "Duration (sec)"],
-                    "date": ["Start:", "2011-09-20"]
+                    "date": ["Start:", "2011/09/20"]
             },
             "routine14": {
                     "name": ["Routine:", "Deep Steps"],
@@ -212,7 +212,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 20],
                     "notes": ["Comments:", "Reps hold 5 sec"],
-                    "date": ["Start:", "2011-09-14"]
+                    "date": ["Start:", "2011/09/14"]
             },
             "routine15": {
                     "name": ["Routine:", "Stepping"],
@@ -227,7 +227,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 15],
                     "notes": ["Comments:", "Duration (min)"],
-                    "date": ["Start:", "2011-08-24"]
+                    "date": ["Start:", "2011/08/24"]
             },
             "routine16": {
                     "name": ["Routine:", "Shoulder/Rotator"],
@@ -242,7 +242,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 15],
                     "notes": ["Comments:", "Duration (sec)"],
-                    "date": ["Start:", "2011-08-10"]
+                    "date": ["Start:", "2011/08/10"]
             },
             "routine17": {
                     "name": ["Routine:", "Total Body"],
@@ -257,7 +257,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 50],
                     "notes": ["Comments:", "Reps"],
-                    "date": ["Start:", "2011-07-24"]
+                    "date": ["Start:", "2011/07/24"]
             },
             "routine18": {
                     "name": ["Routine:", "Arm & Back"],
@@ -272,7 +272,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", ""],
                     "reDu": ["Reps/Duration:", 15],
                     "notes": ["Comments:", "Reps / 25lbs"],
-                    "date": ["Start:", "2011-07-10"]
+                    "date": ["Start:", "2011/07/10"]
             },
             "routine19": {
                     "name": ["Routine:", "Row your boat!"],
@@ -287,7 +287,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 15],
                     "notes": ["Comments:", "Duration (min)"],
-                    "date": ["Start:", "2011-06-20"]
+                    "date": ["Start:", "2011/06/20"]
             },
             "routine20": {
                     "name": ["Routine:", "Cycling"],
@@ -302,7 +302,7 @@ $(document).ready(function() {
                     "sat": ["Sat:", "×"],
                     "reDu": ["Reps/Duration:", 20],
                     "notes": ["Comments:", "Duration (min)"],
-                    "date": ["Start:", "2011-06-14"]
+                    "date": ["Start:", "2011/06/14"]
             }
 		};
                 
