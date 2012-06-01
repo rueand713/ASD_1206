@@ -1,7 +1,6 @@
-/*		Rueben Anderson
-		11/13/2011
-		MIU 1111
-		Project 4
+/*	Rueben Anderson
+	05/28/2012
+	ASD 1206
 */
 
 // Wait until the document is ready
@@ -11,39 +10,24 @@ $(document).bind("pageinit", function() {
 function getCheckBoxValue() {
 		// Checks for checkboxes with a checked state
 		// Stores empty string for unchecked states & an x for checked states
-		var daysArray = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
-			exerciseArr = ["Running", "Kickboxing", "Swimming", "Bicycling", "Rowing", "Jump Rope", "Squats",
-			"Leg Extension", "Dumbbell Curls", "Bench Press", "Tricep Extension", "Bent Over Rows", "Jumping Jacks",
-			"Lunges", "Dips", "Crunches", "Pull Ups", "Push Ups", "Hip Flexor Stretch", "Piriformis Stretch",
-			"Hamstring Stretch", "Quad Stretch", "Back Stretch", "Shoulder Stretch", "Walking", "Side Lunges",
-			"Step Ups", "Lite Swimming", "Lying Abduction", "Wall Squats"];
-	
-		for (var l=0; l<daysArray.length; l++) {
-			if ($("#" + daysArray[l]).prop("checked")) {
-				day[l] = "×";		// ascii value for multiplication symbol
+		var radios = $("input[type='radio']"),
+		    boxes  = $("input[type='checkbox']");
+		
+		for (var i=0; i < boxes.length; i++) {
+			if ($(boxes[i]).prop("checked")) {
+				day[i] = "×";	// ascii value for multiplication symbol
 			}
-				else {
-					day[l] = ""
-				};
+			else {
+				day[i] = ""
+			}
 		};
 		
-		for (var j=0; j<exerciseArr.length; j++) {
-			var newWord = exerciseArr[j];
-			
-			for (var k=0, noSpace=""; k < newWord.length; k++) {
-			// Eliminates the white spaces (if any) in the string
-				if (!(newWord.charAt(k)==" ")) {
-					noSpace += newWord.charAt(k);
-				};
+		// Stores the value of the checked radio button as the exercise type
+		for (var i = 0; i < radios.length; i++) {
+			if ($(radios[i]).prop("checked")) {
+				exerciseType = $(radios[i]).attr("value");
 			};
-			// uncapitalize first letter of each string in the array
-			var firstLetter = noSpace.charAt(0);
-				noSpace = firstLetter.toLowerCase() + noSpace.substring(1,noSpace.length);
-			
-			if ($("#" + noSpace).prop("checked")) {
-				exerciseType = exerciseArr[j];		// stores the id of the radio box that is checked
-			};										// using the newly formed strings but stores the unedited version of the strings
-		};											// this is for aesthetic purposes when retrieving the data.
+		};
 	};
 
 	function setCheckBoxValue(item) {
@@ -52,42 +36,38 @@ function getCheckBoxValue() {
 		
 			if (item.sun[1] == "×") {
 				$("#sunday").prop("checked", true);
-			}
+			};
 			
 			if (item.mon[1] == "×") {
 				$("#monday").prop("checked", true);
-			}
+			};
 			
 			if (item.tue[1] == "×") {
 				$("#tuesday").prop("checked", true);
-			}
+			};
 			
 			if (item.wed[1] == "×") {
 				$("#wednesday").prop("checked", true);
-			}
+			};
 			
 			if (item.thu[1] == "×") {
 				$("#thursday").prop("checked", true);
-			}
+			};
 			
 			if (item.fri[1] == "×") {
 				$("#friday").prop("checked", true);
-			}
+			};
 			
 			if (item.sat[1] == "×") {
 				$("#saturday").prop("checked", true);
-			}
-			
-			for (var k=0, noSpace=""; k < item.routineType[1].length; k++) {
-			// Eliminates the white spaces (if any) in the string
-				if (!(item.routineType[1].charAt(k)==" ")) {
-					noSpace += item.routineType[1].charAt(k);
-				};
 			};
-			// uncapitalize first letter of the string
-			var firstLetter = noSpace.charAt(0);
-				noSpace = firstLetter.toLowerCase() + noSpace.substring(1,noSpace.length);
-				$("#" + noSpace).prop("checked", true);
+			
+			// checks the proper radio button based on the routine type and refreshes the form state
+			$("input[type='radio'][value='" + item.routineType[1] + "']").prop("checked", true);
+			
+			// refresh the checkbox and radio buttons
+			refreshButtons();
+
 	};
 
 	function storeData(key) {
@@ -125,7 +105,7 @@ function getCheckBoxValue() {
 	
 		localStorage.setItem(id, JSON.stringify(item));
 		isOld = false;
-		$("#startDate").removeAttr("disabled");
+		$("#startDate").textinput("disable");
 		if (isNew === true) {
 			alert("Routine Added!");
 		}
@@ -137,44 +117,11 @@ function getCheckBoxValue() {
 		restoreDefault();
 		location.reload();
 	};
-
-
-	function resetData() {
-		// Resets only the date
-		restoreDefault(false);
-		
-		// Set defaults for the form
-		$("#sunday").prop("checked", false);
-		$("#monday").prop("checked", false);
-		$("#tuesday").prop("checked", false);
-		$("#wednesday").prop("checked", false);
-		$("#thursday").prop("checked", false);
-		$("#friday").prop("checked", false);
-		$("#saturday").prop("checked", false);
-		$("#routineName").val("");
-		$("#workout").val(30);
-		$("#comments").val("");
-		$("#routineLoc").val("");
-		$("#startDate").removeAttr("disabled");
-		
-		var radios = $("[name=exType]");
-		
-		for (var j=0; j<radios.length; j++) {
-			$(radios[j]).prop("checked", false);
-		};
-		
-		// Reset the jQuery data fields for the list
-		$("#aero").attr("data-collapsed", "true");
-		$("#anaero").attr("data-collapsed", "true");
-		$("#calisth").attr("data-collapsed", "true");
-		$("#flex").attr("data-collapsed", "true");
-		$("#matern").attr("data-collapsed", "true");
-		
-		//resetErrMsg();		
-	};
 	
 
 	function restoreDefault(option) {
+		
+		// restores all default form values
 		var myDate = new Date(),
 		    dayCheck = myDate.getDate(),
 		    moCheck = myDate.getMonth(),
@@ -190,46 +137,92 @@ function getCheckBoxValue() {
 			else {
 				moCheck = ((moCheck * 1) + 1);
 			};
-		
+			
 		$("#startDate").val("" + yrCheck + "/" + moCheck + "/" + dayCheck);
 		
-		if (!option || option === true) {
+			
+		// Set defaults for the form
+		$("#routineName").val("");
+		$("#workout").val(30);
+		$("#comments").val("");
+		$("#routineLoc").val("");
+		
+		// Reset the jQuery data fields for the list
+		/*$("#aero").attr("data-collapsed", "true");
+		$("#anaero").attr("data-collapsed", "true");
+		$("#calisth").attr("data-collapsed", "true");
+		$("#flex").attr("data-collapsed", "true");
+		$("#matern").attr("data-collapsed", "true");*/
+		
+		var collapsedLists = $("div[data-role='collapsible']");
+		
+		for (var j=0; j < collapsedLists; j++) {
+			$(collapsedLists[j]).attr("data-collapsed", true);
+		};
+		
+		var radios = $("input[type='radio']"),
+		    boxes  = $("input[type='checkbox']");
+		
+		// resets the radio buttons
+		for (var j=0; j<radios.length; j++) {
+			$(radios[j]).prop("checked", false);
+		};
+		
+		// resets the checkboxes
+		for (var j=0; j<boxes.length; j++) {
+			$(boxes[j]).prop("checked", false);
+		};
+	
+		// when no argument is passed in, do these default actions
+		if (!option) {
 			search = false;
 			searchVal = "";
 			storCnt = 0;
 			toggleControls("off");
 			
-			// Set defaults for the form
-			$("#sunday").prop("checked", false);
+			// set the "good" defaults for frequency
 			$("#monday").prop("checked", true);
-			$("#tuesday").prop("checked", false);
 			$("#wednesday").prop("checked", true);
-			$("#thursday").prop("checked", false);
 			$("#friday").prop("checked", true);
-			$("#saturday").prop("checked", false);
-			$("#routineName").val("");
-			$("#workout").val(30);
-			$("#comments").val("");
-			$("#routineLoc").val("");
-			
-			
-			var radios = $("[name=exType]");
-			
-			for (var j=0; j<radios.length; j++) {
-				$(radios[j]).prop("checked", false);
-			};
-			
-			// Reset the jQuery data fields for the list
-			$("#aero").attr("data-collapsed", "true");
-			$("#anaero").attr("data-collapsed", "true");
-			$("#calisth").attr("data-collapsed", "true");
-			$("#flex").attr("data-collapsed", "true");
-			$("#matern").attr("data-collapsed", "true");
-			
-			//resetErrMsg();
+		};
+		
+		
+		// refresh the checkbox and radio buttons unless
+		// false is passed in
+		if (option != false) {
+			refreshButtons();
 		};
 	};
 
+	
+	function refreshButtons() {
+
+		var radios = $("input[type='radio']"),
+		    boxes  = $("input[type='checkbox']"),
+		    select = $("select"),
+		    slider = $("input[type='range']");
+	
+		// refreshes the radio buttons
+		for (var j=0; j<radios.length; j++) {
+			$(radios[j]).checkboxradio("refresh");
+		};
+		
+		// refreshes the checkboxes
+		for (var j=0; j<boxes.length; j++) {
+			$(boxes[j]).checkboxradio("refresh");
+		};
+		
+		// refreshes the select menu
+		for (var j=0; j<select.length; j++) {
+			$(select[j]).selectmenu("refresh");
+		};
+		
+		// refreshes the slider
+		for (var j=0; j<slider.length; j++) {
+			$(slider[j]).slider("refresh");
+		};
+	};
+	
 	function toggleControls(m) {
 		switch(m) {
 			case "on":
@@ -341,7 +334,7 @@ function getCheckBoxValue() {
 					var bod = $("#body");
 					
 					if (bod != null) {
-						bod.removeChild(divCount[1]);
+						bod.remove(divCount[1]);
 					};
 				};
 			};
@@ -427,7 +420,7 @@ function getCheckBoxValue() {
 		
 		storCnt = 0;
 		toggleControls("on");
-		$("#startDate").attr("disabled", "");
+		$("#startDate").textinput("enable");
 				
 		if (localStorage.length === 0) {
 			autoFillData();
@@ -524,13 +517,7 @@ function getCheckBoxValue() {
 
 	// Get the appropriate image for the exercise category
 	function getImage(imgName, index) {
-		/*for (var k=0, noSpace=""; k < imgName.length; k++) {
-		// Eliminates the white spaces (if any) in the string
-			if (!(imgName.charAt(k)==" ")) {
-				noSpace += imgName.charAt(k);
-			};
-		};*/
-			
+		
 		// uncapitalize first letter of each string in the array
 		var noSpace = imgName,
 		    firstLetter = noSpace.charAt(0);
@@ -677,13 +664,15 @@ function getCheckBoxValue() {
 	function editRoutine(key) {
 		
 		// clears the form of any previous edits
-		resetData();
+		// doesn't restore "good" defaults or default js form variables
+		// but does refresh the radio and checkbox buttons
+		restoreDefault(true);
 		
 		// The routine is being edited so a true value is assigned to the isOld variable to 
 		// prevent the validator from forcing a new updated start date and to prevent backdating the field is disabled.
 		if (key) {
 			isOld = true;
-			$("#startDate").attr("disabled", "disabled");
+			$("#startDate").textinput("disable");
 		};
 		
 		// Grab the data from the Local Storage item
@@ -736,6 +725,7 @@ function getCheckBoxValue() {
 			    inDate.setMonth(month-1);
 									
 			if (Date.parse(inDate) < Date.parse(today)) {
+				$("#startDate").addClass("error");
 				alert("Please enter the current date or a future date.");
 				err = true;
 			}
@@ -759,12 +749,8 @@ function getCheckBoxValue() {
 	};
 
 	function redirect() {
-		
-		$("#routineForm").show();
-		$("#body").hide();
-		//$.mobile.changePage($("#home"),"slide");
 		restoreDefault();
-		location.reload();
+		refreshPage();
 	};
 
 
@@ -781,7 +767,9 @@ function getCheckBoxValue() {
 	
 	
 	function setInlayVars() {
-		restoreDefault();
+		// resets all data but doesn't refresh the radio
+		// and checkbox buttons
+		restoreDefault(false);
 		
 		var thisId = this.id,
 			localId = ["Running", "Kickboxing", "Swimming", "Bicycling", "Rowing", "Jump Rope", "Squats",
@@ -797,8 +785,6 @@ function getCheckBoxValue() {
 			["matern",["Walking", "Side", "Step", "Lite", "Lying", "Wall"]]
 			];
 		
-			
-			
 		for (var x=0, w=0; x<container.length; x++) {
 		
 			for (var y=0; y<container[x][1].length; y++) {
@@ -828,32 +814,23 @@ function getCheckBoxValue() {
 				w++;
 			};
 		};
-	
 	};
 	
 	
 	function setInlayLinks() {
+		var container = $("a[name='categories']");
 		
-		var container = [
-			["aero",["Running", "Kickboxing", "Swimming", "Bicycling", "Rowing", "Jump"]],
-			["anaero",["Squats", "Leg", "Dumbbell", "Bench", "Tricep", "Bent"]],
-			["calisth",["Jumping", "Lunges", "Dips", "Crunches", "Pull", "Push"]],
-			["flex",["Hip", "Piriformis", "Hamstring", "Quad", "Back", "Shoulder"]],
-			["matern",["Walking", "Side", "Step", "Lite", "Lying", "Wall"]]
-		];
-			
-		for (var x=0; x<container.length; x++) {
-		
-			for (var y=0; y<container[x][1].length; y++) {
-				var setClick = container[x][0] + container[x][1][y];
-				$("#" + setClick).bind("click", setInlayVars);
-			};
+		for (var i=0, id; i < container.length; i++) {
+			id = "#" + $(container[i]).attr("id");
+			$(id).bind("click", setInlayVars);
 		};
 	};
 	
 	
 	function getSearch() {
-		search = true;
+		
+		alert("Sorry, function unavailable!");
+		/*search = true;
 		searchVal = $("#searchField").val();
 		
 	// Clears out the old local storage to alleviate errors
@@ -861,10 +838,14 @@ function getCheckBoxValue() {
 		localStorage.clear();
 		
 		if (localStorage.length === 0) {
-				autoFillData();
+			autoFillData();
 		};
-		getData();
-		//location.reload();
+		
+		$("#myRoutine").one("pageload", function(){
+			window.setTimeout(getData, 500);
+			});
+		$.mobile.changePage($("#myRoutine"), "slide");
+		//location.reload();*/
 	};
 	
 	
@@ -872,56 +853,61 @@ function getCheckBoxValue() {
 		// Goes to the home page and forces a refresh
 		$.mobile.changePage($("#home"),"slide");
 		location.reload();
-	
 	};
-	
-	
-	function toNextApp() {
-		// Goes to the Bad App and forces a refresh
-		//$.mobile.changePage($("http://rueand713.github.com/MiU-1111-Project3/miu-project3/Bad App/ref.html"),"slide");
-		//location.reload();
-	
-	};
-
 
 
 
 	// Variables
 	var exerciseList = ["Aerobics", "Anaerobics", "Calisthenics", "Flexibility", "Maternity"],
-		day = [],
-		exerciseType = "",
-		errMsg = $("#errors"),
-		isOld = false,
-		orderType = "new",
-		search = false,
-		searchVal = "",
-		storCnt = 0,
-		fromEdit = false;
+	    day = [],
+	    exerciseType = "",
+	    errMsg = $("#errors"),
+	    isOld = false,
+	    orderType = "new",
+	    search = false,
+	    searchVal = "",
+	    storCnt = 0,
+	    fromEdit = false;
 									
 					
 					
 	// Set the Link & Submit click events						
 	var save = $("#submit"),
-		showLink = $("#showData"),
-		clearLink = $("#clearLists"),
-		addLink = $("#addNew"),
-		doSearch = $("#goButton"),
-		ctaLink = $("#ctaLink"),
-		resetInfo = $("#reset"),
-		myForm = $("#routineForm");
+	    showLink = $("#showData"),
+	    clearLink = $("#clearLists"),
+	    addLink = $("#addNew"),
+	    doSearch = $("#searchField"),
+	    ctaLink = $("#ctaLink"),
+	    resetInfo = $("#reset"),
+	    myForm = $("#routineForm");
 		
 		
 	showLink.bind("click", getData);
 	clearLink.bind("click", clearData);
 	save.bind("click", validate);
-	resetInfo.bind("click", resetData);
+	resetInfo.bind("click", function(){
+		$("#startDate").textinput("enable");
+		restoreDefault();
+		});
 	addLink.bind("click", redirect);
-	doSearch.bind("click", getSearch);
-	ctaLink.bind("click", restoreDefault);
+	doSearch.bind("keydown", function(e){
+		if (e.which == 13) {
+			getSearch();
+			};
+		});
+	ctaLink.bind("click", function() {
+		// resets all data but doesn't refresh the radio
+		// and checkbox buttons
+		restoreDefault(false);
+		});
 	$("#homeLink").bind("click", refreshPage);
-	//$("#appLink").bind("click", toNextApp);
 	
-	// Add Event Listener to List-Inlay home page
+	// Function that binds events to List-Inlay home page
 	setInlayLinks();
 	
+	// Refresh the radio and checkbox buttons when the routine page is loaded
+	$("#myRoutine").bind("pageload", function(){
+		$("#startDate").textinput("enable");
+		refreshButtons();
+		});
 });
