@@ -1,7 +1,6 @@
 /*	Rueben Anderson
-	11/13/2011
-	MIU 1111
-	Project 4
+	05/30/2012
+	ASD 1206
 */
 
 
@@ -15,6 +14,7 @@ a {
 	text-decoration: none;
 }
 
+	/* Formatting for the input hints */
 p#inputHints {
 	margin-top: 1px;
 	margin-bottom: 5px;
@@ -173,13 +173,15 @@ div.ui-btn-up-b, div.ui-btn-up-d {
 	background: #FFF;
 }
 
+/* jQuery error messages */
 .error {
 	color: #990000;
 	margin-left: 5px;
 }
 
+/* Routine Frequency error message */
 li > label.error {
 	position: absolute;
-	left: 90px;
+	left: 95px;
 }
 
