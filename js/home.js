@@ -15,7 +15,7 @@ function getCheckBoxValue() {
 		
 		for (var i=0; i < boxes.length; i++) {
 			if ($(boxes[i]).prop("checked")) {
-				day[i] = "×";	// ascii value for multiplication symbol
+				day[i] = "×";
 			}
 			else {
 				day[i] = ""
@@ -34,31 +34,31 @@ function getCheckBoxValue() {
 		// Checks for checkboxes with a checked state
 		// Adds a checked value to the checked attribute for true
 		
-			if (item.sun[1] == "×") {
+			if (item.sun[1] == "x") {
 				$("#sunday").prop("checked", true);
 			};
 			
-			if (item.mon[1] == "×") {
+			if (item.mon[1] == "x") {
 				$("#monday").prop("checked", true);
 			};
 			
-			if (item.tue[1] == "×") {
+			if (item.tue[1] == "x") {
 				$("#tuesday").prop("checked", true);
 			};
 			
-			if (item.wed[1] == "×") {
+			if (item.wed[1] == "x") {
 				$("#wednesday").prop("checked", true);
 			};
 			
-			if (item.thu[1] == "×") {
+			if (item.thu[1] == "x") {
 				$("#thursday").prop("checked", true);
 			};
 			
-			if (item.fri[1] == "×") {
+			if (item.fri[1] == "x") {
 				$("#friday").prop("checked", true);
 			};
 			
-			if (item.sat[1] == "×") {
+			if (item.sat[1] == "x") {
 				$("#saturday").prop("checked", true);
 			};
 			
@@ -230,14 +230,14 @@ function getCheckBoxValue() {
 				$("#clearLists").show();
 				$("#showData").hide();
 				$("#addNew").show();
-				$("#body").show();
+				$("#listForm").show();
 				break;
 			case "off":
 				$("#routineForm").show();
 				$("#clearLists").show();
 				$("#showData").show();
 				$("#addNew").hide();
-				$("#body").hide();
+				$("#listForm").hide();
 				break;
 			default:
 				return false;
@@ -412,7 +412,10 @@ function getCheckBoxValue() {
 	};
 
 
-	function getData() {
+	function getData(choice) {
+		// Reset the data in the div
+		$("#body").empty();
+		
 		if (fromEdit === true) {
 			fromEdit = false;
 			restoreDefault();
@@ -423,12 +426,9 @@ function getCheckBoxValue() {
 		$("#startDate").textinput("enable");
 				
 		if (localStorage.length === 0) {
-			autoFillData();
-			alert("There is no data in Local Storage! Default data has been added.");
+			autoFillData(choice);
+			//alert("There is no data in Local Storage! Default data has been added.");
 		};
-		
-		// Reset the data div
-		$("#body").html("");
 			
 		$("#body").append("<div id='routines'></div>");		//makeDiv given id appended to body div
 		$("<ul id='topUl'></ul>").appendTo("#routines");	//makeList appended to makeDiv
@@ -543,13 +543,35 @@ function getCheckBoxValue() {
 	};
 
 
-	// JSON Object which will auto populate local storage.
-	function autoFillData() {
-		// Store the JSON object into local storage
-		for (var n in json) {
-			var id = Math.floor(Math.random()*100000001);
-			localStorage.setItem(id, JSON.stringify(json[n]));
+	// passed in object (xml, csv, json) which will be stored in local storage.
+	function autoFillData(dataType) {
+		var fillData;
+		
+		switch(dataType) {
+			case "csv":
+				newXHR("xhr/data.csv", "text", "GET", false, parseCSV);
+				fillData = csv;
+				break;
+			
+			case "xml":
+				newXHR("xhr/data.xml", "xml", "GET", false, parseXML);
+				fillData = xml;
+				break;
+			
+			case "json":
+			default:
+				newXHR("xhr/data.json", "json", "GET", false, parseJSON);
+				fillData = json;
+				break;
 		};
+		
+		// Store the JSON object into local storage
+		for (var n in fillData) {
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(fillData[n]));
+		};
+		//alert(dataType.toUppercase() + " Data Loaded!");
+		
 	};
 
 
@@ -670,10 +692,8 @@ function getCheckBoxValue() {
 		
 		// The routine is being edited so a true value is assigned to the isOld variable to 
 		// prevent the validator from forcing a new updated start date and to prevent backdating the field is disabled.
-		if (key) {
-			isOld = true;
-			$("#startDate").textinput("disable");
-		};
+		isOld = true;
+		$("#startDate").textinput("disable");
 		
 		// Grab the data from the Local Storage item
 		var value = localStorage.getItem(key),
@@ -684,7 +704,7 @@ function getCheckBoxValue() {
 			// Populate the form fields with current lcoalStorage values.
 			$("#routineName").val(item.name[1]);
 			$("#routineLoc").val(item.location[1]);
-			$("#workout").val(item.reDu[1]);
+			$("#workout").val(item.reDu[1]*1);
 			$("#comments").val(item.notes[1]);
 			$("#startDate").val(item.date[1]);
 			
@@ -731,6 +751,8 @@ function getCheckBoxValue() {
 			}
 		};
 		
+		// if the routine is being edited or it's new and the date is current or future
+		// the data can be saved
 		if (isOld === true || err === false) {
 			// If everything is ok save the data. Send the key value from the edit data function
 			// This key value was passed through the editSubmit event listener as a property.
@@ -854,6 +876,238 @@ function getCheckBoxValue() {
 		$.mobile.changePage($("#home"),"slide");
 		location.reload();
 	};
+	
+	
+	function newXHR(path, type, request, connect, success, failure){
+		// path is the string target location path
+		// alternatively path may be an object passed in with
+		// key pairs of all arguments expected; this is mandatory
+		// if you want to specify more options than the minimum
+		// path can also be an array of 2 indexes; the first index is the string path
+		// while the second index is the data variable of information to send
+		// type is the data type of information to expect (json, html, xml, text, script, jsonp)
+		// request is the type of http request to make GET or POST
+		// success and failure are the functions that correspond to each
+		// sets default options incase arguments are missing
+		// connect is the type of connection: syncrhonous (false) or asynchronous (true)
+		
+		if (!type || typeof(type) != "string") {
+			type = "html";	
+		};
+		
+		if (!request || typeof(request) != "string") {
+			request = "GET";
+		};
+		
+		if (!success || typeof(success) != "function") {
+			console.log("fired");
+			success = function(result) {
+				console.log("Request was a success!");
+				console.log(result);
+			};
+		} else {
+			// sets win to the success function
+			var win = success;
+			
+			// creates a new anonymous function as the main success function
+			// that calls the passed in success function (win) with the result argument
+			success = function(result) {
+				win(result);
+			};	
+		};
+		
+		if (!failure || typeof(failure) != "function") {
+			failure = function(error) {
+				console.log("Request failed or timedout!");
+				console.log(error);
+			};
+		} else {
+			// sets lose to the failure function
+			var lose = failure;
+			
+			// creates a new anonymous function as the main failure function
+			// that calls the passed in failure function (lose) with the error argument
+			failure = function(error) {
+				lose(error);
+				toWait = false;
+			};	
+		};
+		
+		
+		function httpRequest(send){
+			// construct the ajax object
+			var ajaxObj = {
+				url:	path,
+				type:	request,
+				dataType:  type,
+				success: success,
+				error:	failure
+			};
+			
+			// if send is true (or anything) assume data is being sent
+			if (send) {
+				ajaxObj.url = path[0];
+				ajaxObj.data = path[1];
+			};
+			
+			if (connect === false) {
+				ajaxObj.async =	false;
+			};
+			
+			// send the ajax request
+			$.ajax(ajaxObj);	
+		};
+		
+		
+		if (path) {
+			// checks if data is being used for the complete ajax object or not
+			// if data is a string and not an object create an xhr object based on the passed in arguments
+			// otherwise create the object using the key/value pairs in data
+			switch(typeof(path)) {
+				
+				case "object":
+					if (path.length) {
+						// path is a javascript array
+						// passes in true to tell the function to expect to send data
+						httpRequest(true);
+					} else {
+						// path is a javascript object
+						$.ajax(path);
+					};
+					break;
+				
+				case "string":
+				default:
+					// no argument, nothing to send
+					httpRequest();
+					break;
+			};
+		};
+	};
+	
+	
+	// set the json variable to the fetched json
+	function parseJSON(jsValue) {
+		json = jsValue;	
+	};
+	
+	
+	// set the csv variable to the parsed & fetched csv text
+	function parseCSV(csValue){
+		var csvLineSplit,
+		    values = [],
+		    keyValues,
+		    keys=[];
+		    
+		function objectCreator(k, v) {
+			var newObject = new Object();
+			
+			for (var n=0; n<k.length; n++) {
+				newObject[k[n]] = [v[n][0], v[n][1]];
+			};
+			
+			return newObject;
+		};
+		
+		// split the csv data by new lines
+		csvLineSplit = csValue.split(/\n/);
+		
+		// sets the key to the first index values in csvLineSplit array
+		var tempKey = csvLineSplit[0].split(",");
+		
+		for (var i=0; i<tempKey.length; i++) {
+			keys.push(tempKey[i]);
+		};
+		
+		// sets values to only store the key values
+		keyValues = csValue.split(/\n/).splice(1);
+		
+		for (var i=0; i<keyValues.length; i++) {
+			values.push(keyValues[i].split(","));
+		};
+		
+		
+		// iterates through the length of the values array to create a new parsed array
+		// will be split by space followed by quotes and then have the quotes removed
+		for (var i=0, kBox, kVal=[]; i<values.length; i++) {
+			// temporary container box for values array
+			// set to the current index of values
+			kBox = values[i];
+		
+			// iterate through the values in the values array testing for a quoted string match
+			// if found the specific index in the array will be split
+			for (var j=0, tVal; j<kBox.length; j++) {
+				// this is where the quote string tests at
+				if ((/["]{1}[\w.]+\s*[\w\s]*[\w"]{1}/gi).test(kBox[j])) {
+					tVal = kBox[j].split(/\s{1}["]{1}/);
+					for (var n=0; n<tVal.length; n++) {
+						tVal[n] = tVal[n].replace(/["]/gi,"");
+					};
+					
+				} else {
+					tVal = kBox[j];
+					tVal = tVal.replace(/["]/gi, "");
+					tVal = tVal.split(/\s+/);
+				};
+				// sets the keybox to the new parsed tVal values
+				kBox[j] = tVal;
+			};
+			// push the modified values into the kVal (key value) array
+				kVal.push(kBox);
+		};
+		
+		for (var i=0, container={}; i<kVal.length; i++) {
+			// create an object named container to hold the parsed data objects
+			container["routine"+(i+1)] = objectCreator(keys, kVal[i]);
+		};
+		
+		// finally set the global csv variable to the new container object
+		csv = container;
+	};
+	
+	
+	function parseXML(xmValue) {
+		// recieves the xml and appends the childNode data to the document for parsing
+		// also empties the div associated to prevent multiple appended sets
+		$("#xmlDiv").empty().append(xmValue.childNodes);
+		
+		var routTag = $("routine"),
+		    newXml = {},
+		    tagNames = ["name", "location", "routineType", "sun",
+				"mon", "tue", "wed", "thu", "fri", "sat",
+				"reDu", "notes", "date"];
+		
+		// iterate through the number of routine elements in the document
+		// and dynamically retrieve the html text of each child elements by
+		// using the tagNames array. Also stores the html text, into a key value
+		// corresponding to the tag the text has been supplied from, in the xmlObject
+		for (var i=0; i < routTag.length; i++) {
+			var xmlObject = new Object();
+			for (var j=0; j < tagNames.length; j++) {
+				xmlObject[tagNames[j]] = $(routTag[i]).find(tagNames[j]).text();
+			};
+			// each object within newXml is called routine #
+			newXml["routine" + (i+1)] = xmlObject;
+		};
+		
+		console.log(newXml);
+		// iterate through the newXml object for parsing
+		for (var key in newXml) {
+			// using the tagNames array, dynamically split the data into arrays
+			// and store the new parsed information into the proper key value of the object
+			for (var i=0; i < tagNames.length; i++) {
+				var n = newXml[key][tagNames[i]];
+				if (n.indexOf("|") !=-1) {
+					newXml[key][tagNames[i]] = n.split("|");
+				};
+			};
+		};
+		
+		// stores the fully parsed xml data into the global xml variable
+		// and empties the div
+		xml = newXml;
+		$("#xmlDiv").empty();
+	};
 
 
 
@@ -867,7 +1121,8 @@ function getCheckBoxValue() {
 	    search = false,
 	    searchVal = "",
 	    storCnt = 0,
-	    fromEdit = false;
+	    fromEdit = false,
+	    json, csv, xml;
 									
 					
 					
@@ -882,7 +1137,9 @@ function getCheckBoxValue() {
 	    myForm = $("#routineForm");
 		
 		
-	showLink.bind("click", getData);
+	showLink.bind("click", function(){
+		toggleControls("on");
+		});
 	clearLink.bind("click", clearData);
 	save.bind("click", validate);
 	resetInfo.bind("click", function(){
@@ -909,5 +1166,17 @@ function getCheckBoxValue() {
 	$("#myRoutine").bind("pageload", function(){
 		$("#startDate").textinput("enable");
 		refreshButtons();
+		});
+	
+	$("#jsonKey").bind("click", function(){
+		getData("json");
+		});
+	
+	$("#xmlKey").bind("click", function(){
+		getData("xml");
+		});
+	
+	$("#csvKey").bind("click", function(){
+		getData("csv");
 		});
 });
