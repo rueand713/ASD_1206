@@ -1,4 +1,4 @@
-name,location,routineType,sun,mon,tue,wed,thu,fri,sat,reDu,notes,date
+name,location,routinetype,sun,mon,tue,wed,thu,fri,sat,repdur,notes,date
 Routine: "Super Curls",Location: "L.A Fitness",Workout: "Dumbbell Curls",Sun: " ",Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 15,Comments: "Reps / 25lb weights",Start: 2011/10/25
 Routine: "Running Wild",Location: "L.A Fitness",Workout: "Running",Sun: " ",Mon: x,Tue: x,Wed: x,Thu: " ",Fri: " ",Sat: " ",Reps/Duration: 3,Comments: "Duration (miles)",Start: 2011/10/20
 Routine: "Max Flex",Location: "L.A Fitness",Workout: "Hip Flexor Stretch",Sun: " ",Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 30,Comments: "Duration (sec)",Start: 2011/08/25

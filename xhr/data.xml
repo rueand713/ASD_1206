@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<doc>
+<root>
     <routine>
         <name>Routine:|Free Weights</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Dumbbell Curls</routineType>
+        <routinetype>Workout:|Dumbbell Curls</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|x</tue>
@@ -11,14 +11,14 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|15</reDu>
+        <repdur>Reps/Duration:|15</repdur>
         <notes>Comments:|Reps / 25lb Weights</notes>
         <date>Start:|2012/10/25</date>
     </routine>
     <routine>
         <name>Routine:|Cycling</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Bicycling</routineType>
+        <routinetype>Workout:|Bicycling</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|</tue>
@@ -26,14 +26,14 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|20</reDu>
+        <repdur>Reps/Duration:|20</repdur>
         <notes>Comments:|Duration (min)</notes>
         <date>Start:|2012/10/15</date>
     </routine>
     <routine>
         <name>Routine:|Row your boat!</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Rowing</routineType>
+        <routinetype>Workout:|Rowing</routinetype>
         <sun>Sun:|</sun>
         <mon>Mon:|x</mon>
         <tue>Tue:|x</tue>
@@ -41,14 +41,14 @@
         <thu>Thu:|</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|15</reDu>
+        <repdur>Reps/Duration:|15</repdur>
         <notes>Comments:|Duration (min)</notes>
         <date>Start:|2011/11/25</date>
     </routine>
     <routine>
         <name>Routine:|More Weights</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Dumbbell Curls</routineType>
+        <routinetype>Workout:|Dumbbell Curls</routinetype>
         <sun>Sun:|</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|x</tue>
@@ -56,14 +56,14 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|</sat>
-        <reDu>Reps/Duration:|35</reDu>
+        <repdur>Reps/Duration:|35</repdur>
         <notes>Comments:|Reps / 50lb Weights</notes>
         <date>Start:|2011/09/20</date>
     </routine>
     <routine>
         <name>Routine:|Arm and Back</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Bent Over Rows</routineType>
+        <routinetype>Workout:|Bent Over Rows</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|</tue>
@@ -71,14 +71,14 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|15</reDu>
+        <repdur>Reps/Duration:|15</repdur>
         <notes>Comments:|Reps / 25lb Weights</notes>
         <date>Start:|2010/10/25</date>
     </routine>
     <routine>
         <name>Routine:|Total Body</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Pull Ups</routineType>
+        <routinetype>Workout:|Pull Ups</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|</tue>
@@ -86,14 +86,14 @@
         <thu>Thu:|</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|45</reDu>
+        <repdur>Reps/Duration:|45</repdur>
         <notes>Comments:|Reps</notes>
         <date>Start:|2010/10/05</date>
     </routine>
     <routine>
         <name>Routine:|Shoulder/Rotator</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Shoulder Stretch</routineType>
+        <routinetype>Workout:|Shoulder Stretch</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|x</mon>
         <tue>Tue:|x</tue>
@@ -101,14 +101,14 @@
         <thu>Thu:|</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|</sat>
-        <reDu>Reps/Duration:|15</reDu>
+        <repdur>Reps/Duration:|15</repdur>
         <notes>Comments:|Duration (sec)</notes>
         <date>Start:|2010/06/20</date>
     </routine>
     <routine>
         <name>Routine:|Stepping</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Step Ups</routineType>
+        <routinetype>Workout:|Step Ups</routinetype>
         <sun>Sun:|</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|</tue>
@@ -116,14 +116,14 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|x</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|15</reDu>
+        <repdur>Reps/Duration:|15</repdur>
         <notes>Comments:|Duration (min)</notes>
         <date>Start:|2009/10/25</date>
     </routine>
     <routine>
         <name>Routine:|Hamstrings</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Hamstring Stretch</routineType>
+        <routinetype>Workout:|Hamstring Stretch</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|x</tue>
@@ -131,14 +131,14 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|35</reDu>
+        <repdur>Reps/Duration:|35</repdur>
         <notes>Comments:|Duration (sec)</notes>
         <date>Start:|2009/05/25</date>
     </routine>
     <routine>
         <name>Routine:|Quick Swim</name>
         <location>Location:|World Gym</location>
-        <routineType>Workout:|Swimming</routineType>
+        <routinetype>Workout:|Swimming</routinetype>
         <sun>Sun:|x</sun>
         <mon>Mon:|</mon>
         <tue>Tue:|x</tue>
@@ -146,8 +146,8 @@
         <thu>Thu:|x</thu>
         <fri>Fri:|</fri>
         <sat>Sat:|x</sat>
-        <reDu>Reps/Duration:|10</reDu>
+        <repdur>Reps/Duration:|10</repdur>
         <notes>Comments:|Laps</notes>
         <date>Start:|2009/03/11</date>
     </routine>
-</doc>
+</root>
