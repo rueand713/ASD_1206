@@ -270,7 +270,14 @@
 						</div><!-- /grid-a -->
 					</fieldset>
 				</form>
-				<div  id="body">
+				<div  id="listForm">
+					<h3>Choose Autofill Data Type</h3>
+					<div data-role="controlgroup" data-type="horizontal">
+					<a href="#" id="jsonKey" data-role="button">JSON</a>
+					<a href="#" id="xmlKey" data-role="button">XML</a>
+					<a href="#" id="csvKey" data-role="button">CSV</a>
+				</div>
+					<div id="body"></div>
 				</div>
 			</div><!-- /content -->
 			
@@ -279,29 +286,13 @@
 			</div>
 		</section><!-- /page two -->
 		
-		
-		<!-- 
-		<div data-role="page" id="list">
-		
-			<div data-role="header" data-position="fixed" data-theme="b">
-				<h1>My Routines</h1>
-		
+		<section data-role="page" id="xmlParsing">
+			<div data-role="content" id="xmlDiv">	
 			</div>
-		
-			<div data-role="content">	
-				<div id="listHere"></div>
-			</div>
-		
-			
-			<div data-role="footer" data-position="fixed" data-theme="b">
-				<h4>Page Footer</h4>
-			</div>
-		</div> -->
-		
+		</section> 
 		<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 		<script src="js/libs/jquery.validate.min.js"></script>
-		<script src="js/json.js"></script>
 		<script src="js/home.js"></script>
 	</body>
 </html>
