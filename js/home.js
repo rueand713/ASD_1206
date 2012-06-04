@@ -63,7 +63,7 @@ function getCheckBoxValue() {
 			};
 			
 			// checks the proper radio button based on the routine type and refreshes the form state
-			$("input[type='radio'][value='" + item.routineType[1] + "']").prop("checked", true);
+			$("input[type='radio'][value='" + item.routinetype[1] + "']").prop("checked", true);
 			
 			// refresh the checkbox and radio buttons
 			refreshButtons();
@@ -90,7 +90,7 @@ function getCheckBoxValue() {
 		var item = {
 			name: ["Routine:", $("#routineName").val()],
 			location: ["Location:", $("#routineLoc").val()],
-			routineType: ["Workout:", exerciseType],
+			routinetype: ["Workout:", exerciseType],
 			sun: ["Sun:", day[0]],
 			mon: ["Mon:", day[1]],
 			tue: ["Tue:", day[2]],
@@ -98,7 +98,7 @@ function getCheckBoxValue() {
 			thu: ["Thu:", day[4]],
 			fri: ["Fri:", day[5]],
 			sat: ["Sat:", day[6]],
-			reDu: ["Reps/Duration:", $("#workout").val()],
+			repdur: ["Reps/Duration:", $("#workout").val()],
 			notes: ["Comments:", $("#comments").val()],
 			date: ["Start:", $("#startDate").val()]
 		};
@@ -271,7 +271,7 @@ function getCheckBoxValue() {
 				val = localStorage.getItem(key),
 				newObj = JSON.parse(val),
 				coreVal = newObj.date[1],
-				startVal = parseTheDate(newObj.date[1])
+				startVal = parseTheDate(newObj.date[1]);
 				
 				values2 = [coreVal, startVal];
 				values.push(values2);
@@ -343,7 +343,7 @@ function getCheckBoxValue() {
 
 	function readyJSON(json) {
 		var name = [json.name[1].toLowerCase()],
-			workout = [json.routineType[1].toLowerCase()],
+			workout = [json.routinetype[1].toLowerCase()],
 			serch = [searchVal.toLowerCase()],
 			name2 = "",
 			work2 = "",
@@ -412,7 +412,7 @@ function getCheckBoxValue() {
 	};
 
 
-	function getData(choice) {
+	function getData(option) {
 		// Reset the data in the div
 		$("#body").empty();
 		
@@ -424,94 +424,107 @@ function getCheckBoxValue() {
 		storCnt = 0;
 		toggleControls("on");
 		$("#startDate").textinput("enable");
-				
-		if (localStorage.length === 0) {
-			autoFillData(choice);
-			//alert("There is no data in Local Storage! Default data has been added.");
-		};
-			
-		$("#body").append("<div id='routines'></div>");		//makeDiv given id appended to body div
-		$("<ul id='topUl'></ul>").appendTo("#routines");	//makeList appended to makeDiv
-		$("#routines").show();					// set to routines div to display
-		$("<a href='#' id='tOrder'></a>").appendTo("#topUl");	// makeAnc appended to makeList
 		
-		if (orderType == "new") {
-			$("#tOrder").html("[Ordered by Newest]").attr("focused", "false");
-		}
-		else {
-			$("#tOrder").html("[Ordered by Oldest]").attr("focused", "true");
+		// if option is a bool do not autoFill data proceed to
+		// check for personalized saved data
+		if (typeof(option) != "boolean") {
+			// remove unwanted system data
+			killInvalidLS();
+			// if option is bool, verifies localStorage is empty for autoFill
+			if (localStorage.length === 0) {
+				autoFillData(option);
+				//alert("There is no data in Local Storage! Default data has been added.");
+			};
 		};
-				
-		//	$("#tOrder").bind("click", changeOrder);
-			
-		var newsStream = getNewsStream();
-
-			// Populates list with the object
-		for (var k=0; k<localStorage.length; k++) {
 		
-			for (var f=0, z=0; f < newsStream.length; f++) {
-				var key = localStorage.key(f),
-					value = localStorage.getItem(key),
-					newObj = JSON.parse(value),
-					objDate = parseTheDate(newObj.date[1]),
-					searchAt = readyJSON(newObj);
-				if (search === true && searchAt === true || search === false) {		
-					if (objDate == newsStream[k]) {
-						
-						//makeTitle created, given attributes and appended to makeList
-						$("<a href='#' focused='false' id='titleControl" + storCnt + "'></a>").appendTo("#topUl");
-						
-						// makeTitle innerHtml set
-						$("#titleControl" + storCnt).html(newObj.name[1]);
-						
-						// makeImg created, given attributes and prepended to makeTitle
-						$("<img src='images/maximize.png' id='routineImg" + storCnt + "' />").prependTo("#titleControl" + storCnt);
-						
-						// makeLi appended to makeList, given an id
-						$("<li id='title" + storCnt + "'></li>").appendTo("#topUl");
-						
-						// makeSubList appended to makeLi, given id
-						$("<ul id='subUl" + storCnt + "'></ul>").appendTo("#title" + storCnt);
-						
-						// sets to display
-						$("#title"+storCnt).hide();
-						
-						//makeLi.appendChild(makeSubList);
-						getImage(newObj.routineType[1], storCnt);
-						$("#titleControl"+storCnt).show();
-						
-						z = 0;
-						// Populates the list object's items
-						for (var n in newObj) {
-							var optSubText = newObj[n][0] + " " + newObj[n][1];
-
-						
-							// makeSubLi given an id and appended to makeSubList
-							$("<li id='item" + z + "" + storCnt + "'></li>").appendTo("#subUl" + storCnt);
+		// check to see if there is custom data in local storage
+		// and removes unwanted sytstem data
+		killInvalidLS();
+		if (localStorage.length >0) {
+			$("#body").append("<div id='routines'></div>");		//makeDiv given id appended to body div
+			$("<ul id='topUl'></ul>").appendTo("#routines");	//makeList appended to makeDiv
+			$("#routines").show();					// set to routines div to display
+			$("<a href='#' id='tOrder'></a>").appendTo("#topUl");	// makeAnc appended to makeList
+			
+			if (orderType == "new") {
+				$("#tOrder").html("[Ordered by Newest]").attr("focused", "false");
+			}
+			else {
+				$("#tOrder").html("[Ordered by Oldest]").attr("focused", "true");
+			};
+					
+			//	$("#tOrder").bind("click", changeOrder);
+				
+			var newsStream = getNewsStream();
+	
+				// Populates list with the object
+				killInvalidLS();
+			for (var k=0; k<localStorage.length; k++) {
+			
+				for (var f=0, z=0; f < newsStream.length; f++) {
+					var key = localStorage.key(f),
+						value = localStorage.getItem(key),
+						newObj = JSON.parse(value),
+						objDate = parseTheDate(newObj.date[1]),
+						searchAt = readyJSON(newObj);
+					if (search === true && searchAt === true || search === false) {		
+						if (objDate == newsStream[k]) {
 							
-							// makeSubLi given innerHTML
-							$("#item" + z + "" + storCnt).html(optSubText);
-							z++
+							//makeTitle created, given attributes and appended to makeList
+							$("<a href='#' focused='false' id='titleControl" + storCnt + "'></a>").appendTo("#topUl");
+							
+							// makeTitle innerHtml set
+							$("#titleControl" + storCnt).html(newObj.name[1]);
+							
+							// makeImg created, given attributes and prepended to makeTitle
+							$("<img src='images/maximize.png' id='routineImg" + storCnt + "' />").prependTo("#titleControl" + storCnt);
+							
+							// makeLi appended to makeList, given an id
+							$("<li id='title" + storCnt + "'></li>").appendTo("#topUl");
+							
+							// makeSubList appended to makeLi, given id
+							$("<ul id='subUl" + storCnt + "'></ul>").appendTo("#title" + storCnt);
+							
+							// sets to display
+							$("#title"+storCnt).hide();
+							
+							//makeLi.appendChild(makeSubList);
+							getImage(newObj.routinetype[1], storCnt);
+							$("#titleControl"+storCnt).show();
+							
+							z = 0;
+							// Populates the list object's items
+							for (var n in newObj) {
+								var optSubText = newObj[n][0] + " " + newObj[n][1];
+	
+							
+								// makeSubLi given an id and appended to makeSubList
+								$("<li id='item" + z + "" + storCnt + "'></li>").appendTo("#subUl" + storCnt);
+								
+								// makeSubLi given innerHTML
+								$("#item" + z + "" + storCnt).html(optSubText);
+								z++
+							};
+							
+							// linksLi created and appended to makeSubList
+							$("<li id='links" + k + "' key='" + key + "'></li>").appendTo("#subUl" + storCnt);
+							storCnt++;
 						};
-						
-						// linksLi created and appended to makeSubList
-						$("<li id='links" + k + "' key='" + key + "'></li>").appendTo("#subUl" + storCnt);
-						storCnt++;
 					};
 				};
+					// Creates the edit and delete links for each routine in local storage.
+					makeRoutineLinks(localStorage.key(k), k); 
 			};
-				// Creates the edit and delete links for each routine in local storage.
-				makeRoutineLinks(localStorage.key(k), k); 
+			checkForDubs();
+			setListAttributes();
+			if (search === false) {
+				toggleList(true);
+			} else {
+					toggleList();
+				};
+			search = false;
+			searchVal = "";
 		};
-		checkForDubs();
-		setListAttributes();
-		if (search === false) {
-			toggleList(true);
-		} else {
-				toggleList();
-			};
-		search = false;
-		searchVal = "";
 	};
 
 
@@ -564,7 +577,7 @@ function getCheckBoxValue() {
 				fillData = json;
 				break;
 		};
-		
+
 		// Store the JSON object into local storage
 		for (var n in fillData) {
 			var id = Math.floor(Math.random()*100000001);
@@ -698,13 +711,14 @@ function getCheckBoxValue() {
 		// Grab the data from the Local Storage item
 		var value = localStorage.getItem(key),
 			item = JSON.parse(value);
+			
 			// Shows the form
 			toggleControls("off");
 	
 			// Populate the form fields with current lcoalStorage values.
 			$("#routineName").val(item.name[1]);
 			$("#routineLoc").val(item.location[1]);
-			$("#workout").val(item.reDu[1]*1);
+			$("#workout").val(item.repdur[1]*1);
 			$("#comments").val(item.notes[1]);
 			$("#startDate").val(item.date[1]);
 			
@@ -781,9 +795,13 @@ function getCheckBoxValue() {
 			alert("There is no data to clear!");
 		}
 		else {
-			localStorage.clear();
-			alert("All routines have been removed!");
-			location.reload();
+			var ask = confirm("Proceeding will clear ALL data. Select Ok to continue.");
+			
+			if (ask) {
+				localStorage.clear();
+				alert("All routines have been removed!");
+				location.reload();
+			};
 		};
 	};
 	
@@ -900,7 +918,6 @@ function getCheckBoxValue() {
 		};
 		
 		if (!success || typeof(success) != "function") {
-			console.log("fired");
 			success = function(result) {
 				console.log("Request was a success!");
 				console.log(result);
@@ -1073,9 +1090,9 @@ function getCheckBoxValue() {
 		
 		var routTag = $("routine"),
 		    newXml = {},
-		    tagNames = ["name", "location", "routineType", "sun",
+		    tagNames = ["name", "location", "routinetype", "sun",
 				"mon", "tue", "wed", "thu", "fri", "sat",
-				"reDu", "notes", "date"];
+				"repdur", "notes", "date"];
 		
 		// iterate through the number of routine elements in the document
 		// and dynamically retrieve the html text of each child elements by
@@ -1090,7 +1107,6 @@ function getCheckBoxValue() {
 			newXml["routine" + (i+1)] = xmlObject;
 		};
 		
-		console.log(newXml);
 		// iterate through the newXml object for parsing
 		for (var key in newXml) {
 			// using the tagNames array, dynamically split the data into arrays
@@ -1109,8 +1125,39 @@ function getCheckBoxValue() {
 		$("#xmlDiv").empty();
 	};
 
+	function confirmAutoFill(fillType) {
+		var ask = confirm('Autofilling "' + fillType.toUpperCase() + '" data will erase your storage. Is this ok?');
+		
+		if (ask) {
+			if (localStorage.length >0) {
+				localStorage.clear();
+			};
+			
+			getData(fillType);
+		}
+		else {
+			alert("Operation aborted.");	
+		};
+	};
+	
+	// this function removes any system data stored in localStorage
+	// which interferes with the operation of this application
+	function killInvalidLS() {
+		// checks if localstorage has any data
+		if (localStorage.length >0) {
+			for (var n in localStorage) {
+				var stor = localStorage.getItem(n);
+				// checks if data found is json object
+				// if it's not remove the system file
+				if (stor.charAt(0) != '{') {
+					console.log("Removing: " + n);
+					localStorage.removeItem(n);
+				};
+			};
+		};
+	};
 
-
+	
 	// Variables
 	var exerciseList = ["Aerobics", "Anaerobics", "Calisthenics", "Flexibility", "Maternity"],
 	    day = [],
@@ -1138,7 +1185,7 @@ function getCheckBoxValue() {
 		
 		
 	showLink.bind("click", function(){
-		toggleControls("on");
+		getData(false);
 		});
 	clearLink.bind("click", clearData);
 	save.bind("click", validate);
@@ -1169,14 +1216,15 @@ function getCheckBoxValue() {
 		});
 	
 	$("#jsonKey").bind("click", function(){
-		getData("json");
+		confirmAutoFill("json");
 		});
 	
 	$("#xmlKey").bind("click", function(){
-		getData("xml");
+		confirmAutoFill("xml");
 		});
 	
 	$("#csvKey").bind("click", function(){
-		getData("csv");
+		confirmAutoFill("csv");
 		});
+
 });
