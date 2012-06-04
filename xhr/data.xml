@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <routine>
+        <name>Routine:|Free Weights</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Dumbbell Curls</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|x</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|15</reDu>
+        <notes>Comments:|Reps / 25lb Weights</notes>
+        <date>Start:|2012/10/25</date>
+    </routine>
+    <routine>
+        <name>Routine:|Cycling</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Bicycling</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|20</reDu>
+        <notes>Comments:|Duration (min)</notes>
+        <date>Start:|2012/10/15</date>
+    </routine>
+    <routine>
+        <name>Routine:|Row your boat!</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Rowing</routineType>
+        <sun>Sun:|</sun>
+        <mon>Mon:|x</mon>
+        <tue>Tue:|x</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|15</reDu>
+        <notes>Comments:|Duration (min)</notes>
+        <date>Start:|2011/11/25</date>
+    </routine>
+    <routine>
+        <name>Routine:|More Weights</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Dumbbell Curls</routineType>
+        <sun>Sun:|</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|x</tue>
+        <wed>Wed:|x</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|</sat>
+        <reDu>Reps/Duration:|35</reDu>
+        <notes>Comments:|Reps / 50lb Weights</notes>
+        <date>Start:|2011/09/20</date>
+    </routine>
+    <routine>
+        <name>Routine:|Arm and Back</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Bent Over Rows</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|15</reDu>
+        <notes>Comments:|Reps / 25lb Weights</notes>
+        <date>Start:|2010/10/25</date>
+    </routine>
+    <routine>
+        <name>Routine:|Total Body</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Pull Ups</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|</tue>
+        <wed>Wed:|x</wed>
+        <thu>Thu:|</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|45</reDu>
+        <notes>Comments:|Reps</notes>
+        <date>Start:|2010/10/05</date>
+    </routine>
+    <routine>
+        <name>Routine:|Shoulder/Rotator</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Shoulder Stretch</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|x</mon>
+        <tue>Tue:|x</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|</sat>
+        <reDu>Reps/Duration:|15</reDu>
+        <notes>Comments:|Duration (sec)</notes>
+        <date>Start:|2010/06/20</date>
+    </routine>
+    <routine>
+        <name>Routine:|Stepping</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Step Ups</routineType>
+        <sun>Sun:|</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|x</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|15</reDu>
+        <notes>Comments:|Duration (min)</notes>
+        <date>Start:|2009/10/25</date>
+    </routine>
+    <routine>
+        <name>Routine:|Hamstrings</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Hamstring Stretch</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|x</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|35</reDu>
+        <notes>Comments:|Duration (sec)</notes>
+        <date>Start:|2009/05/25</date>
+    </routine>
+    <routine>
+        <name>Routine:|Quick Swim</name>
+        <location>Location:|World Gym</location>
+        <routineType>Workout:|Swimming</routineType>
+        <sun>Sun:|x</sun>
+        <mon>Mon:|</mon>
+        <tue>Tue:|x</tue>
+        <wed>Wed:|</wed>
+        <thu>Thu:|x</thu>
+        <fri>Fri:|</fri>
+        <sat>Sat:|x</sat>
+        <reDu>Reps/Duration:|10</reDu>
+        <notes>Comments:|Laps</notes>
+        <date>Start:|2009/03/11</date>
+    </routine>
+</doc>

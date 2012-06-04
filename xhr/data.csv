@@ -1,0 +1,11 @@
+name,location,routineType,sun,mon,tue,wed,thu,fri,sat,reDu,notes,date
+Routine: "Super Curls",Location: "L.A Fitness",Workout: "Dumbbell Curls",Sun: " ",Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 15,Comments: "Reps / 25lb weights",Start: 2011/10/25
+Routine: "Running Wild",Location: "L.A Fitness",Workout: "Running",Sun: " ",Mon: x,Tue: x,Wed: x,Thu: " ",Fri: " ",Sat: " ",Reps/Duration: 3,Comments: "Duration (miles)",Start: 2011/10/20
+Routine: "Max Flex",Location: "L.A Fitness",Workout: "Hip Flexor Stretch",Sun: " ",Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 30,Comments: "Duration (sec)",Start: 2011/08/25
+Routine: "Low Dips",Location: "L.A Fitness",Workout: "Dips",Sun: " ",Mon: x,Tue: x,Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 20,Comments: "Reps",Start: 2011/08/15
+Routine: "Cooldown",Location: "L.A Fitness",Workout: "Walking",Sun: x,Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 35,Comments: "Duration (min)",Start: 2011/06/25
+Routine: "Back Work",Location: "L.A Fitness",Workout: "Back Stretch",Sun: " ",Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 15,Comments: "Duration (sec)",Start: 2011/05/25
+Routine: "Total Abs",Location: "L.A Fitness",Workout: "Crunches",Sun: " ",Mon: " ",Tue: " ",Wed: x,Thu: x,Fri: x,Sat: " ",Reps/Duration: 15,Comments: "Reps",Start: 2011/05/10
+Routine: "Chest Time",Location: "L.A Fitness",Workout: "Bench Press",Sun: " ",Mon: " ",Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 50,Comments: "Reps / 110lbs",Start: 2010/10/25
+Routine: "Free Spar",Location: "L.A Fitness",Workout: "Kickboxing",Sun: x,Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: x,Sat: " ",Reps/Duration: 20,Comments: "Duration (min)",Start: 2010/09/25
+Routine: "Roping It",Location: "L.A Fitness",Workout: "Jump Rope",Sun: " ",Mon: x,Tue: " ",Wed: x,Thu: " ",Fri: " ",Sat: " ",Reps/Duration: 90,Comments: "Duration (min)",Start: 2010/09/05
