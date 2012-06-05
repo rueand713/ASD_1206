@@ -1103,7 +1103,7 @@ function getCheckBoxValue() {
 	// single line click events
 	clearLink.bind("click", clearData);
 	save.bind("click", validate);
-	addLink.bind("click", redirect);
+	addLink.bind("click", restoreDefault);
 	$("#homeLink").bind("click", refreshPage);
 	
 	
