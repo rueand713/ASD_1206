@@ -14,8 +14,12 @@ a {
 	text-decoration: none;
 }
 
+#homeLink {
+	color: #fff;
+}
+
 	/* Formatting for the input hints */
-p#inputHints {
+p.inputHints {
 	margin-top: 1px;
 	margin-bottom: 5px;
 	margin-left: 5px;
@@ -38,17 +42,6 @@ ul, li {
 	list-style: none;
 }
 
-ul#topUl > a {
-	display: block;
-}
-
-	/* UL elements on get data page */
-div#routines > ul li > ul{
-	border-color: #4d89cd;
-	border-width: 1px;
-	border-style: none none solid none;
-	margin-bottom: 20px;
-}
 
 div#routines > ul {
 	padding: 0px;
@@ -64,9 +57,8 @@ div#routines ul li ul > li {
 }
 
 	/* Get data images */
-div#routines ul li > img {
-	margin-left: auto;
-	margin-right: 25px;
+img.dataImage {
+	margin: inherit, auto, 10px, auto;
 	display: block;
 	border-width: 2px;
 	border-style: solid;
@@ -75,28 +67,11 @@ div#routines ul li > img {
 	
 }
 
-	/* Form navigation elements on the addItem page */
+	/* Form navigation elements on the myRoutine page */
 nav#addItem {
 	text-align: right;
 	padding-right: 10px;
 }
-
-	/* Max&Min Buttons */ 
-div#routines ul a > img {
-	position: relative;
-	top: 4px;
-	left: -2px;
-}
-
-	/* "Routine" accordions on get data page */
-div#routines ul > a {
-	margin-bottom: 10px;
-}
-
-/*a#clearLists {
-	margin-right: 10px;
-}*/
-
 
 .ui-body-d {
 	background-color: #FFF;
@@ -114,14 +89,7 @@ input#searchField {
 	border-color: #3eafe3;
 	margin: 0px 0px 0px 0px;
 }
-	/* Search field's "Go" button */
-a#doSearch img#goButton {
-	position: relative;
-	left: 240px;
-	top: -35px;
-	padding-top: 0px;
-	padding-left: 0px;
-}
+
 	/* Span element containing the search field and go button */
 span#searchGroup {
 	margin-left: 5px;
@@ -140,7 +108,7 @@ div > h2 {
 	display: none;
 }
 
-#compBrand {
+.compBrand {
 	height: 25px;
 	width: auto;
 	border-radius: 5px;
@@ -186,5 +154,18 @@ li > label.error {
 }
 
 div#listForm {
+	margin-top: 50px;
+	display: none;
+}
+
+div#dataFormatDiv {
+	margin-bottom: 35px;
+}
+
+div#body {
+	margin-bottom: 50px;
+}
+
+#addNew {
 	display: none;
 }
