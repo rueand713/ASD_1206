@@ -4,7 +4,7 @@
 */
 
 // Wait until the document is ready
-$(document).bind("pageinit", function() {
+$(document).ready(function() {
 
 
 function getCheckBoxValue() {
@@ -147,13 +147,7 @@ function getCheckBoxValue() {
 		$("#comments").val("");
 		$("#routineLoc").val("");
 		
-		// Reset the jQuery data fields for the list
-		/*$("#aero").attr("data-collapsed", "true");
-		$("#anaero").attr("data-collapsed", "true");
-		$("#calisth").attr("data-collapsed", "true");
-		$("#flex").attr("data-collapsed", "true");
-		$("#matern").attr("data-collapsed", "true");*/
-		
+		// Reset the jQuery data fields for the list		
 		var collapsedLists = $("div[data-role='collapsible']");
 		
 		for (var j=0; j < collapsedLists; j++) {
@@ -414,7 +408,7 @@ function getCheckBoxValue() {
 
 	function getData(option) {
 		// Reset the data in the div
-		$("#body").empty();
+		$("#routines").empty();
 		
 		if (fromEdit === true) {
 			fromEdit = false;
@@ -441,17 +435,14 @@ function getCheckBoxValue() {
 		// and removes unwanted sytstem data
 		killInvalidLS();
 		if (localStorage.length >0) {
-			$("#body").append("<div id='routines'></div>");		//makeDiv given id appended to body div
-			$("<ul id='topUl'></ul>").appendTo("#routines");	//makeList appended to makeDiv
-			$("#routines").show();					// set to routines div to display
-			$("<a href='#' id='tOrder'></a>").appendTo("#topUl");	// makeAnc appended to makeList
+			//$("#body").append("<div id='routines' data-role='collapsible-set'></div>");		//makeDiv given id appended to body div
 			
-			if (orderType == "new") {
+			/*if (orderType == "new") {
 				$("#tOrder").html("[Ordered by Newest]").attr("focused", "false");
 			}
 			else {
 				$("#tOrder").html("[Ordered by Oldest]").attr("focused", "true");
-			};
+			};*/
 					
 			//	$("#tOrder").bind("click", changeOrder);
 				
@@ -471,26 +462,29 @@ function getCheckBoxValue() {
 						if (objDate == newsStream[k]) {
 							
 							//makeTitle created, given attributes and appended to makeList
-							$("<a href='#' focused='false' id='titleControl" + storCnt + "'></a>").appendTo("#topUl");
+							//$("<a href='#' focused='false' id='titleControl" + storCnt + "'></a>").appendTo("#topUl");
 							
 							// makeTitle innerHtml set
-							$("#titleControl" + storCnt).html(newObj.name[1]);
+							/*$("#titleControl" + storCnt)*/ 
 							
 							// makeImg created, given attributes and prepended to makeTitle
-							$("<img src='images/maximize.png' id='routineImg" + storCnt + "' />").prependTo("#titleControl" + storCnt);
+							//$("<img src='images/maximize.png' id='routineImg" + storCnt + "' />").prependTo("#titleControl" + storCnt);
 							
 							// makeLi appended to makeList, given an id
-							$("<li id='title" + storCnt + "'></li>").appendTo("#topUl");
+							$("<div id='title" + storCnt + "' data-role='collapsible' data-collapsed='false'></div>").appendTo("#routines");
+							
+							// set the routine title for the accordion display
+							$("<h4 id='heading" + storCnt + "'>  " + newObj.name[1] + "</h4>").appendTo("#title" + storCnt);
 							
 							// makeSubList appended to makeLi, given id
-							$("<ul id='subUl" + storCnt + "'></ul>").appendTo("#title" + storCnt);
+							$("<ul id='subUl" + storCnt + "' data-role='listview'></ul>").appendTo("#title" + storCnt);
 							
 							// sets to display
-							$("#title"+storCnt).hide();
+							//$("#title"+storCnt).hide();
 							
 							//makeLi.appendChild(makeSubList);
 							getImage(newObj.routinetype[1], storCnt);
-							$("#titleControl"+storCnt).show();
+							//$("#titleControl"+storCnt).show();
 							
 							z = 0;
 							// Populates the list object's items
@@ -516,14 +510,16 @@ function getCheckBoxValue() {
 					makeRoutineLinks(localStorage.key(k), k); 
 			};
 			checkForDubs();
-			setListAttributes();
-			if (search === false) {
-				toggleList(true);
-			} else {
-					toggleList();
-				};
 			search = false;
 			searchVal = "";
+			
+			// refresh the accordion
+			$("#routines").trigger("create");
+			
+			var buttons = $("[type='button']");
+			for (var i=0; i<buttons.length; i++) {
+				$(buttons[i]).button("refresh");	
+			};
 		};
 	};
 
@@ -550,8 +546,7 @@ function getCheckBoxValue() {
 		};
 	
 		// creates the img elements
-		$("<li id='img" + index + "'></li>").appendTo("#subUl" + index);
-		$("<img src='images/" + imgName + ".png' />").appendTo("#img" + index);
+		$("<img src='images/" + imgName + ".png' class='dataImage' alt='routine icon'/>").prependTo("#heading" + index);
 		
 	};
 
@@ -583,8 +578,6 @@ function getCheckBoxValue() {
 			var id = Math.floor(Math.random()*100000001);
 			localStorage.setItem(id, JSON.stringify(fillData[n]));
 		};
-		//alert(dataType.toUppercase() + " Data Loaded!");
-		
 	};
 
 
@@ -594,9 +587,9 @@ function getCheckBoxValue() {
 		// Define edit delete link variables
 		var keyId = $("#links" + index).attr("key");
 		
-		$("<a href='#' id='edit" + index + "'>Edit Routine</a>").appendTo("#links" + index);
-		$("<br/>").appendTo("#links" + index);
-		$("<a href='#' id='del" + index + "'>Delete Routine</a>").appendTo("#links" + index);
+		$("<div id='linkcontainer" + index + "' data-role='controlgroup' data-type='horizontal'></div>").appendTo("#links" + index);
+		$("<a href='#' id='edit" + index + "' data-role='button' data-icon='refresh'>Edit Routine</a>").appendTo("#linkcontainer" + index);
+		$("<a href='#' id='del" + index + "' data-role='button' data-icon='delete'>Delete Routine</a>").appendTo("#linkcontainer" + index);
 		$("#edit" + index).bind("click", function(){
 			editRoutine(keyId);
 			});
@@ -605,83 +598,6 @@ function getCheckBoxValue() {
 			});
 	};
 
-
-	function setListAttributes() {
-		for (var n = 0, newEvent=""; n < storCnt; n++) {
-			newEvent = "titleControl" + n;
-			if ($("#" + newEvent) != null) {
-				$("#" + newEvent).bind("click", toggleList);	
-			};
-		};
-	};
-
-
-	function changeOrder() {
-		/*//Determine which option has been toggled on
-		var	newId = $("tOrder").attr("focused");
-		
-		if (newId === "false") {
-				orderType = "old";
-			}
-				else if (newId === "true") {
-					orderType = "new";
-				};
-		*/
-		
-		//Clear old get data gathered
-		$("body").remove("#routines");	
-		getData();
-	};
-
-	function toggleList(init) {
-		if (init != true) {	
-			var re = /Control/gi,
-				re1 = /titleControl/gi,
-				idClick = this.id,
-				storage = storCnt;
-			if (idClick != null && storage >0) {
-					newId = $("#" + idClick).attr("focused"),
-					titler = idClick.replace(re,""),
-					imgHandler = idClick.replace(re1,"routineImg");
-				
-					//Change the display for each control anchor to none
-					//Change the images all to maximize
-				for (var x = 0; x < storage; x++) {
-					$("#title"+x).hide();
-					$("#routineImg"+x).attr("src", "images/maximize.png");
-				};
-				
-				// Determine what options to apply by determining which type of click
-				// has been initiated. This is determined by the focused attribute.
-				if (newId === "false") {
-					$("#" + titler).show();
-					
-					// Set all focus attributes to false (not clicked)
-					for (var z = 0; z < storage; z++) {
-						var controller2 = $("#titleControl" + z);
-						controller2.attr("focused", "false");
-					};
-					
-					// Set the focused attribute of the id passed in to true (clicked)
-					// Set the image to minimized
-					$("#" + idClick).attr("focused", "true");
-					$("#" + imgHandler).attr("src", "images/minimize.png");
-				} 
-				else {
-					// Set the focused attribute of the id passed in to false (unclicked)
-					$("#" + titler).hide();
-					$("#" + idClick).attr("focused", "false");
-					$("#" + imgHandler).attr("src", "images/maximize.png");
-				};
-			};
-		} // end first if condition 
-			else {
-				for (var l = 0; l < storCnt; l++) {
-					$("#title"+l).hide();
-					$("#routineImg"+l).attr("src", "images/maximize.png");
-				};
-			};
-	};
 
 	function deleteRoutine(key) {
 		var ask = confirm("Are you sure you want to delete this routine?");
@@ -727,20 +643,17 @@ function getCheckBoxValue() {
 			
 			// Remove the initial listener from the input button
 			save.unbind("click", storeData);
-			// Change submit button value to edit button
-			//$("#submit span span").html("Edit Routine");
+			
+			// Update the key
+			$("#submit").attr("key", key);
 			
 			// Save the key value in this function as a property of the edit submit event
 			// So the value may be reused when the edited data is saved.
 			$("#submit").bind("click", function() {
 				validate(key);
 				});
-			$("#submit").attr("key", key)
 			
 			fromEdit = true;
-			
-			// Make sure to set the exercise type to block
-		//	addExerciseType();
 	};
 
 	
@@ -783,12 +696,6 @@ function getCheckBoxValue() {
 			}
 		});	
 	};
-
-	function redirect() {
-		restoreDefault();
-		refreshPage();
-	};
-
 
 	function clearData() {
 		if (localStorage.length === 0) {
@@ -1173,7 +1080,7 @@ function getCheckBoxValue() {
 									
 					
 					
-	// Set the Link & Submit click events						
+	// Set the Link & Submit click events					
 	var save = $("#submit"),
 	    showLink = $("#showData"),
 	    clearLink = $("#clearLists"),
@@ -1182,39 +1089,56 @@ function getCheckBoxValue() {
 	    ctaLink = $("#ctaLink"),
 	    resetInfo = $("#reset"),
 	    myForm = $("#routineForm");
+	
+	// Refresh the radio and checkbox buttons when
+	// the routine page is initialized
+	$("#myRoutine").bind("pageinit", function(){
+		$("#startDate").textinput("enable");
+		refreshButtons();
+		});
 		
-		
+	// Function that binds events to List-Inlay home page
+	setInlayLinks();
+	
+	// single line click events
+	clearLink.bind("click", clearData);
+	save.bind("click", validate);
+	addLink.bind("click", redirect);
+	$("#homeLink").bind("click", refreshPage);
+	
+	
+	// custom function click events
+	// these are anonymous functions that call the actual function.
+	// This is needed to pass in values to the function calls
+	// that isn't possible by just calling the function.
 	showLink.bind("click", function(){
 		getData(false);
 		});
-	clearLink.bind("click", clearData);
-	save.bind("click", validate);
+	
 	resetInfo.bind("click", function(){
+		// refresh the date field to enabled,
+		// should only be disabled when editing a routine
 		$("#startDate").textinput("enable");
 		restoreDefault();
 		});
-	addLink.bind("click", redirect);
+	
 	doSearch.bind("keydown", function(e){
+		// keydown function for the search field.
+		// when the user presses enter (13) after typing,
+		// it calls the search function.
 		if (e.which == 13) {
 			getSearch();
 			};
 		});
+	
 	ctaLink.bind("click", function() {
 		// resets all data but doesn't refresh the radio
 		// and checkbox buttons
 		restoreDefault(false);
 		});
-	$("#homeLink").bind("click", refreshPage);
 	
-	// Function that binds events to List-Inlay home page
-	setInlayLinks();
 	
-	// Refresh the radio and checkbox buttons when the routine page is loaded
-	$("#myRoutine").bind("pageload", function(){
-		$("#startDate").textinput("enable");
-		refreshButtons();
-		});
-	
+	// data interchange button click events
 	$("#jsonKey").bind("click", function(){
 		confirmAutoFill("json");
 		});
@@ -1226,5 +1150,5 @@ function getCheckBoxValue() {
 	$("#csvKey").bind("click", function(){
 		confirmAutoFill("csv");
 		});
-
+	
 });
