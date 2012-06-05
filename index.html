@@ -35,10 +35,10 @@
 		
 			<div data-role="content">
 				<div id="searchGroup" data-role="fieldcontain">
-					<img id="compBrand" src="images/myFitBrand.png" />
+					<img class="compBrand" src="images/myFitBrand.png" alt="branding image"/>
 					<input id="searchField" type="search" name="search" value= "" placeholder="Search for an exercise" data-theme="c"/>
 				</div>
-				<a id="ctaLink" href="#myRoutine"><img id="branding" src="images/cta-iphone.png" data-role="button"/></a>
+				<a id="ctaLink" href="#myRoutine"><img id="branding" src="images/cta-iphone.png" data-role="button" alt="application logo"/></a>
 					<div data-role="collapsible-set">
 						<h2>Browse by Category</h2>
 						<div data-role="collapsible" data-collapsed="true" data-theme="a">
@@ -47,7 +47,7 @@
 								<a id="aeroRunning" name="categories" data-role="button" href="#myRoutine">Running</a>
 								<a id="aeroKickboxing" name="categories" data-role="button" href="#myRoutine">Kickboxing</a>
 								<a id="aeroSwimming" name="categories" data-role="button" href="#myRoutine">Swimming</a>
-								<a id="aeroBicycling" hname="categories" data-role="button" ref="#myRoutine">Bicycling</a>
+								<a id="aeroBicycling" name="categories" data-role="button" href="#myRoutine">Bicycling</a>
 								<a id="aeroRowing" name="categories" data-role="button" href="#myRoutine">Rowing</a>
 								<a id="aeroJump" name="categories" data-role="button" href="#myRoutine">Jump Rope</a>
 							</fieldset>
@@ -99,9 +99,6 @@
 					</div> <!-- close collapsible set div -->
 				</div><!-- /content -->
 		
-			<div data-role="footer" data-position="fixed" data-theme="b">
-		
-			</div>
 		</section><!-- /page one -->
 		
 		
@@ -112,32 +109,34 @@
 				<h3></h3>
 			</div><!-- /header -->
 		
-			<div data-role="content"">	
-				<img id="compBrand" src="images/myFitBrand.png" />
+			<div data-role="content">	
+				<img class="compBrand" src="images/myFitBrand.png" alt="branding image"/>
 				<nav id="addItem">
 					<div class="ui-grid-a">
-						<div class="ui-block-a"><a id="clearLists" href="#"><button type="submit">Clear</button></a></div>
+						<div class="ui-block-a">
+							<a id="clearLists" href="#" data-role="button">Clear</a>
+						</div>
 						<div class="ui-block-b">
-							<a id="showData" href="#"><button type="submit">Routines</button></a>
-							<a id="addNew" href="#home" style="display:none;"><button type="submit">New</button></a>
+							<a id="showData" href="#" data-role="button">Routines</a>
+							<a id="addNew" href="#" data-role="button">New</a>
 						</div>
 					</div><!-- /grid-a -->
 				</nav>
-				<form id="routineForm" action="" method="post">
+				<form id="routineForm" action="#" method="post">
 					<fieldset>
 						<ul id="errors">
 						</ul>
-						<div id="titledSection" data-role="fieldcontain">
+						<div class="titledSection" data-role="fieldcontain">
 							<p id="errorText" class="js_errors">* This is a required field.</p>
 							<h2>Routine Title</h2>
 							<!-- Allows the user to input a name for the routine -->
 							<input type="text" id="routineName" name="routineName" placeholder="Name this Routine" class="required"/>
-							<p id="inputHints">Ex: Tricep Showdown! or Weekly Run</p>
+							<p class="inputHints">Ex: Tricep Showdown! or Weekly Run</p>
 						</div>
-						<div id="titledSection" data-role="fieldcontain">
+						<div class="titledSection" data-role="fieldcontain">
 							<p id="errorSelect" class="js_errors">* This is a required field.</p>
 							<h2>Routine Location</h2>
-							<select type="text" id="routineLoc" name="routineLoc" class="required">
+							<select id="routineLoc" name="routineLoc" class="required">
 								<option value="">--Please Select A Location--</option>
 								<optgroup label="Gyms">
 									<option value="Bally's">Bally's</option>
@@ -156,7 +155,7 @@
 								</optgroup>
 							</select>
 						</div>
-						<div id="titledSection" data-role="fieldcontain">
+						<div class="titledSection" data-role="fieldcontain">
 							<p id="errorRadio" class="js_errors">* This is a required field.</p>
 							<h2>Select a type of exercise</h2>	
 							<div id="workout2" data-role="collapsible-set">
@@ -236,29 +235,29 @@
 					
 								<!-- The user will input a value in the range from 1 to 100 -->
 						
-						<div id="titledSection" data-role="fieldcontain">
+						<div class="titledSection" data-role="fieldcontain">
 							<p id="errorRange" class="js_errors">* This is a required field.</p>
 							<h2>Exercise Length</h2>
-							<label for="range"><span id="wDescript">Reps/Duration:</span></label>
+							<label for="workout"><span id="wDescript">Reps/Duration:</span></label>
 							<br>	<!-- The value of the slider will dynamically be updated within the #rangeVal span tag -->
 							<input type="range" min="1" max="100" value="30" id="workout" name="workout" class="required number"/>
 						</div>
 					
 						<!-- This field asks the user for additional details for the routine -->
 					
-						<div id="titledSection" data-role="fieldcontain">
+						<div class="titledSection" data-role="fieldcontain">
 							<h2>Notes</h2>
 							<textarea id="comments" name="comments" placeholder="Store exercise notes here."></textarea>
-							<p id="inputHints">Ex: Reps w/ 45lb weights, Duration (min)</p>
+							<p class="inputHints">Ex: Reps w/ 45lb weights, Duration (min)</p>
 						</div>
 					
 						<!-- The user will enter a starting date for the routine -->
 					
-						<div id="titledSection" data-role="fieldcontain">
+						<div class="titledSection" data-role="fieldcontain">
 							<p id="errorDate" class="js_errors">* This is a required field.</p>
 							<h2>Routine Date</h2>
 							<input type="text" id="startDate" name="startDate" placeholder="YYYY/MM/DD" class="required date"/>
-							<p id="inputHints">Choose a date in this format: YYYY/MM/DD</p>
+							<p class="inputHints">Choose a date in this format: YYYY/MM/DD</p>
 						</div>
 						<div class="ui-grid-a">
 							<div class="ui-block-a">
@@ -272,17 +271,25 @@
 				</form>
 				<div  id="listForm">
 					<h3>Choose Autofill Data Type</h3>
-					<div data-role="controlgroup" data-type="horizontal">
-					<a href="#" id="jsonKey" data-role="button">JSON</a>
-					<a href="#" id="xmlKey" data-role="button">XML</a>
-					<a href="#" id="csvKey" data-role="button">CSV</a>
-				</div>
-					<div id="body"></div>
+					<div id="dataFormatDiv" class="ui-grid-b">
+						<div class="ui-block-a">
+							<input id="jsonKey" value="JSON" type="button">
+						</div>
+						<div class="ui-block-b">
+							<input id="xmlKey" value="XML" type="button">
+						</div>
+						<div class="ui-block-c">
+							<input id="csvKey" value="CSV" type="button">
+						</div>
+					</div>
+					<div id="body">
+						<div id="routines" data-role="collapsible-set"></div>					</div>
+					</div>
 				</div>
 			</div><!-- /content -->
 			
 			<div data-role="footer" data-position="fixed" data-theme="b">
-				<a id="homeLink" href="#" style="color:#FFF">HOME</a>
+				<a id="homeLink" href="#">HOME</a>
 			</div>
 		</section><!-- /page two -->
 		
