@@ -111,17 +111,6 @@
 		
 			<div data-role="content">	
 				<img class="compBrand" src="images/myFitBrand.png" alt="branding image"/>
-				<nav id="addItem">
-					<div class="ui-grid-a">
-						<div class="ui-block-a">
-							<a id="clearLists" href="#" data-role="button">Clear</a>
-						</div>
-						<div class="ui-block-b">
-							<a id="showData" href="#" data-role="button">Routines</a>
-							<a id="addNew" href="#" data-role="button">New</a>
-						</div>
-					</div><!-- /grid-a -->
-				</nav>
 				<form id="routineForm" action="#" method="post">
 					<fieldset>
 						<ul id="errors">
@@ -288,8 +277,23 @@
 				</div>
 			</div><!-- /content -->
 			
-			<div data-role="footer" data-position="fixed" data-theme="b">
-				<a id="homeLink" href="#">HOME</a>
+			<div data-role="footer" data-position="fixed" data-fullscreen="true" data-theme="b">
+				<div data-role="navbar">
+						<ul>
+							<li>
+								<a href="#" id="homeLink" data-icon="home">HOME</a>
+							</li>
+							<li>
+								<a href="#" id="clearLists" data-icon="delete">CLEAR</a>
+							</li>
+							<li>
+								<a href="#" id="addNew" data-icon="plus">NEW</a>
+							</li>
+							<li>
+								<a href="#" id="showData" data-icon="grid">LIST</a>
+							</li>
+						</ul>
+				</div>
 			</div>
 		</section><!-- /page two -->
 		

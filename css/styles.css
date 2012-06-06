@@ -50,12 +50,6 @@ div#routines > ul {
 	margin-right: 10px;
 }
 	
-	/* List items on get data page */
-div#routines ul li ul > li {
-	margin-top: 10px;
-	margin-left: -10px;
-}
-
 	/* Get data images */
 img.dataImage {
 	margin: inherit, auto, 10px, auto;
@@ -65,12 +59,6 @@ img.dataImage {
 	border-radius: 5px;
 	border-color: #3eafe3;
 	
-}
-
-	/* Form navigation elements on the myRoutine page */
-nav#addItem {
-	text-align: right;
-	padding-right: 10px;
 }
 
 .ui-body-d {
@@ -121,6 +109,7 @@ div > h2 {
 	border-color: #85C0DD;
 }
 
+/* removes the black border around the buttons */
 div.ui-btn-up-b, div.ui-btn-up-d {
 	border: 0px none transparent;
 }
@@ -160,6 +149,7 @@ div#listForm {
 
 div#dataFormatDiv {
 	margin-bottom: 35px;
+	font-size: smaller;
 }
 
 div#body {
@@ -167,5 +157,5 @@ div#body {
 }
 
 #addNew {
-	display: none;
+	color: #316CBF;
 }
