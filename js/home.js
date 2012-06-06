@@ -222,15 +222,15 @@ function getCheckBoxValue() {
 			case "on":
 				$("#routineForm").hide();
 				$("#clearLists").show();
-				$("#showData").hide();
-				$("#addNew").show();
+				$("#showData").attr("disabled", "true").css("color", "#316CBF");//hide();
+				$("#addNew").removeAttr("disabled").css("color", "#ffffff");//show();
 				$("#listForm").show();
 				break;
 			case "off":
 				$("#routineForm").show();
 				$("#clearLists").show();
-				$("#showData").show();
-				$("#addNew").hide();
+				$("#showData").removeAttr("disabled").css("color", "#ffffff");//show();
+				$("#addNew").attr("disabled", "true").css("color", "#316CBF");//hide();
 				$("#listForm").hide();
 				break;
 			default:
@@ -427,7 +427,6 @@ function getCheckBoxValue() {
 			// if option is bool, verifies localStorage is empty for autoFill
 			if (localStorage.length === 0) {
 				autoFillData(option);
-				//alert("There is no data in Local Storage! Default data has been added.");
 			};
 		};
 		
@@ -435,16 +434,6 @@ function getCheckBoxValue() {
 		// and removes unwanted sytstem data
 		killInvalidLS();
 		if (localStorage.length >0) {
-			//$("#body").append("<div id='routines' data-role='collapsible-set'></div>");		//makeDiv given id appended to body div
-			
-			/*if (orderType == "new") {
-				$("#tOrder").html("[Ordered by Newest]").attr("focused", "false");
-			}
-			else {
-				$("#tOrder").html("[Ordered by Oldest]").attr("focused", "true");
-			};*/
-					
-			//	$("#tOrder").bind("click", changeOrder);
 				
 			var newsStream = getNewsStream();
 	
@@ -461,15 +450,6 @@ function getCheckBoxValue() {
 					if (search === true && searchAt === true || search === false) {		
 						if (objDate == newsStream[k]) {
 							
-							//makeTitle created, given attributes and appended to makeList
-							//$("<a href='#' focused='false' id='titleControl" + storCnt + "'></a>").appendTo("#topUl");
-							
-							// makeTitle innerHtml set
-							/*$("#titleControl" + storCnt)*/ 
-							
-							// makeImg created, given attributes and prepended to makeTitle
-							//$("<img src='images/maximize.png' id='routineImg" + storCnt + "' />").prependTo("#titleControl" + storCnt);
-							
 							// makeLi appended to makeList, given an id
 							$("<div id='title" + storCnt + "' data-role='collapsible' data-collapsed='false'></div>").appendTo("#routines");
 							
@@ -478,13 +458,8 @@ function getCheckBoxValue() {
 							
 							// makeSubList appended to makeLi, given id
 							$("<ul id='subUl" + storCnt + "' data-role='listview'></ul>").appendTo("#title" + storCnt);
-							
-							// sets to display
-							//$("#title"+storCnt).hide();
-							
-							//makeLi.appendChild(makeSubList);
+						
 							getImage(newObj.routinetype[1], storCnt);
-							//$("#titleControl"+storCnt).show();
 							
 							z = 0;
 							// Populates the list object's items
@@ -534,7 +509,6 @@ function getCheckBoxValue() {
 		
 		// Get image file names by returning the substring from index 0 to the first space
 		imgName = noSpace;
-		//imgName = $("#" + imgName).val;
 		
 		var endMark = imgName.indexOf(" ");
 		
@@ -587,7 +561,7 @@ function getCheckBoxValue() {
 		// Define edit delete link variables
 		var keyId = $("#links" + index).attr("key");
 		
-		$("<div id='linkcontainer" + index + "' data-role='controlgroup' data-type='horizontal'></div>").appendTo("#links" + index);
+		$("<div id='linkcontainer" + index + "' data-role='controlgroup'></div>").appendTo("#links" + index);
 		$("<a href='#' id='edit" + index + "' data-role='button' data-icon='refresh'>Edit Routine</a>").appendTo("#linkcontainer" + index);
 		$("<a href='#' id='del" + index + "' data-role='button' data-icon='delete'>Delete Routine</a>").appendTo("#linkcontainer" + index);
 		$("#edit" + index).bind("click", function(){
@@ -993,9 +967,8 @@ function getCheckBoxValue() {
 	function parseXML(xmValue) {
 		// recieves the xml and appends the childNode data to the document for parsing
 		// also empties the div associated to prevent multiple appended sets
-		$("#xmlDiv").empty().append(xmValue.childNodes);
 		
-		var routTag = $("routine"),
+		var routTag = $(xmValue).find("routine"),
 		    newXml = {},
 		    tagNames = ["name", "location", "routinetype", "sun",
 				"mon", "tue", "wed", "thu", "fri", "sat",
@@ -1005,6 +978,7 @@ function getCheckBoxValue() {
 		// and dynamically retrieve the html text of each child elements by
 		// using the tagNames array. Also stores the html text, into a key value
 		// corresponding to the tag the text has been supplied from, in the xmlObject
+		
 		for (var i=0; i < routTag.length; i++) {
 			var xmlObject = new Object();
 			for (var j=0; j < tagNames.length; j++) {
@@ -1029,17 +1003,16 @@ function getCheckBoxValue() {
 		// stores the fully parsed xml data into the global xml variable
 		// and empties the div
 		xml = newXml;
-		$("#xmlDiv").empty();
 	};
 
 	function confirmAutoFill(fillType) {
 		var ask = confirm('Autofilling "' + fillType.toUpperCase() + '" data will erase your storage. Is this ok?');
 		
 		if (ask) {
+			killInvalidLS();
 			if (localStorage.length >0) {
 				localStorage.clear();
 			};
-			
 			getData(fillType);
 		}
 		else {
@@ -1094,6 +1067,7 @@ function getCheckBoxValue() {
 	// the routine page is initialized
 	$("#myRoutine").bind("pageinit", function(){
 		$("#startDate").textinput("enable");
+		addLink.attr("disabled", "true");
 		refreshButtons();
 		});
 		
@@ -1103,7 +1077,6 @@ function getCheckBoxValue() {
 	// single line click events
 	clearLink.bind("click", clearData);
 	save.bind("click", validate);
-	addLink.bind("click", restoreDefault);
 	$("#homeLink").bind("click", refreshPage);
 	
 	
@@ -1111,6 +1084,11 @@ function getCheckBoxValue() {
 	// these are anonymous functions that call the actual function.
 	// This is needed to pass in values to the function calls
 	// that isn't possible by just calling the function.
+	addLink.bind("click", function(){
+		toggleControls("off");
+		restoreDefault();
+		});
+	
 	showLink.bind("click", function(){
 		getData(false);
 		});
@@ -1150,5 +1128,4 @@ function getCheckBoxValue() {
 	$("#csvKey").bind("click", function(){
 		confirmAutoFill("csv");
 		});
-	
 });
