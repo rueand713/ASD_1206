@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<!--	Rueben Anderson
+		06/09/2012
+		ASD 1206
+-->
+<html> 
+	<head>
+		
+		<meta charset="utf-8">
+		
+		<title>My Fitness | Get Fit!</title>
+		
+		<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Mobile IE needs ClearType for smoothing fonts -->
+		<meta http-equiv="cleartype" content="on">
+		
+		<!-- StyleSheets under here -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+		
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+		<!-- <script src="js/libs/modernizr.custom.min.js"></script>-->
+	</head> 
+	<body> 
+		<!-- Start of first page: #one -->
+		<section data-role="page" id="home" data-add-back-btn="true" data-theme="a">
+		
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>MY FITNESS APP</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				<div id="searchGroup" data-role="fieldcontain">
+					<img class="compBrand" src="http://rueand713.github.com/ASD_1206/images/myFitBrand.png" alt="branding image"/>
+					<input id="searchField" type="search" name="search" value= "" placeholder="Search for an exercise" data-theme="c"/>
+				</div>
+				<div>
+					<a href="#myRoutine" id="logoLink"><img src="http://rueand713.github.com/ASD_1206/images/cta-iphone.png" id="brandLogo" alt="brand logo"/></a>
+				</div>
+				<div data-role="collapsible" data-collapsed="true">
+					<h3>CHOOSE A FILTER</h3>
+					<fieldset data-role="controlgroup">
+						<a href="#myRoutine" data-role="button" name="categories" id="showall">SHOW ALL</a>
+						<a href="#myRoutine" data-role="button" name="categories" id="aerobics">AEROBICS</a>
+						<a href="#myRoutine" data-role="button" name="categories" id="anaerbics">ANAEROBICS</a>
+						<a href="#myRoutine" data-role="button" name="categories" id="calisthenics">CALISTHENICS</a>
+						<a href="#myRoutine" data-role="button" name="categories" id="flexibility">FLEXIBILITY</a>
+						<a href="#myRoutine" data-role="button" name="categories" id="maternity">MATERNITY</a>
+					</fieldset>
+				</div>
+			</div><!-- /content -->
+		
+		</section><!-- /page one -->
+		
+		
+		<!-- Start of second page: #two -->
+		<section data-role="page" id="myRoutine" data-add-back-btn="true" data-theme="a">
+		
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h3>MY ROUTINES</h3>
+			</div><!-- /header -->
+		
+			<div data-role="content">	
+				<div  id="listForm">
+					<div id="body">
+						<div id="routines" data-role="collapsible-set"></div>					</div>
+					</div>
+				</div>
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-fullscreen="true" data-theme="b">
+				<div data-role="navbar">
+						<ul>
+							<li>
+								<a href="#home" id="homeLink" data-icon="home">HOME</a>
+							</li>
+							<!--<li>
+								<a href="#" id="refreshLink" data-icon="refresh">REFRESH</a>
+							</li>-->
+						</ul>
+				</div>
+			</div>
+		</section><!-- /page two -->
+		
+		<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
