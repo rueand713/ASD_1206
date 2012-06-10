@@ -1,0 +1,61 @@
+/*
+	Rueben Anderson
+	06/09/2012
+	ASD 1206
+*/
+
+
+/* General anchor links */
+a {
+	color: #316CBF;
+	text-decoration: none;
+}
+
+
+div#routines ul > li {
+	list-style: none;
+}
+
+	/* Centers the CTA */
+img#brandLogo {
+	margin-top: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+div#routines > ul {
+	padding: 0px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* Search field above CTA */
+input#searchField {
+	height: 20px;
+	width: 230px;
+	border-radius: 5px 0px 0px 5px;
+	border-color: #3eafe3;
+	margin: 0px 0px 0px 0px;
+}
+
+/* Span element containing the search field */
+span#searchGroup {
+	margin-left: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+div#body {
+	margin-bottom: 50px;
+}
+
+.compBrand {
+	height: 25px;
+	width: auto;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	margin-top: -10px;
+}
