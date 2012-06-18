@@ -1,0 +1,10 @@
+{
+  "env": {
+    "local": {
+      "db": "http://127.0.0.1:5984/myfitapp"
+    },
+    "cloudant": {
+      "db": "https://rueand713:allstar85@rueand713.cloudant.com/myfitapp"
+    }
+  }
+}
