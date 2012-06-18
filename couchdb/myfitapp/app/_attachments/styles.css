@@ -1,0 +1,141 @@
+/*	Rueben Anderson
+	05/30/2012
+	ASD 1206
+*/
+
+
+h2 {
+	color: #6FA0B7;
+}
+
+	/* General anchor links */
+a {
+	color: #316CBF;
+	text-decoration: none;
+}
+
+#homeLink {
+	color: #fff;
+}
+
+	/* Formatting for the input hints */
+p.inputHints {
+	margin-top: 1px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	font-size: 12px;
+	font-style: italic;
+	color: #7F7F7F;
+}
+
+	/* Centers the CTA */
+img#branding {
+	margin-top: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+	/* All UL & LI elements */
+ul, li {
+	list-style: none;
+}
+
+
+div#routines > ul {
+	padding: 0px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+	
+	/* Get data images */
+img.dataImage {
+	margin: inherit, auto, 10px, auto;
+	display: block;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #3eafe3;
+	
+}
+
+.ui-body-d {
+	background-color: #FFF;
+	background: url("../images/project4_bg.jpg") repeat-x fixed 0 0 #FFF;
+	-webkit-background-size: length_y;
+	-moz-background-size: length_y;
+	background-attachment: fixed;
+}
+
+	/* Search field above CTA */
+input#searchField {
+	height: 20px;
+	width: 230px;
+	border-radius: 5px 0px 0px 5px;
+	border-color: #3eafe3;
+	margin: 0px 0px 0px 0px;
+}
+
+	/* Span element containing the search field and go button */
+span#searchGroup {
+	margin-left: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+div > h2 {
+	margin-bottom: 5px;
+}
+
+.js_errors {
+	color: #990000;	
+	font-size: 13px;
+	font-style: italic;
+	display: none;
+}
+
+.compBrand {
+	height: 25px;
+	width: auto;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	margin-top: -10px;
+}
+
+/* removes the black border around the buttons */
+div.ui-btn-up-b, div.ui-btn-up-d {
+	border: 0px none transparent;
+}
+
+
+/* jQuery error messages */
+.error {
+	color: #990000;
+	margin-left: 5px;
+}
+
+/* Routine Frequency error message */
+li > label.error {
+	position: absolute;
+	left: 95px;
+}
+
+div#listForm {
+	margin-top: 50px;
+	display: none;
+}
+
+div#dataFormatDiv {
+	margin-bottom: 35px;
+	font-size: smaller;
+}
+
+div#body {
+	margin-bottom: 50px;
+}
+
+ul#exerciseTypes span.ui-btn-text {
+	color: #2A2A2A;
+}

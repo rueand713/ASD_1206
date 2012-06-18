@@ -1,0 +1,296 @@
+<!DOCTYPE html> 
+<!--	Rueben Anderson
+	05/31/2012
+	ASD 1206
+-->
+<html> 
+	<head>
+		
+		<meta charset="utf-8">
+		
+		<title>My Fitness | Get Fit!</title>
+		
+		<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Mobile IE needs ClearType for smoothing fonts -->
+		<meta http-equiv="cleartype" content="on">
+		
+		<!-- StyleSheets under here -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+		
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+		<script src="modernizr.custom.min.js"></script>
+	</head> 
+	<body> 
+		<!-- Start of first page: #one -->
+		<section data-role="page" id="home" data-add-back-btn="true" data-theme="a">
+		
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>My Fitness</h1>
+			</div><!-- /header -->
+		
+			<div data-role="content">
+				<div id="searchGroup" data-role="fieldcontain">
+					<img class="compBrand" src="myFitBrand.png" alt="branding image"/>
+					<input id="searchField" type="search" name="search" value= "" placeholder="Search for an exercise" data-theme="c"/>
+				</div>
+				<a id="ctaLink" href="#myRoutine"><img id="branding" src="cta-iphone.png" data-role="button" alt="application logo"/></a>
+					<div data-role="collapsible-set">
+						<h2>Browse by Category</h2>
+						<div data-role="collapsible" data-collapsed="true" data-theme="b">
+							<h3>Aerobics</h3>
+							<fieldset data-role="controlgroup">
+								<a data-theme="c" id="aeroRunning" name="categories" data-role="button" href="#myRoutine">Running</a>
+								<a data-theme="c" id="aeroKickboxing" name="categories" data-role="button" href="#myRoutine">Kickboxing</a>
+								<a data-theme="c" id="aeroSwimming" name="categories" data-role="button" href="#myRoutine">Swimming</a>
+								<a data-theme="c" id="aeroBicycling" name="categories" data-role="button" href="#myRoutine">Bicycling</a>
+								<a data-theme="c" id="aeroRowing" name="categories" data-role="button" href="#myRoutine">Rowing</a>
+								<a data-theme="c" id="aeroJump" name="categories" data-role="button" href="#myRoutine">Jump Rope</a>
+							</fieldset>
+						</div>
+						<div data-role="collapsible" data-collapsed="true" data-theme="b">
+							<h3>Anaerobics</h3>
+							<fieldset data-role="controlgroup">
+								<a data-theme="c" id="anaeroSquats" name="categories" data-role="button" href="#myRoutine">Squats</a>
+								<a data-theme="c" id="anaeroLeg" name="categories" data-role="button" href="#myRoutine">Leg Extensions</a>
+								<a data-theme="c" id="anaeroDumbbell" name="categories" data-role="button" href="#myRoutine">Dumbbell Curls</a>
+								<a data-theme="c" id="anaeroBench" name="categories" data-role="button" href="#myRoutine">Bench Press</a>
+								<a data-theme="c" id="anaeroTricep" name="categories" data-role="button" href="#myRoutine">Tricep Extensions</a>
+								<a data-theme="c" id="anaeroBent" name="categories" data-role="button" href="#myRoutine">Bent Over Rows</a>
+							</fieldset>
+						</div>
+						<div data-role="collapsible" data-collapsed="true" data-theme="b">
+							<h3>Calisthenics</h3>
+							<fieldset data-role="controlgroup">
+								<a data-theme="c" id="calisthJumping" name="categories" data-role="button" href="#myRoutine">Jumping Jacks</a>
+								<a data-theme="c" id="calisthLunges" name="categories" data-role="button" href="#myRoutine">Lunges</a>
+								<a data-theme="c" id="calisthDips" name="categories" data-role="button" href="#myRoutine">Dips</a>
+								<a data-theme="c" id="calisthCrunches" name="categories" data-role="button" href="#myRoutine">Crunches</a>
+								<a data-theme="c" id="calisthPull" name="categories" data-role="button" href="#myRoutine">Pull Ups</a>
+								<a data-theme="c" id="calisthPush" name="categories" data-role="button" href="#myRoutine">Push Ups</a>
+							</fieldset>
+						</div>
+						<div data-role="collapsible" data-collapsed="true" data-theme="b">
+							<h3>Flexibility</h3>
+							<fieldset data-role="controlgroup">
+								<a data-theme="c" id="flexHip" name="categories" data-role="button" href="#myRoutine">Hip Flexor Stretch</a>
+								<a data-theme="c" id="flexPiriformis" name="categories" data-role="button" href="#myRoutine">Piriformis Stretch</a>
+								<a data-theme="c" id="flexHamstring" name="categories" data-role="button" href="#myRoutine">Hamstring Stretch</a>
+								<a data-theme="c" id="flexQuad" name="categories" data-role="button" href="#myRoutine">Quad Stretch</a>
+								<a data-theme="c" id="flexBack" name="categories" data-role="button" href="#myRoutine">Back Stretch</a>
+								<a data-theme="c" id="flexShoulder" name="categories" data-role="button" href="#myRoutine">Shoulder Stretch</a>
+							</fieldset>
+						</div>
+						<div data-role="collapsible" data-collapsed="true" data-theme="b">
+							<h3>Maternity</h3>
+							<fieldset data-role="controlgroup">
+								<a data-theme="c" id="maternWalking" name="categories" data-role="button" href="#myRoutine">Walking</a>
+								<a data-theme="c" id="maternSide" name="categories" data-role="button" href="#myRoutine">Side Lunges</a>
+								<a data-theme="c" id="maternStep" name="categories" data-role="button" href="#myRoutine">Step Ups</a>
+								<a data-theme="c" id="maternLite" name="categories" data-role="button" href="#myRoutine">Lite Swimming</a>
+								<a data-theme="c" id="maternLying" name="categories" data-role="button" href="#myRoutine">Lying Abduction</a>
+								<a data-theme="c" id="maternWall" name="categories" data-role="button" href="#myRoutine">Wall Squats</a>
+							</fieldset>
+						</div>
+					</div> <!-- close collapsible set div -->
+				</div><!-- /content -->
+		
+		</section><!-- /page one -->
+		
+		
+		<!-- Start of second page: #two -->
+		<section data-role="page" id="myRoutine" data-add-back-btn="true" data-theme="a">
+		
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h3>My Routines</h3>
+			</div><!-- /header -->
+		
+			<div data-role="content">	
+				<img class="compBrand" src="myFitBrand.png" alt="branding image"/>
+				<form id="routineForm" action="#" method="post">
+					<fieldset>
+						<ul id="errors">
+						</ul>
+						<div class="titledSection" data-role="fieldcontain">
+							<p id="errorText" class="js_errors">* This is a required field.</p>
+							<h2>Routine Title</h2>
+							<!-- Allows the user to input a name for the routine -->
+							<input type="text" id="routineName" name="routineName" placeholder="Name this Routine" class="required"/>
+							<p class="inputHints">Ex: Tricep Showdown! or Weekly Run</p>
+						</div>
+						<div class="titledSection" data-role="fieldcontain">
+							<p id="errorSelect" class="js_errors">* This is a required field.</p>
+							<h2>Routine Location</h2>
+							<select id="routineLoc" name="routineLoc" class="required" data-theme="c">
+								<option value="">--Please Select A Location--</option>
+								<optgroup label="Gyms">
+									<option value="Bally's">Bally's</option>
+									<option value="24 Hour Fitness">24 Hour Fitness</option>
+									<option value="L.A Fitness">L.A Fitness</option>
+									<option value="YMCA Center">YMCA Center</option>
+									<option value="World Gym">World Gym</option>
+									<option value="Gold's Gym">Gold's Gym</option>
+									<option value="Other Gym">Other Gym</option>
+								</optgroup>
+								<optgroup label="Other">
+									<option value="Home">Home</option>
+									<option value="Recreation Area">Recreation Area</option>
+									<option value="Wellness Center">Wellness Center</option>
+									<option value="Other Area">Other Area</option>
+								</optgroup>
+							</select>
+						</div>
+						<div class="titledSection" data-role="fieldcontain">
+							<p id="errorRadio" class="js_errors">* This is a required field.</p>
+							<h2>Select a type of exercise</h2>	
+							<div id="workout2" data-role="collapsible-set">
+								<div id="aero" data-role="collapsible" data-collapsed="true" data-theme="b">
+									<h3>Aerobics</h3>
+									<fieldset data-role="controlgroup">
+										<input data-theme="c" type="radio" name="exType" value="Running" id="running" data-class="Aerobics" class="required"/><label for="running">Running</label>
+										<input data-theme="c" type="radio" name="exType" value="Kickboxing" id="kickboxing" data-class="Aerobics"/><label for="kickboxing">Kickboxing</label>
+										<input data-theme="c" type="radio" name="exType" value="Swimming" id="swimming" data-class="Aerobics"/><label for="swimming">Swimming</label>
+										<input data-theme="c" type="radio" name="exType" value="Bicycling" id="bicycling" data-class="Aerobics"/><label for="bicycling">Bicycling</label>
+										<input data-theme="c" type="radio" name="exType" value="Rowing" id="rowing" data-class="Aerobics"/><label for="rowing">Rowing</label>
+										<input data-theme="c" type="radio" name="exType" value="Jump Rope" id="jumpRope" data-class="Aerobics"/><label for="jumpRope">Jump Rope</label>
+									</fieldset>
+								</div>
+								<div id="anaero" data-role="collapsible" data-collapsed="true" data-theme="b">
+									<h3>Anaerobics</h3>
+									<fieldset data-role="controlgroup">
+										<input data-theme="c" type="radio" name="exType" value="Squats" id="squats" data-class="Anaerobics" class="required"/><label for="squats">Squats</label>
+										<input data-theme="c" type="radio" name="exType" value="Leg Extension" id="legExtension" data-class="Anaerobics"/><label for="legExtension">Leg Extensions</label>
+										<input data-theme="c" type="radio" name="exType" value="Dumbbell Curls" id="dumbbellCurls" data-class="Anaerobics"/><label for="dumbbellCurls">Dumbell Curls</label>
+										<input data-theme="c" type="radio" name="exType" value="Bench Press" id="benchPress" data-class="Anaerobics"/><label for="benchPress">Bench Press</label>
+										<input data-theme="c" type="radio" name="exType" value="Tricep Extension" id="tricepExtension" data-class="Anaerobics"/><label for="tricepExtension">Tricep Extensions</label>
+										<input data-theme="c" type="radio" name="exType" value="Bent Over Rows" id="bentOverRows" data-class="Anaerobics"/><label for="bentOverRows">Bent Over Rows</label>
+									</fieldset>
+								</div>
+								<div id="calisth" data-role="collapsible" data-collapsed="true" data-theme="b">
+									<h3>Calisthenics</h3>
+									<fieldset data-role="controlgroup">
+										<input data-theme="c" type="radio" name="exType" value="Jumping Jacks" id="jumpingJacks" data-class="Calisthenics" class="required"/><label for="jumpingJacks">Jumping Jacks</label>
+										<input data-theme="c" type="radio" name="exType" value="Lunges" id="lunges" data-class="Calisthenics"/><label for="lunges">Lunges</label>
+										<input data-theme="c" type="radio" name="exType" value="Dips" id="dips" data-class="Calisthenics"/><label for="dips">Dips</label>
+										<input data-theme="c" type="radio" name="exType" value="Crunches" id="crunches" data-class="Calisthenics"/><label for="crunches">Crunches</label>
+										<input data-theme="c" type="radio" name="exType" value="Pull Ups" id="pullUps" data-class="Calisthenics"/><label for="pullUps">Pull Ups</label>
+										<input data-theme="c" type="radio" name="exType" value="Push Ups" id="pushUps" data-class="Calisthenics"/><label for="pushUps">Push Ups</label>
+									</fieldset>
+								</div>
+								<div id="flex" data-role="collapsible" data-collapsed="true" data-theme="b">
+									<h3>Flexibility</h3>
+									<fieldset data-role="controlgroup">
+										<input data-theme="c" type="radio" name="exType" value="Hip Flexor Stretch" id="hipFlexorStretch" data-class="Flexibility" class="required"/><label for="hipFlexorStretch">Hip Flexor Stretch</label>
+										<input data-theme="c" type="radio" name="exType" value="Piriformis Stretch" id="piriformisStretch" data-class="Flexibility"/><label for="piriformisStretch">Piriformis Stretch</label>
+										<input data-theme="c" type="radio" name="exType" value="Hamstring Stretch" id="hamstringStretch" data-class="Flexibility"/><label for="hamstringStretch">Hamstring Stretch</label>
+										<input data-theme="c" type="radio" name="exType" value="Quad Stretch" id="quadStretch" data-class="Flexibility"/><label for="quadStretch">Quad Stretch</label>
+										<input data-theme="c" type="radio" name="exType" value="Back Stretch" id="backStretch" data-class="Flexibility"/><label for="backStretch">Back Stretch</label>
+										<input data-theme="c" type="radio" name="exType" value="Shoulder Stretch" id="shoulderStretch" data-class="Flexibility"/><label for="shoulderStretch">Shoulder Stretch</label>
+									</fieldset>
+								</div>
+								<div id="matern" data-role="collapsible" data-collapsed="true" data-theme="b">
+									<h3>Maternity</h3>
+									<fieldset data-role="controlgroup">
+										<input data-theme="c" type="radio" name="exType" value="Walking" id="walking" data-class="Maternity" class="required"/><label for="walking">Walking</label>
+										<input data-theme="c" type="radio" name="exType" value="Side Lunges" id="sideLunges" data-class="Maternity"/><label for="sideLunges">Side Lunges</label>
+										<input data-theme="c" type="radio" name="exType" value="Step Ups" id="stepUps" data-class="Maternity"/><label for="stepUps">Step Ups</label>
+										<input data-theme="c" type="radio" name="exType" value="Lite Swimming" id="liteSwimming" data-class="Maternity"/><label for="liteSwimming">Lite Swimming</label>
+										<input data-theme="c" type="radio" name="exType" value="Lying Abduction" id="lyingAbduction" data-class="Maternity"/><label for="lyingAbduction">Lying Abduction</label>
+										<input data-theme="c" type="radio" name="exType" value="Wall Squats" id="wallSquats" data-class="Maternity"/><label for="wallSquats">Wall Squats</label>
+									</fieldset>
+								</div>
+							</div><!-- close collapsible set-->
+						</div>
+						<!-- The user will select which days for this routine -->
+					
+						<div id="rtFreq"  data-role="fieldcontain">
+							<p id="errorCheckbox" class="js_errors">* This is a required field.</p>
+							<h2>Routine Frequency</h2>
+							<fieldset data-role="controlgroup">
+								<legend>Select the day(s) for this exercise:</legend>
+								<input data-theme="c" type="checkbox" value="Sunday" id="sunday" name="frequency" class="required"/><label for="sunday">Sun</label>
+								<input data-theme="c" type="checkbox" value="Monday" id="monday" name="frequency"/><label for="monday">Mon</label>
+								<input data-theme="c" type="checkbox" value="Tuesday" id="tuesday" name="frequency"/><label for="tuesday">Tue</label>
+								<input data-theme="c" type="checkbox" value="Wednesday" id="wednesday" name="frequency"/><label for="wednesday">Wed</label>
+								<input data-theme="c" type="checkbox" value="Thursday" id="thursday" name="frequency"/><label for="thursday">Thu</label>
+								<input data-theme="c" type="checkbox" value="Friday" id="friday" name="frequency"/><label for="friday">Fri</label>
+								<input data-theme="c" type="checkbox" value="Saturday" id="saturday" name="frequency"/><label for="saturday">Sat</label>
+							</fieldset>
+						</div>
+					
+								<!-- The user will input a value in the range from 1 to 100 -->
+						
+						<div class="titledSection" data-role="fieldcontain">
+							<p id="errorRange" class="js_errors">* This is a required field.</p>
+							<h2>Exercise Length</h2>
+							<label for="workout"><span id="wDescript">Reps/Duration:</span></label>
+							<br>	<!-- The value of the slider will dynamically be updated within the #rangeVal span tag -->
+							<input data-theme="b" type="range" min="1" max="100" value="30" id="workout" name="workout" class="required number"/>
+						</div>
+					
+						<!-- This field asks the user for additional details for the routine -->
+					
+						<div class="titledSection" data-role="fieldcontain">
+							<h2>Notes</h2>
+							<textarea id="comments" name="comments" placeholder="Store exercise notes here."></textarea>
+							<p class="inputHints">Ex: Reps w/ 45lb weights, Duration (min)</p>
+						</div>
+					
+						<!-- The user will enter a starting date for the routine -->
+					
+						<div class="titledSection" data-role="fieldcontain">
+							<p id="errorDate" class="js_errors">* This is a required field.</p>
+							<h2>Routine Date</h2>
+							<input type="text" id="startDate" name="startDate" placeholder="YYYY/MM/DD" class="required date"/>
+							<p class="inputHints">Choose a date in this format: YYYY/MM/DD</p>
+						</div>
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<input type="submit" id="submit" value="Save" data-theme="c"/>
+							</div>
+							<div class="ui-block-b">
+								<input type="reset" id="reset" value="Reset" data-theme="c"/>
+							</div>
+						</div><!-- /grid-a -->
+					</fieldset>
+				</form>
+				<div  id="listForm">
+					<fieldset data-role="controlgroup">
+						<h3>CHOOSE A FILTER</h3>
+						<ul data-role="listview" id="exerciseTypes">
+							<li><a data-theme="d" href="routines.html?cat=showall" data-role="button" name="categories" id="showall">SHOW ALL</a></li>
+							<li><a data-theme="d" href="routines.html?cat=aerobics" data-role="button" name="categories" id="aerobics">AEROBICS</a></li>
+							<li><a data-theme="d" href="routines.html?cat=anaerobics" data-role="button" name="categories" id="anaerbics">ANAEROBICS</a></li>
+							<li><a data-theme="d" href="routines.html?cat=calisthenics" data-role="button" name="categories" id="calisthenics">CALISTHENICS</a></li>
+							<li><a data-theme="d" href="routines.html?cat=flexibility" data-role="button" name="categories" id="flexibility">FLEXIBILITY</a></li>
+							<li><a data-theme="d" href="routines.html?cat=maternity" data-role="button" name="categories" id="maternity">MATERNITY</a></li>
+						</ul>
+					</fieldset>
+				</div>
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-fullscreen="true" data-theme="b">
+				<div data-role="navbar">
+						<ul>
+							<li>
+								<a href="#" class="homeLink" data-icon="home">HOME</a>
+							</li>
+							<li>
+								<a href="#" id="showData" data-icon="grid">LIST</a>
+							</li>
+						</ul>
+				</div>
+			</div>
+		</section><!-- /page two -->
+
+		<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+		<script src="jquery.validate.min.js"></script>
+		<script src="jquery.couch.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
