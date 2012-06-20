@@ -10,7 +10,6 @@
 		
 		<title>My Fitness | Get Fit!</title>
 		
-		<!--  Mobile viewport optimized: j.mp/bplateviewport -->
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +26,7 @@
 	</head> 
 	<body> 
 		<!-- Start of first page: #one -->
-		<section data-role="page" id="home" data-add-back-btn="true" data-theme="a">
+		<section data-role="page" id="home" data-add-back-btn="false" data-theme="a">
 		
 			<div data-role="header" data-position="fixed" data-theme="b">
 				<h1>My Fitness</h1>
@@ -39,71 +38,80 @@
 					<input id="searchField" type="search" name="search" value= "" placeholder="Search for an exercise" data-theme="c"/>
 				</div>
 				<a id="ctaLink" href="#myRoutine"><img id="branding" src="cta-iphone.png" data-role="button" alt="application logo"/></a>
-					<div data-role="collapsible-set">
-						<h2>Browse by Category</h2>
-						<div data-role="collapsible" data-collapsed="true" data-theme="b">
-							<h3>Aerobics</h3>
-							<fieldset data-role="controlgroup">
-								<a data-theme="c" id="aeroRunning" name="categories" data-role="button" href="#myRoutine">Running</a>
-								<a data-theme="c" id="aeroKickboxing" name="categories" data-role="button" href="#myRoutine">Kickboxing</a>
-								<a data-theme="c" id="aeroSwimming" name="categories" data-role="button" href="#myRoutine">Swimming</a>
-								<a data-theme="c" id="aeroBicycling" name="categories" data-role="button" href="#myRoutine">Bicycling</a>
-								<a data-theme="c" id="aeroRowing" name="categories" data-role="button" href="#myRoutine">Rowing</a>
-								<a data-theme="c" id="aeroJump" name="categories" data-role="button" href="#myRoutine">Jump Rope</a>
-							</fieldset>
-						</div>
-						<div data-role="collapsible" data-collapsed="true" data-theme="b">
-							<h3>Anaerobics</h3>
-							<fieldset data-role="controlgroup">
-								<a data-theme="c" id="anaeroSquats" name="categories" data-role="button" href="#myRoutine">Squats</a>
-								<a data-theme="c" id="anaeroLeg" name="categories" data-role="button" href="#myRoutine">Leg Extensions</a>
-								<a data-theme="c" id="anaeroDumbbell" name="categories" data-role="button" href="#myRoutine">Dumbbell Curls</a>
-								<a data-theme="c" id="anaeroBench" name="categories" data-role="button" href="#myRoutine">Bench Press</a>
-								<a data-theme="c" id="anaeroTricep" name="categories" data-role="button" href="#myRoutine">Tricep Extensions</a>
-								<a data-theme="c" id="anaeroBent" name="categories" data-role="button" href="#myRoutine">Bent Over Rows</a>
-							</fieldset>
-						</div>
-						<div data-role="collapsible" data-collapsed="true" data-theme="b">
-							<h3>Calisthenics</h3>
-							<fieldset data-role="controlgroup">
-								<a data-theme="c" id="calisthJumping" name="categories" data-role="button" href="#myRoutine">Jumping Jacks</a>
-								<a data-theme="c" id="calisthLunges" name="categories" data-role="button" href="#myRoutine">Lunges</a>
-								<a data-theme="c" id="calisthDips" name="categories" data-role="button" href="#myRoutine">Dips</a>
-								<a data-theme="c" id="calisthCrunches" name="categories" data-role="button" href="#myRoutine">Crunches</a>
-								<a data-theme="c" id="calisthPull" name="categories" data-role="button" href="#myRoutine">Pull Ups</a>
-								<a data-theme="c" id="calisthPush" name="categories" data-role="button" href="#myRoutine">Push Ups</a>
-							</fieldset>
-						</div>
-						<div data-role="collapsible" data-collapsed="true" data-theme="b">
-							<h3>Flexibility</h3>
-							<fieldset data-role="controlgroup">
-								<a data-theme="c" id="flexHip" name="categories" data-role="button" href="#myRoutine">Hip Flexor Stretch</a>
-								<a data-theme="c" id="flexPiriformis" name="categories" data-role="button" href="#myRoutine">Piriformis Stretch</a>
-								<a data-theme="c" id="flexHamstring" name="categories" data-role="button" href="#myRoutine">Hamstring Stretch</a>
-								<a data-theme="c" id="flexQuad" name="categories" data-role="button" href="#myRoutine">Quad Stretch</a>
-								<a data-theme="c" id="flexBack" name="categories" data-role="button" href="#myRoutine">Back Stretch</a>
-								<a data-theme="c" id="flexShoulder" name="categories" data-role="button" href="#myRoutine">Shoulder Stretch</a>
-							</fieldset>
-						</div>
-						<div data-role="collapsible" data-collapsed="true" data-theme="b">
-							<h3>Maternity</h3>
-							<fieldset data-role="controlgroup">
-								<a data-theme="c" id="maternWalking" name="categories" data-role="button" href="#myRoutine">Walking</a>
-								<a data-theme="c" id="maternSide" name="categories" data-role="button" href="#myRoutine">Side Lunges</a>
-								<a data-theme="c" id="maternStep" name="categories" data-role="button" href="#myRoutine">Step Ups</a>
-								<a data-theme="c" id="maternLite" name="categories" data-role="button" href="#myRoutine">Lite Swimming</a>
-								<a data-theme="c" id="maternLying" name="categories" data-role="button" href="#myRoutine">Lying Abduction</a>
-								<a data-theme="c" id="maternWall" name="categories" data-role="button" href="#myRoutine">Wall Squats</a>
-							</fieldset>
-						</div>
-					</div> <!-- close collapsible set div -->
-				</div><!-- /content -->
-		
+				<div data-role="collapsible-set">
+					<h2>Quick Start An Exercise</h2>
+					<div data-role="collapsible" data-collapsed="true" data-theme="b">
+						<h3>Aerobics</h3>
+						<fieldset data-role="controlgroup">
+							<a data-theme="c" id="aeroRunning" name="categories" data-role="button" href="#myRoutine">Running</a>
+							<a data-theme="c" id="aeroKickboxing" name="categories" data-role="button" href="#myRoutine">Kickboxing</a>
+							<a data-theme="c" id="aeroSwimming" name="categories" data-role="button" href="#myRoutine">Swimming</a>
+							<a data-theme="c" id="aeroBicycling" name="categories" data-role="button" href="#myRoutine">Bicycling</a>
+							<a data-theme="c" id="aeroRowing" name="categories" data-role="button" href="#myRoutine">Rowing</a>
+							<a data-theme="c" id="aeroJump" name="categories" data-role="button" href="#myRoutine">Jump Rope</a>
+						</fieldset>
+					</div>
+					<div data-role="collapsible" data-collapsed="true" data-theme="b">
+						<h3>Anaerobics</h3>
+						<fieldset data-role="controlgroup">
+							<a data-theme="c" id="anaeroSquats" name="categories" data-role="button" href="#myRoutine">Squats</a>
+							<a data-theme="c" id="anaeroLeg" name="categories" data-role="button" href="#myRoutine">Leg Extensions</a>
+							<a data-theme="c" id="anaeroDumbbell" name="categories" data-role="button" href="#myRoutine">Dumbbell Curls</a>
+							<a data-theme="c" id="anaeroBench" name="categories" data-role="button" href="#myRoutine">Bench Press</a>
+							<a data-theme="c" id="anaeroTricep" name="categories" data-role="button" href="#myRoutine">Tricep Extensions</a>
+							<a data-theme="c" id="anaeroBent" name="categories" data-role="button" href="#myRoutine">Bent Over Rows</a>
+						</fieldset>
+					</div>
+					<div data-role="collapsible" data-collapsed="true" data-theme="b">
+						<h3>Calisthenics</h3>
+						<fieldset data-role="controlgroup">
+							<a data-theme="c" id="calisthJumping" name="categories" data-role="button" href="#myRoutine">Jumping Jacks</a>
+							<a data-theme="c" id="calisthLunges" name="categories" data-role="button" href="#myRoutine">Lunges</a>
+							<a data-theme="c" id="calisthDips" name="categories" data-role="button" href="#myRoutine">Dips</a>
+							<a data-theme="c" id="calisthCrunches" name="categories" data-role="button" href="#myRoutine">Crunches</a>
+							<a data-theme="c" id="calisthPull" name="categories" data-role="button" href="#myRoutine">Pull Ups</a>
+							<a data-theme="c" id="calisthPush" name="categories" data-role="button" href="#myRoutine">Push Ups</a>
+						</fieldset>
+					</div>
+					<div data-role="collapsible" data-collapsed="true" data-theme="b">
+						<h3>Flexibility</h3>
+						<fieldset data-role="controlgroup">
+							<a data-theme="c" id="flexHip" name="categories" data-role="button" href="#myRoutine">Hip Flexor Stretch</a>
+							<a data-theme="c" id="flexPiriformis" name="categories" data-role="button" href="#myRoutine">Piriformis Stretch</a>
+							<a data-theme="c" id="flexHamstring" name="categories" data-role="button" href="#myRoutine">Hamstring Stretch</a>
+							<a data-theme="c" id="flexQuad" name="categories" data-role="button" href="#myRoutine">Quad Stretch</a>
+							<a data-theme="c" id="flexBack" name="categories" data-role="button" href="#myRoutine">Back Stretch</a>
+							<a data-theme="c" id="flexShoulder" name="categories" data-role="button" href="#myRoutine">Shoulder Stretch</a>
+						</fieldset>
+					</div>
+					<div data-role="collapsible" data-collapsed="true" data-theme="b">
+						<h3>Maternity</h3>
+						<fieldset data-role="controlgroup">
+							<a data-theme="c" id="maternWalking" name="categories" data-role="button" href="#myRoutine">Walking</a>
+							<a data-theme="c" id="maternSide" name="categories" data-role="button" href="#myRoutine">Side Lunges</a>
+							<a data-theme="c" id="maternStep" name="categories" data-role="button" href="#myRoutine">Step Ups</a>
+							<a data-theme="c" id="maternLite" name="categories" data-role="button" href="#myRoutine">Lite Swimming</a>
+							<a data-theme="c" id="maternLying" name="categories" data-role="button" href="#myRoutine">Lying Abduction</a>
+							<a data-theme="c" id="maternWall" name="categories" data-role="button" href="#myRoutine">Wall Squats</a>
+						</fieldset>
+					</div>
+				</div> <!-- close collapsible set div -->
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed" data-fullscreen="true" data-theme="b">
+				<div data-role="navbar">
+						<ul>
+							<li>
+								<a href="#" id="homeDataLink" data-icon="grid">ROUTINE LIST</a>
+							</li>
+						</ul>
+				</div>
+			</div>
 		</section><!-- /page one -->
 		
 		
 		<!-- Start of second page: #two -->
-		<section data-role="page" id="myRoutine" data-add-back-btn="true" data-theme="a">
+		<section data-role="page" id="myRoutine" data-add-back-btn="false" data-theme="a">
 		
 			<div data-role="header" data-position="fixed" data-theme="b">
 				<h3>My Routines</h3>
@@ -280,7 +288,10 @@
 								<a href="#" class="homeLink" data-icon="home">HOME</a>
 							</li>
 							<li>
-								<a href="#" id="showData" data-icon="grid">LIST</a>
+								<a href="#myRoutine" id="addNew" data-icon="plus">NEW ROUTINE</a>
+							</li>
+							<li>
+								<a href="#" id="showData" data-icon="grid">ROUTINE LIST</a>
 							</li>
 						</ul>
 				</div>

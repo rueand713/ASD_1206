@@ -14,7 +14,7 @@ a {
 	text-decoration: none;
 }
 
-#homeLink {
+.homeLink {
 	color: #fff;
 }
 
@@ -125,11 +125,6 @@ li > label.error {
 div#listForm {
 	margin-top: 50px;
 	display: none;
-}
-
-div#dataFormatDiv {
-	margin-bottom: 35px;
-	font-size: smaller;
 }
 
 div#body {
