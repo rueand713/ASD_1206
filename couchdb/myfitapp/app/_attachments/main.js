@@ -53,7 +53,8 @@ function getCheckBoxValue() {
 	};
 
 	function storeData(key) {
-	
+		var saved = true;
+		
 	// Stores all form field values in an object.
 	// Object properties contain arrays with the form label and input value.
 		getCheckBoxValue();
@@ -83,29 +84,31 @@ function getCheckBoxValue() {
 			else {
 				// Set the id to the existing key that is being edited so that the data will be overwritten.
 				// This key is the same key being passed from the editSubmit event handler.
-				
-					isNew = false;
-				
+				isNew = false;
 				item._id = key[0];
 				item._rev = key[1];
 			};
 			
 		$.couch.db("myfitapp").saveDoc(item, {
 			success: function(data){
-				console.log(data);
+				//console.log(data);
 			},
 			error: function(status){
-				console.log(status);
+				saved = false;
+				//console.log(status);
 			}
 		});
 		
 		$("#startDate").textinput("disable");
-		if (isNew === true) {
+		if (isNew === true && saved === true) {
 			alert("Routine Added!");
 		}
-			else {
+			else if (isNew != true && saved === true) {
 				alert("Routine Updated!");
-			};
+			}
+				else if (saved === false) {
+					alert("Database error!");
+				};
 		
 		isOld = false;
 		restoreDefault();
@@ -199,6 +202,7 @@ function getCheckBoxValue() {
 		$("#workout").val(30);
 		$("#comments").val("");
 		$("#routineLoc").val("");
+		$("#submit").removeAttr("key");
 		
 		// Reset the jQuery data fields for the list		
 		var collapsedLists = $("div[data-role='collapsible']");
@@ -231,6 +235,7 @@ function getCheckBoxValue() {
 			$("#monday").prop("checked", true).checkboxradio("refresh");
 			$("#wednesday").prop("checked", true).checkboxradio("refresh");
 			$("#friday").prop("checked", true).checkboxradio("refresh");
+			
 		};
 		
 		
@@ -489,11 +494,12 @@ function getCheckBoxValue() {
 	   Create the edit and delete links for reach stored item when displayed. */
 	function makeRoutineLinks(key, index, dbKey) {
 		// Define edit delete link variables
-		var keyId = [$("#links" + index).attr("key"), dbKey];
+		var keyId = [$("#links" + index).attr("key"), dbKey],
+			param = $($.mobile.activePage).data("url");
 		
 		$("<div id='linkcontainer" + index + "' data-role='controlgroup'></div>").appendTo("#links" + index);
 		$("<a href='#myRoutine' id='edit" + index + "' data-role='button' data-icon='refresh' data-theme='a'>Edit Routine</a>").appendTo("#linkcontainer" + index);
-		$("<a href='#myRoutine' id='del" + index + "' data-role='button' data-icon='delete' data-theme='a'>Delete Routine</a>").appendTo("#linkcontainer" + index);
+		$("<a href='" + param + "' id='del" + index + "' data-role='button' data-icon='delete' data-theme='a'>Delete Routine</a>").appendTo("#linkcontainer" + index);
 		$("#edit" + index).die("click").live("click", function(){
 			editRoutine(keyId);
 			});
@@ -510,14 +516,16 @@ function getCheckBoxValue() {
 		if (ask) {
 			$.couch.db("myfitapp").removeDoc({_id:key[1][0], _rev:key[1][1]}, {
 				success: function(data){
-					console.log(data);
-					alert("Routine has been successfully removed!");
+					//console.log(data);
 				},
 				error: function(status){
-					console.log(status);
+					//console.log(status);
 				}
 			});
-			location.reload();
+			alert("The routine has been successfully removed!");
+			// Refetch the list to reflect the delete action
+			listMaker($($.mobile.activePage).data("url"));
+			
 		}
 			else {
 				alert("The routine was not deleted.");
@@ -554,16 +562,13 @@ function getCheckBoxValue() {
 			// Function that populates the checkbox fields.
 			setCheckBoxValue(item);
 			
-			// Remove the initial listener from the input button
-			save.die("click", storeData);
-			
 			// Update the key
 			$("#submit").attr("key", key[1]);
 			
 			// Save the key value in this function as a property of the edit submit event
 			// So the value may be reused when the edited data is saved.
 			$("#submit").die("click").live("click", function() {
-				validate(key[1]);
+				validate();
 				});
 			
 			$("#startDate").textinput("disable");
@@ -572,8 +577,9 @@ function getCheckBoxValue() {
 
 	// validates that the date entered is proper format and that the date is indeed
 	// a current or future date and not backdated.
-	function validDate(key) {
-		var err = false;
+	function validDate() {
+		var err = false,
+			key = $("#submit").attr("key");
 		
 		if (isOld === false) {
 			var startVal = $("#startDate").val(),
@@ -598,6 +604,10 @@ function getCheckBoxValue() {
 		if (isOld === true || err === false) {
 			// If everything is ok save the data. Send the key value from the edit data function
 			// This key value was passed through the editSubmit event listener as a property.
+			if (key) {
+				key = key.split(",");
+			};
+			
 			storeData(key);
 		};
 	};
@@ -607,10 +617,10 @@ function getCheckBoxValue() {
 	function validate(key) {
 		myForm.validate({
 			invalidHandler: function(form, validator) {},
-			submitHandler: function() {
-				validDate(key);
+			submitHandler: function(data) {
+				validDate();
 			}
-		});	
+		});
 	};
 
 	
@@ -742,6 +752,8 @@ function getCheckBoxValue() {
 	};
 	
 	
+	// splits the url into 3 parts to gain access to the parameters
+	// list at the end of the url string
 	function urlExtractor(urldata){
 		var urlparts = urldata.split("?"),
 			urlpairs = urlparts[1].split("&"),
@@ -756,6 +768,21 @@ function getCheckBoxValue() {
 		}
 		
 		return urlvalues;
+	};
+	
+	
+	// Makes the accordion or routines on the routines.html page
+	// based on the data from the url that is extracted in the urlExtractor
+	function listMaker(thisData){
+		// Reset the data in the div
+		$("#routines").empty();
+		
+		// if there is not a argument extract the url from the page loaded
+		// otherwise use the extracted data passed in
+		var urlParam = urlExtractor(thisData)["cat"];
+		
+		// couchDb call to show a generated list based on urlParam
+		getDB("myfitapp", "fitapp/" + urlParam, parseJSON);
 	};
 	
 
@@ -811,6 +838,11 @@ function getCheckBoxValue() {
 		toggleControls("on");
 		});
 	
+	$("#homeDataLink").die("click").live("click", function(){
+		toggleControls("on");
+		$.mobile.changePage($("#myRoutine"),"slide");
+	});
+	
 	resetInfo.die("click").live("click", function(){
 		// refresh the date field to enabled,
 		// should only be disabled when editing a routine
@@ -831,15 +863,13 @@ function getCheckBoxValue() {
 		// resets all data but doesn't refresh the radio
 		// and checkbox buttons
 		restoreDefault(false);
+		$("#startDate").textinput("enable");
 		});
 		
 		// when the routines external pageshows to extract the
 		// url data param and display the routines based on that value
 		$("#routinehome").die("pageshow").live("pageshow", function(){
-			// Reset the data in the div
-			$("#routines").empty();
-			var urlParam = urlExtractor($(this).data("url"))["cat"];
-			getDB("myfitapp", "fitapp/" + urlParam, parseJSON);
+			listMaker($(this).data("url"));
 		});
 	
 });
