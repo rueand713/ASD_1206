@@ -3,6 +3,14 @@
 	ASD 1206
 */
 
+body {
+	font-size: 100%;
+}
+
+img {
+	max-height: 100%;
+	max-width: 100%;
+}
 
 h2 {
 	color: #6FA0B7;
@@ -20,20 +28,19 @@ a {
 
 	/* Formatting for the input hints */
 p.inputHints {
-	margin-top: 1px;
-	margin-bottom: 5px;
-	margin-left: 5px;
-	font-size: 12px;
+	margin-top: 0.0625em;
+	margin-bottom: 0.3125em;
+	margin-left: 0.3125em;
+	font-size: 0.75em;
 	font-style: italic;
 	color: #7F7F7F;
 }
 
 	/* Centers the CTA */
 img#branding {
-	margin-top: 0px;
+	margin-top: 0%;
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 	
 }
 
@@ -44,19 +51,17 @@ ul, li {
 
 
 div#routines > ul {
-	padding: 0px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
+	padding: 0%;
+	margin: auto 0.625em 0.625em;
 }
 	
 	/* Get data images */
 img.dataImage {
-	margin: inherit, auto, 10px, auto;
+	margin: inherit auto 0.625em auto;
 	display: block;
-	border-width: 2px;
+	border-width: 0.125em;
 	border-style: solid;
-	border-radius: 5px;
+	border-radius: 0.3125em;
 	border-color: #3eafe3;
 	
 }
@@ -71,42 +76,44 @@ img.dataImage {
 
 	/* Search field above CTA */
 input#searchField {
-	height: 20px;
-	width: 230px;
-	border-radius: 5px 0px 0px 5px;
+	height: 1.25em;
+	width: 14.375em;
+	border-radius: 0.3125em 0em 0em 0.3125em;
 	border-color: #3eafe3;
-	margin: 0px 0px 0px 0px;
 }
 
 	/* Span element containing the search field and go button */
 span#searchGroup {
-	margin-left: 5px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin: 0em 0em 0em 0.3125em;
+}
+
+#searchGroup > div {
+	margin: 0em 13.125em;
+}
+
+@media screen and (max-device-width: 480px) {
+	#searchGroup > div {
+		margin: auto;
+	}
 }
 
 div > h2 {
-	margin-bottom: 5px;
+	margin-bottom: 0.3125em;
 }
 
 .js_errors {
 	color: #990000;	
-	font-size: 13px;
+	font-size: 0.8125em;
 	font-style: italic;
 	display: none;
 }
 
 .compBrand {
-	height: 25px;
+	height: 1.5625em;
 	width: auto;
-	border-radius: 5px;
-	margin-bottom: 15px;
-	margin-top: -10px;
-}
-
-.ui-btn-inner {
-	background-color: #95D7F7;
-	border-color: #85C0DD;
+	border-radius: 0.3125em;
+	margin-bottom: 0.9375em;
+	margin-top: -0.625em;
 }
 
 /* removes the black border around the buttons */
@@ -114,48 +121,32 @@ div.ui-btn-up-b, div.ui-btn-up-d {
 	border: 0px none transparent;
 }
 
-.ui-btn-up-a {
-	border: 1px solid #79C4E8;
-}
-
-.ui-header, .ui-footer {
-	background: #79C4E8;
-}
-
-.ui-icon {
-	background-color: #79C4E8;
-}
-
-.ui-input-text {
-	background: #FFF;
-}
-
 /* jQuery error messages */
 .error {
 	color: #990000;
-	margin-left: 5px;
+	margin-left: 0.3125em;
 }
 
 /* Routine Frequency error message */
 li > label.error {
 	position: absolute;
-	left: 95px;
+	left: 5.9375em;
 }
 
 div#listForm {
-	margin-top: 50px;
+	margin-top: 3.125em;
 	display: none;
 }
 
 div#dataFormatDiv {
-	margin-bottom: 35px;
+	margin-bottom: 2.1875em;
 	font-size: smaller;
 }
 
 div#body {
-	margin-bottom: 50px;
+	margin-bottom: 3.125em;
 }
 
-#addNew {
-	color: #316CBF;
+ul.exerciseTypes span.ui-btn-text {
+	color: #2A2A2A;
 }

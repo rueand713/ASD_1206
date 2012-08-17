@@ -15,7 +15,7 @@ function getCheckBoxValue() {
 		
 		for (var i=0; i < boxes.length; i++) {
 			if ($(boxes[i]).prop("checked")) {
-				day[i] = "×";
+				day[i] = "x";
 			}
 			else {
 				day[i] = ""
@@ -31,42 +31,27 @@ function getCheckBoxValue() {
 	};
 
 	function setCheckBoxValue(item) {
+		
 		// Checks for checkboxes with a checked state
 		// Adds a checked value to the checked attribute for true
+		var dayVals = [[item.sun[1], "Sunday"], [item.mon[1], "Monday"], [item.tue[1], "Tuesday"], [item.wed[1], "Wednesday"], 
+		               [item.thu[1], "Thursday"], [item.fri[1], "Friday"], [item.sat[1], "Saturday"]
+			      ];
+			
+		for (var i=0; i<dayVals.length; i++) {
+			console.log(dayVals[i][0] + dayVals[i][1]);
+			if (dayVals[i][0] == "x") {
+				var checkit = $("input[type='checkbox'][value='" + dayVals[i][1] + "']");
+	
+				checkit.prop("checked", true).checkboxradio("refresh");
+			};
+		};
+			
+		// checks the proper radio button based on the routine type and refreshes the form state
+		$("input[type='radio'][value='" + item.routinetype[1] + "']").prop("checked", true).checkboxradio("refresh");
 		
-			if (item.sun[1] == "x") {
-				$("#sunday").prop("checked", true);
-			};
-			
-			if (item.mon[1] == "x") {
-				$("#monday").prop("checked", true);
-			};
-			
-			if (item.tue[1] == "x") {
-				$("#tuesday").prop("checked", true);
-			};
-			
-			if (item.wed[1] == "x") {
-				$("#wednesday").prop("checked", true);
-			};
-			
-			if (item.thu[1] == "x") {
-				$("#thursday").prop("checked", true);
-			};
-			
-			if (item.fri[1] == "x") {
-				$("#friday").prop("checked", true);
-			};
-			
-			if (item.sat[1] == "x") {
-				$("#saturday").prop("checked", true);
-			};
-			
-			// checks the proper radio button based on the routine type and refreshes the form state
-			$("input[type='radio'][value='" + item.routinetype[1] + "']").prop("checked", true);
-			
-			// refresh the checkbox and radio buttons
-			refreshButtons();
+		// refresh the checkbox and radio buttons
+		refreshButtons();
 
 	};
 
@@ -222,15 +207,15 @@ function getCheckBoxValue() {
 			case "on":
 				$("#routineForm").hide();
 				$("#clearLists").show();
-				$("#showData").attr("disabled", "true").css("color", "#316CBF");//hide();
-				$("#addNew").removeAttr("disabled").css("color", "#ffffff");//show();
+				$("#showData").attr("disabled", "true");
+				$("#addNew").removeAttr("disabled");
 				$("#listForm").show();
 				break;
 			case "off":
 				$("#routineForm").show();
 				$("#clearLists").show();
-				$("#showData").removeAttr("disabled").css("color", "#ffffff");//show();
-				$("#addNew").attr("disabled", "true").css("color", "#316CBF");//hide();
+				$("#showData").removeAttr("disabled");
+				$("#addNew").attr("disabled", "true");
 				$("#listForm").hide();
 				break;
 			default:
@@ -451,7 +436,7 @@ function getCheckBoxValue() {
 						if (objDate == newsStream[k]) {
 							
 							// makeLi appended to makeList, given an id
-							$("<div id='title" + storCnt + "' data-role='collapsible' data-collapsed='false'></div>").appendTo("#routines");
+							$("<div id='title" + storCnt + "' data-theme='b' data-role='collapsible' data-collapsed='true'></div>").appendTo("#routines");
 							
 							// set the routine title for the accordion display
 							$("<h4 id='heading" + storCnt + "'>  " + newObj.name[1] + "</h4>").appendTo("#title" + storCnt);
@@ -468,7 +453,7 @@ function getCheckBoxValue() {
 	
 							
 								// makeSubLi given an id and appended to makeSubList
-								$("<li id='item" + z + "" + storCnt + "'></li>").appendTo("#subUl" + storCnt);
+								$("<li id='item" + z + "" + storCnt + "' data-theme='c'></li>").appendTo("#subUl" + storCnt);
 								
 								// makeSubLi given innerHTML
 								$("#item" + z + "" + storCnt).html(optSubText);
@@ -476,7 +461,7 @@ function getCheckBoxValue() {
 							};
 							
 							// linksLi created and appended to makeSubList
-							$("<li id='links" + k + "' key='" + key + "'></li>").appendTo("#subUl" + storCnt);
+							$("<li id='links" + k + "' key='" + key + "' data-theme='c'></li>").appendTo("#subUl" + storCnt);
 							storCnt++;
 						};
 					};
@@ -562,8 +547,8 @@ function getCheckBoxValue() {
 		var keyId = $("#links" + index).attr("key");
 		
 		$("<div id='linkcontainer" + index + "' data-role='controlgroup'></div>").appendTo("#links" + index);
-		$("<a href='#' id='edit" + index + "' data-role='button' data-icon='refresh'>Edit Routine</a>").appendTo("#linkcontainer" + index);
-		$("<a href='#' id='del" + index + "' data-role='button' data-icon='delete'>Delete Routine</a>").appendTo("#linkcontainer" + index);
+		$("<a href='#' id='edit" + index + "' data-role='button' data-icon='refresh' data-theme='a'>Edit Routine</a>").appendTo("#linkcontainer" + index);
+		$("<a href='#' id='del" + index + "' data-role='button' data-icon='delete' data-theme='a'>Delete Routine</a>").appendTo("#linkcontainer" + index);
 		$("#edit" + index).bind("click", function(){
 			editRoutine(keyId);
 			});
@@ -965,8 +950,6 @@ function getCheckBoxValue() {
 	
 	
 	function parseXML(xmValue) {
-		// recieves the xml and appends the childNode data to the document for parsing
-		// also empties the div associated to prevent multiple appended sets
 		
 		var routTag = $(xmValue).find("routine"),
 		    newXml = {},
@@ -1093,6 +1076,12 @@ function getCheckBoxValue() {
 		getData(false);
 		});
 	
+	$("#homeDataLink").live("click", function(){
+		//toggleControls("on");
+		$.mobile.changePage($("#myRoutine"),"slide");
+		getData(false);
+	});
+	
 	resetInfo.bind("click", function(){
 		// refresh the date field to enabled,
 		// should only be disabled when editing a routine
@@ -1113,6 +1102,7 @@ function getCheckBoxValue() {
 		// resets all data but doesn't refresh the radio
 		// and checkbox buttons
 		restoreDefault(false);
+		$("#startDate").textinput("enable");
 		});
 	
 	

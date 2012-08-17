@@ -109,7 +109,6 @@ div.ui-btn-up-b, div.ui-btn-up-d {
 	border: 0px none transparent;
 }
 
-
 /* jQuery error messages */
 .error {
 	color: #990000;
@@ -131,6 +130,6 @@ div#body {
 	margin-bottom: 50px;
 }
 
-ul#exerciseTypes span.ui-btn-text {
+ul.exerciseTypes span.ui-btn-text {
 	color: #2A2A2A;
 }

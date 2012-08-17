@@ -34,13 +34,15 @@ function getCheckBoxValue() {
 		
 		// Checks for checkboxes with a checked state
 		// Adds a checked value to the checked attribute for true
-		var dayVals = [[item.sun[1], "sunday"], [item.mon[1], "monday"], [item.tue[1], "tuesday"], [item.wed[1], "wednesday"], 
-		               [item.thu[1], "thursday"], [item.fri[1], "friday"], [item.sat[1], "saturday"]
+		var dayVals = [[item.sun[1], "Sunday"], [item.mon[1], "Monday"], [item.tue[1], "Tuesday"], [item.wed[1], "Wednesday"], 
+		               [item.thu[1], "Thursday"], [item.fri[1], "Friday"], [item.sat[1], "Saturday"]
 						];
 			
 		for (var i=0; i<dayVals.length; i++) {
 			if (dayVals[i][0] == "x") {
-				$("input[type='checkbox'][value='" + dayVals[i][1] + "']").prop("checked", true).checkboxradio("refresh");
+				var checkit = $("input[type='checkbox'][value='" + dayVals[i][1] + "']");
+	
+				checkit.prop("checked", true).checkboxradio("refresh");
 			};
 		};
 			
@@ -91,11 +93,11 @@ function getCheckBoxValue() {
 			
 		$.couch.db("myfitapp").saveDoc(item, {
 			success: function(data){
-				//console.log(data);
+				console.log(data);
 			},
 			error: function(status){
 				saved = false;
-				//console.log(status);
+				console.log(status);
 			}
 		});
 		
@@ -734,6 +736,24 @@ function getCheckBoxValue() {
 	};
 	
 	
+	function initLogin(){
+		console.log("Logon Initializing..");
+		var creds = {
+				name: "rueand713",
+				password: "allstar85",
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(status) {
+					console.log(status);
+				}
+			};
+		
+		// logon with the credentials
+		$.couch.login(creds);
+	};
+	
+	
 	// this function removes any system data stored in localStorage
 	// which interferes with the operation of this application
 	function killInvalidLS() {
@@ -871,5 +891,8 @@ function getCheckBoxValue() {
 		$("#routinehome").die("pageshow").live("pageshow", function(){
 			listMaker($(this).data("url"));
 		});
+		
+		// sign in
+		initLogin();
 	
 });
